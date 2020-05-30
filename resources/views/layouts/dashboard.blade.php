@@ -14,8 +14,7 @@
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="../assets/css/material-dashboard.css"
-        rel="stylesheet" />
+    <link href="../assets/css/material-dashboard.css" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
@@ -70,16 +69,19 @@
                             <ul class="nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
+                                        <i class="material-icons">keyboard_arrow_right</i>
                                         <span class="sidebar-normal">Attendance Reports</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
+                                        <i class="material-icons">keyboard_arrow_right</i>
                                         <span class="sidebar-normal">Academic Reports</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
+                                        <i class="material-icons">keyboard_arrow_right</i>
                                         <span class="sidebar-normal">Performance Reports</span>
                                     </a>
                                 </li>
@@ -276,8 +278,7 @@
     <!--  Notifications Plugin    -->
     <script src="../assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/material-dashboard.js"
-        type="text/javascript"></script>
+    <script src="../assets/js/material-dashboard.js" type="text/javascript"></script>
 </body>
 
 </html>
