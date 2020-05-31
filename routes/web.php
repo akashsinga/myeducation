@@ -18,9 +18,18 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/admin',function () {
-    return view('admin.dashboard');
-});
-Route::get('/admin/students',function () {
-    return view('admin.managestudents');
-});
+// Route::group(['middleware'=>['auth','admin']],function(){
+    Route::get('/home',function () {
+        return redirect('admin/dashboard');
+    });
+    Route::get('/admin',function () {
+        return redirect('admin/dashboard');
+    });
+    Route::get('/admin/dashboard','AdminController@index');
+    Route::get('/admin/students','AdminController@viewStudents');
+    Route::get('/admin/faculty','AdminController@viewFaculty');
+    Route::get('/admin/classrooms','AdminController@viewClassrooms');
+    Route::get('/admin/subjects','AdminController@viewSubjects');
+    Route::get('/admin/schedule','AdminController@viewSchedule');
+    Route::get('/admin/students/add','AdminController@viewAddStudent');
+// });
