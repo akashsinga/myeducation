@@ -1,6 +1,6 @@
 @extends('./layouts.admin_dashboard')
 @section('title')
-Admin | Manage Students
+Admin | Manage Subjects
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -17,19 +17,16 @@ Admin | Manage Students
                         <table class="table">
                             <thead class=" text-primary">
                                 <th>
-                                    ID
+                                    Date
                                 </th>
                                 <th>
-                                    Student Name
+                                    Name
                                 </th>
                                 <th>
                                     Department
                                 </th>
                                 <th>
-                                    Mobile
-                                </th>
-                                <th>
-                                    Email
+                                    Year
                                 </th>
                             </thead>
                             <tbody>
@@ -44,10 +41,7 @@ Admin | Manage Students
                                         Niger
                                     </td>
                                     <td>
-                                        444444444444
-                                    </td>
-                                    <td class="text-primary">
-                                        something@something.com
+                                        Niger
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,10 +55,7 @@ Admin | Manage Students
                                         Niger
                                     </td>
                                     <td>
-                                        444444444444
-                                    </td>
-                                    <td class="text-primary">
-                                        something@something.com
+                                        Niger
                                     </td>
                                 </tr>
                                 <tr>
@@ -78,27 +69,7 @@ Admin | Manage Students
                                         Niger
                                     </td>
                                     <td>
-                                        444444444444
-                                    </td>
-                                    <td class="text-primary">
-                                        something@something.com
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        Dakota Rice
-                                    </td>
-                                    <td>
                                         Niger
-                                    </td>
-                                    <td>
-                                        444444444444
-                                    </td>
-                                    <td class="text-primary">
-                                        something@something.com
                                     </td>
                                 </tr>
                             </tbody>

@@ -1,6 +1,6 @@
 @extends('./layouts.admin_dashboard')
 @section('title')
-Admin | Manage Students
+Admin | Manage Classrooms
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -20,16 +20,19 @@ Admin | Manage Students
                                     ID
                                 </th>
                                 <th>
-                                    Student Name
-                                </th>
-                                <th>
                                     Department
                                 </th>
                                 <th>
-                                    Mobile
+                                    Year
                                 </th>
                                 <th>
-                                    Email
+                                    Section
+                                </th>
+                                <th>
+                                    Subject
+                                </th>
+                                <th>
+                                    Faculty Name
                                 </th>
                             </thead>
                             <tbody>
@@ -44,11 +47,14 @@ Admin | Manage Students
                                         Niger
                                     </td>
                                     <td>
-                                        444444444444
+                                        Niger
                                     </td>
-                                    <td class="text-primary">
-                                        something@something.com
+                                    <td>
+                                        Niger
                                     </td>
+                                    <td>
+                                        Niger
+                                    </td>                                    
                                 </tr>
                                 <tr>
                                     <td>

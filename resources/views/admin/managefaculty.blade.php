@@ -1,6 +1,6 @@
 @extends('./layouts.admin_dashboard')
 @section('title')
-Admin | Manage Students
+Admin | Manage Faculty
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -20,7 +20,7 @@ Admin | Manage Students
                                     ID
                                 </th>
                                 <th>
-                                    Student Name
+                                    Faculty Name
                                 </th>
                                 <th>
                                     Department
