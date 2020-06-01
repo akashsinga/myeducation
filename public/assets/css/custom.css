@@ -1,0 +1,18 @@
+.m-b-md {
+    margin-bottom: 30px;
+}
+
+.title {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    vertical-align: middle;
+    font-family: Nunito;
+    text-align: center;
+    font-size: 56px;
+}
+
+.center {
+    line-height: 200px;
+    height: 200px;
+    text-align: center;
+}

@@ -1,5 +1,8 @@
 @extends('layouts.login_layout')
 @section('content')
+<div class="title center">
+    MyEducation
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

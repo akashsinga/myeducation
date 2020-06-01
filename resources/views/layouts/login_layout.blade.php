@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="{{URL::asset('assets/css/material-dashboard.css')}}" rel="stylesheet" />
+    <link href="{{URL::asset('assets/css/custom.css')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{URL::asset('assets/demo/demo.css') }}" rel="stylesheet" />
 </head>
