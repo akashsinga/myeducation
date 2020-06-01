@@ -21,7 +21,7 @@ class CreateTimeTablesTable extends Migration
             $table->string('sub_name');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
-            $table->string('class_teacher');
+            $table->string('faculty_id');
         });
     }
 
