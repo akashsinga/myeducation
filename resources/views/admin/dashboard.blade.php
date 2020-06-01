@@ -11,7 +11,7 @@ Admin | Dashboard
                     <i class="material-icons">person</i>
                 </div>
                 <p class="card-category">Students</p>
-                <h3 class="card-title">233</h3>
+                <h3 class="card-title">233 | 245 </h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
