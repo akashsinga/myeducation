@@ -8,7 +8,8 @@ Admin | Manage Students
         <div class="col-md-12">
             <div class="card">
                 <div class="button-group ml-auto">
-                    <a class="btn btn-info" href="#"><span><i class="material-icons">add</span></i>Add</a>
+                    <a class="btn btn-info" href="/admin/students/add"><span><i
+                                class="material-icons">add</span></i>Add</a>
                     <a class="btn btn-warning" href="#"><span><i class="material-icons">edit</i></span>Edit</a>
                     <a class="btn btn-danger" href="#"><span><i class="material-icons">clear</i></span>Delete</a>
                 </div>
