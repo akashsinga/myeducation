@@ -52,14 +52,12 @@
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="mdc-checkbox__native-control" type="checkbox" name="remember"
-                                        id="remember">
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
+                            Login As:
+                                <select class="form-control" name="login_type" id="login_type">
+                                    <option value="management">Management</option>
+                                    <option value="student">Student</option>
+                                    <option value="faculty">Faculty</option>
+                                </select>
                             </div>
                         </div>
 
