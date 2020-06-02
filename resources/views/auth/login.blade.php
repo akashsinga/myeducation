@@ -53,7 +53,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                             Login As:
-                                <select class="form-control" name="login_type" id="login_type">
+                                <select class="custom-select" name="login_type" id="login_type">
                                     <option value="management">Management</option>
                                     <option value="student">Student</option>
                                     <option value="faculty">Faculty</option>
