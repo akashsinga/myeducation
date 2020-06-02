@@ -260,7 +260,7 @@
     <!--  Notifications Plugin    -->
     <script src="{{URL::asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{URL::asset('assets/js/material-dashboard.js" type="text/javascript"></script>
+    <script src="{{URL::asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
 </body>
 
 </html>
