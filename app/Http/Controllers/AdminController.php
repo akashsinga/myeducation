@@ -35,4 +35,8 @@ class AdminController extends Controller
     {
         return view('admin.forms.addstudent');
     }
+    public function viewAddFaculty()
+    {
+        return view('admin.forms.addfaculty');
+    }
 }
