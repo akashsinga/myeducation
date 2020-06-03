@@ -1,11 +1,17 @@
 @extends('layouts.login_layout')
-
+@section('title')
+Confirm Password
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+                <div class="card-header card-header-primary">
+                    <div class="card-title">
+                        {{ __('Confirm Password') }}
+                    </div>
+                </div>
 
                 <div class="card-body">
                     {{ __('Please confirm your password before continuing.') }}

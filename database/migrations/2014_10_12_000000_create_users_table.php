@@ -15,25 +15,16 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('emp_id');
-            $table->string('mobile');
-            $table->string('email')->unique();
-            $table->string('emp_name');
+            $table->string('name');
+            $table->string('phone')->unique();
+            $table->string('user_type')->nullable();
+            $table->string('email');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('user_type');
-            //$table->rememberToken();
+            $table->rememberToken();
             $table->timestamps();
         });
     }
-//     ID: Primary
-// Emp id: string
-// Mobile
-// Email Address
-// Full Name
-// Password
-// User type: string
-// Timestamps
-
 
     /**
      * Reverse the migrations.
