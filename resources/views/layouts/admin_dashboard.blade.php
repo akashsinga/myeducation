@@ -106,6 +106,17 @@
                             <p>Academic Schedule</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            <i class="material-icons">exit_to_app</i>
+                            <p>Logout</p>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -142,23 +153,15 @@
                                     <a class="dropdown-item" href="#">Another One</a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                {{Auth::user()->name}}
-                            </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">person</i>
-                                    <p class="d-lg-none d-md-block">
-                                        Account
-                                    </p>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}<i class="material-icons">person</i> <span
+                                        class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                     <a class="dropdown-item" href="#">Profile</a>
                                     <a class="dropdown-item" href="#">Settings</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Log
-                                        out</a>
                                 </div>
                             </li>
                         </ul>
