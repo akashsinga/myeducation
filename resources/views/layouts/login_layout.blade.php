@@ -22,6 +22,9 @@
 
 <body>
     <div class="content">
+        <div class="title center">
+            MyEducation
+        </div>
         @yield('content')
     </div>
     <script src="{{URL::asset('assets/js/core/jquery.min.js')}}"></script>

@@ -1,15 +1,12 @@
 @extends('layouts.login_layout')
 @section('content')
-<div class="title center">
-    MyEducation
-</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header card-header-primary">
                     <div class="card-title">
-                        {{ __('Login') }}
+                        <h4><b>{{ __('Login') }}</b></h4>
                     </div>
                 </div>
                 <div class="card-body">
@@ -52,6 +49,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
+                                Login As:
                                 <select class="custom-select" title="Login As" name="login_type" id="login_type">
                                     <option value="management">Management</option>
                                     <option value="student">Student</option>
