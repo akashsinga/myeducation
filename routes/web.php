@@ -23,7 +23,7 @@ Route::get('/logout', function ()
     return Redirect::to('/');
 })->name('logout');
 
-Auth::routes();
+Auth::routes(['register'=>false]);
 //  Route::group(['middleware'=>['auth','admin']],function(){
     Route::get('/home', function () {
         return redirect('admin/dashboard');
