@@ -46,24 +46,13 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                Login As:
-                                <select class="custom-select" title="Login As" name="login_type" id="login_type">
-                                    <option value="management">Management</option>
-                                    <option value="student">Student</option>
-                                    <option value="faculty">Faculty</option>
-                                </select>
-                            </div>
-                        </div>
-
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-8 offset-md-5">
                                 <button type="submit" class="btn btn-success">
                                     {{ __('Login') }}
                                 </button>
-
+                            </div>
+                            <div class="col-md-8 offset-md-4">
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}

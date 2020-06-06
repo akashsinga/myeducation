@@ -23,7 +23,7 @@
     <form id="logout-form" action="#" method="POST" style="display: none;">
         <input type="hidden" name="_token" value="EDzjkS4GBXADwTQJ5fdABDXpDEm8tjd8gaJhN0Tp"> </form>
     <div class="wrapper ">
-        <div class="sidebar" data-color="orange" data-background-color="purple">
+        <div class="sidebar" data-color="azure" data-background-color="green">
             <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -151,8 +151,7 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="material-icons">person</i> <span
-                                        class="caret"></span>
+                                    <i class="material-icons">person</i> <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                     <a class="dropdown-item" href="#">Profile</a>
