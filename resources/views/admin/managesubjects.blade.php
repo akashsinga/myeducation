@@ -7,15 +7,25 @@ Admin | Manage Subjects
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="button-group ml-auto">
-                    <a class="btn btn-info" href="#"><span><i class="material-icons">add</span></i>Add</a>
-                    <a class="btn btn-warning" href="#"><span><i class="material-icons">edit</i></span>Edit</a>
-                    <a class="btn btn-danger" href="#"><span><i class="material-icons">clear</i></span>Delete</a>
+                <div class="card-header card-header-primary">
+                    <div class="card-title">
+                        <h4>View Subjects</h4>
+                        <p class="card-category">Subjects information</p>
+                    </div>
+                </div>
+                <div class="row ml-auto">
+                    <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
+                    <a href="/admin/subjects/add"class="btn btn-info"><i class="material-icons">add</i>Add</a>
+                    <a href="#" class="btn btn-warning"><i class="material-icons">edit</i>Edit</a>
+                    <a href="#"class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
+                                <th>
+                                    ID
+                                </th>
                                 <th>
                                     Subject Code
                                 </th>
@@ -23,67 +33,30 @@ Admin | Manage Subjects
                                     Subject Name
                                 </th>
                                 <th>
-                                    Subject Department
-                                </th>
-                                <th>
-                                    Subject Year
-                                </th>
+                                    Department
+                                </th>                               
                                 <th>
                                     Credits
                                 </th>
                             </thead>
                             <tbody>
-                                <tr>
+                                @for ($i = 1; $i <=10; $i++) <tr>
                                     <td>
-                                        1
+                                        {{$i}}
                                     </td>
                                     <td>
-                                        Dakota Rice
+                                        SBJ{{$i}}
                                     </td>
                                     <td>
-                                        Niger
+                                        Subject {{$i}}
                                     </td>
                                     <td>
-                                        Niger
+                                        CSE
                                     </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        Dakota Rice
-                                    </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td>
                                         3
                                     </td>
-                                    <td>
-                                        Dakota Rice
-                                    </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                </tr>
+                                    @endfor
                             </tbody>
                         </table>
                     </div>

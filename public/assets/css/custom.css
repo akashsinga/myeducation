@@ -16,3 +16,11 @@
     height: 200px;
     text-align: center;
 }
+
+.row .btn{
+    margin:5px;
+}
+
+.row{
+    margin:15px;
+}

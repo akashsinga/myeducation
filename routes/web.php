@@ -39,4 +39,5 @@ Auth::routes(['register'=>false]);
     Route::get('/admin/schedule', 'AdminController@viewSchedule');
     Route::get('/admin/students/add', 'AdminController@viewAddStudent');
     Route::get('/admin/faculty/add', 'AdminController@viewAddFaculty');
+    Route::get('/admin/subjects/add', 'AdminController@viewAddSubject');
 // });

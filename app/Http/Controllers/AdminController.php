@@ -39,4 +39,8 @@ class AdminController extends Controller
     {
         return view('admin.forms.addfaculty');
     }
+    public function viewAddSubject()
+    {
+        return view('admin.forms.addsubject');
+    }
 }

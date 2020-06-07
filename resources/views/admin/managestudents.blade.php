@@ -7,11 +7,17 @@ Admin | Manage Students
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="button-group ml-auto">
-                    <a class="btn btn-info" href="/admin/students/add"><span><i
-                                class="material-icons">add</span></i>Add</a>
-                    <a class="btn btn-warning" href="#"><span><i class="material-icons">edit</i></span>Edit</a>
-                    <a class="btn btn-danger" href="#"><span><i class="material-icons">clear</i></span>Delete</a>
+                <div class="card-header card-header-primary">
+                    <div class="card-title">
+                        <h4>View Students</h4>
+                        <p class="card-category">Students information</p>
+                    </div>
+                </div>
+                <div class="row ml-auto">
+                    <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
+                    <a href="/admin/students/add"class="btn btn-info"><i class="material-icons">add</i>Add</a>
+                    <a href="#" class="btn btn-warning"><i class="material-icons">edit</i>Edit</a>
+                    <a href="#"class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -24,7 +30,16 @@ Admin | Manage Students
                                     Student Name
                                 </th>
                                 <th>
+                                    Father's Name
+                                </th>
+                                <th>
                                     Department
+                                </th>
+                                <th>
+                                    Year
+                                </th>
+                                <th>
+                                    Section
                                 </th>
                                 <th>
                                     Mobile
@@ -34,74 +49,33 @@ Admin | Manage Students
                                 </th>
                             </thead>
                             <tbody>
-                                <tr>
+                                @for ($i = 1; $i <=10; $i++) <tr>
                                     <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        Dakota Rice
+                                        {{$i}}
                                     </td>
                                     <td>
-                                        Niger
+                                        Student {{$i}}
                                     </td>
                                     <td>
-                                        444444444444
-                                    </td>
-                                    <td class="text-primary">
-                                        something@something.com
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        2
+                                        Father {{$i}}
                                     </td>
                                     <td>
-                                        Dakota Rice
+                                        CSE
                                     </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        444444444444
-                                    </td>
-                                    <td class="text-primary">
-                                        something@something.com
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td>
                                         3
                                     </td>
                                     <td>
-                                        Dakota Rice
+                                        A
                                     </td>
                                     <td>
-                                        Niger
+                                        44444444444
                                     </td>
                                     <td>
-                                        444444444444
-                                    </td>
-                                    <td class="text-primary">
                                         something@something.com
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        4
-                                    </td>
-                                    <td>
-                                        Dakota Rice
-                                    </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        444444444444
-                                    </td>
-                                    <td class="text-primary">
-                                        something@something.com
-                                    </td>
-                                </tr>
+                                    </tr>
+                                    @endfor
                             </tbody>
                         </table>
                     </div>

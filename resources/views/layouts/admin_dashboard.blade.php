@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link href="{{URL::asset('assets/css/material-dashboard.css')}}" rel="stylesheet" />
+    <link href="{{URL::asset('assets/css/custom.css')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{URL::asset('assets/demo/demo.css') }}" rel="stylesheet" />
 </head>
@@ -23,7 +24,7 @@
     <form id="logout-form" action="#" method="POST" style="display: none;">
         <input type="hidden" name="_token" value="EDzjkS4GBXADwTQJ5fdABDXpDEm8tjd8gaJhN0Tp"> </form>
     <div class="wrapper ">
-        <div class="sidebar" data-color="azure" data-background-color="green">
+        <div class="sidebar" data-color="orange" data-background-color="green">
             <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -31,30 +32,30 @@
   -->
             <div class="logo">
                 <a href="#" class="simple-text logo-normal">
-                    MyEducation
+                    <h3>My<span class="text-primary">EDUCATION</span></h3>
                 </a>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="{{'admin/dashboard'==request()->path()? 'active':''}}">
+                    <li class="{{(Request::is('admin/dashboard'))?'active':''}}">
                         <a class="nav-link" href="/admin/dashboard">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="{{'admin/students'==request()->path()? 'active':''}}">
+                    <li class="{{(Request::is('admin/students') || Request::is('admin/students/*'))?'active':''}}">
                         <a class="nav-link" href="/admin/students">
                             <i class="material-icons">person</i>
                             <p>Manage Students</p>
                         </a>
                     </li>
-                    <li class="{{'admin/faculty'==request()->path()? 'active':''}}">
+                    <li class="{{(Request::is('admin/faculty') || Request::is('admin/faculty/*'))?'active':''}}">
                         <a class="nav-link" href="/admin/faculty">
                             <i class="material-icons">person</i>
                             <p>Manage Faculty</p>
                         </a>
                     </li>
-                    <li class="{{'admin/classrooms'==request()->path()? 'active':''}}">
+                    <li class="{{(Request::is('admin/classrooms') || Request::is('admin/classrooms/*'))?'active':''}}">
                         <a class="nav-link" href="/admin/classrooms">
                             <i class="material-icons">airplay</i>
                             <p>Manage Classrooms</p>
@@ -88,19 +89,19 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="{{'admin/subjects'==request()->path()? 'active':''}}">
+                    <li class="{{(Request::is('admin/subjects') || Request::is('admin/subjects/*'))?'active':''}}">
                         <a class="nav-link" href="/admin/subjects">
                             <i class="material-icons">library_books</i>
                             <p>Manage Subjects</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="{{(Request::is('admin/notifications'))?'active':''}}">
                         <a class="nav-link" href="#">
                             <i class="material-icons">notifications</i>
                             <p>Notifications</p>
                         </a>
                     </li>
-                    <li class="{{'admin/schedule'==request()->path()? 'active':''}}">
+                    <li class="{{(Request::is('admin/schedule') || Request::is('admin/schedule/*'))?'active':''}}">
                         <a class="nav-link" href="/admin/schedule">
                             <i class="material-icons">calendar_today</i>
                             <p>Academic Schedule</p>
@@ -184,9 +185,10 @@
                     </nav>
                     <div class="copyright float-right">
                         &copy;
+                        Copyright (c)
                         <script>
                             document.write(new Date().getFullYear())
-                        </script>, made with <i class="material-icons">favorite</i> by
+                        </script>
                         <a href="#" target="_blank">MyEducation</a>
                     </div>
                 </div>
@@ -201,6 +203,7 @@
     </script>
     <script src="{{URL::asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}">
     </script>
+    @yield('scripts')
     <!-- Plugin for the momentJs  -->
     <script src="{{URL::asset('assets/js/plugins/moment.min.js')}}"></script>
     <!--  Plugin for Sweet Alert -->
