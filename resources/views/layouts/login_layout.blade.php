@@ -16,6 +16,7 @@
     <!-- CSS Files -->
     <link href="{{URL::asset('assets/css/material-dashboard.css')}}" rel="stylesheet" />
     <link href="{{URL::asset('assets/css/custom.css')}}" rel="stylesheet" />
+    <link href="{{URL::asset('assets/css/login_layout.css')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{URL::asset('assets/demo/demo.css') }}" rel="stylesheet" />
 </head>
