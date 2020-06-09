@@ -11,7 +11,7 @@ Admin | Add Faculty
                 <p class="card-category">Faculty information</p>
             </div>
             <div class="card-body">
-                <div class="col-6">
+                <div class="col-8">
                     <div class="row">
                         <label class="col-sm-2 col-form-label">Full Name</label>
                         <div class="col-sm-7">
@@ -52,8 +52,11 @@ Admin | Add Faculty
                         <label class="col-sm-2 col-form-label">Department</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <input class="form-control" name="faculty_dept" id="input-fname" type="text"
-                                    placeholder="Department" required="true" aria-required="true" />
+                                <select class="custom-select">
+                                    <option>CSE</option>
+                                    <option>IT</option>
+                                    <option>EIE</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -79,8 +82,8 @@ Admin | Add Faculty
                         <label class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <textarea class="form-control" name="address" id="input-email"
-                                    placeholder="Address" required></textarea>
+                                <textarea class="form-control" name="address" id="input-email" placeholder="Address"
+                                    required></textarea>
                             </div>
                         </div>
                     </div>

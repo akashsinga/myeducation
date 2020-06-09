@@ -11,7 +11,7 @@ Admin | Add Subject
                 <p class="card-category">Subject information</p>
             </div>
             <div class="card-body">
-                <div class="col-6">
+                <div class="col-8">
                     <div class="row">
                         <label class="col-sm-2 col-form-label">Subject Code</label>
                         <div class="col-sm-7">
@@ -34,8 +34,10 @@ Admin | Add Subject
                         <label class="col-sm-2 col-form-label">Department</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <input class="form-control" name="dept" id="input-dept" type="text" placeholder="Dept"
-                                    required="true" aria-required="true" />
+                                <select class="custom-select">
+                                    <option>CSE</option>
+                                    <option>IT</option>
+                                </select>
                             </div>
                         </div>
                     </div>

@@ -11,7 +11,7 @@ Admin | Add Student
                 <p class="card-category">Student information</p>
             </div>
             <div class="card-body">
-                <div class="col-6">
+                <div class="col-8">
                     <div class="row">
                         <label class="col-sm-2 col-form-label">Student Name</label>
                         <div class="col-sm-7">
@@ -43,8 +43,11 @@ Admin | Add Student
                         <label class="col-sm-2 col-form-label">Department</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <input class="form-control" name="dept" id="input-dept" type="text" placeholder="Dept"
-                                    required="true" aria-required="true" />
+                                <select class="custom-select">
+                                    <option>CSE</option>
+                                    <option>IT</option>
+                                    <option>EIE</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -52,8 +55,11 @@ Admin | Add Student
                         <label class="col-sm-2 col-form-label">Year</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <input class="form-control" name="year" id="input-year" type="text" placeholder="Year"
-                                    required="true" aria-required="true" />
+                                <select class="custom-select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -61,8 +67,11 @@ Admin | Add Student
                         <label class="col-sm-2 col-form-label">Section</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <input class="form-control" name="section" id="input-section" type="text"
-                                    placeholder="Section" required="true" aria-required="true" />
+                                <select class="custom-select">
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+                                </select>
                             </div>
                         </div>
                     </div>
