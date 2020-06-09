@@ -22,7 +22,7 @@
                                     class="form-control @error('username') is-invalid @enderror" name="username"
                                     placeholder="Username" required autofocus>
 
-                                @error('email')
+                                @error('username')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
