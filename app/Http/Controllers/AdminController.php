@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Hash;
 use App\User;
+use App\Models\Department;
 
 class AdminController extends Controller
 {
@@ -82,5 +83,14 @@ class AdminController extends Controller
             'credits'=>$request->input('credits'),
             'department'=>$request->input('dept'),
         ]);
+    }
+    public function addDepartment(Request $request)
+    {
+        Department::create([
+            'id'=> $request->input('id'),
+            'name'=>$request->input('name'),
+            'hod'=>' '
+            ]);
+            return redirect('/admin/department/add')->with('status', 'Department Added Successfully');
     }
 }
