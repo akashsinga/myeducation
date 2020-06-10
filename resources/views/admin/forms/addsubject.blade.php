@@ -60,7 +60,7 @@ Admin | Add Subject
             <div class="card-footer">
                 <div class="row col-sm-7">
                     <button type="submit" class="btn btn-success">Add</button>
-                    <button type="submit" class="btn btn-danger">Clear</button>
+                    <button type="reset" class="btn btn-danger">Clear</button>
                 </div>
             </div>
         </div>
