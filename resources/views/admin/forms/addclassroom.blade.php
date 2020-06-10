@@ -70,7 +70,11 @@ Admin | Add Classroom
             <div class="card-footer">
                 <div class="row col-sm-7">
                     <button type="submit" class="btn btn-success">Add</button>
+<<<<<<< HEAD
+                    <button type="resets" class="btn btn-danger">Clear</button>
+=======
                     <button type="reset" class="btn btn-danger">Clear</button>
+>>>>>>> 96ece921c70f1a2b5ea570fe1ee6c9b60cdfb8c7
                 </div>
             </div>
         </div>
