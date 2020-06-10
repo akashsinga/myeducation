@@ -57,6 +57,13 @@ class AdminController extends Controller
             'address' =>$request->input('address'),
             'type' => $request->input('type'),
         ]);
-        return redirect('/admin/students/add')->with('status', 'User Added Successfully');
+        switch ($request->input('type')) {
+            case 'student':
+                return redirect('/admin/students/add')->with('status', 'User Added Successfully');
+            break;
+            case 'faculty':
+                return redirect('/admin/faculty/add')->with('status', 'User Added Successfully');
+            break;
+        }
     }
 }
