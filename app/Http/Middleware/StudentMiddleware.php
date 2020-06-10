@@ -16,10 +16,17 @@ class StudentMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+        if (Auth::user()->type=='admin') {
+            return redirect('/admin');
+        }
         if (Auth::user()->type=='student') {
             return $next($request);
-        } else {
-            return redirect('/');
+        }
+        if (Auth::user()->type=='faculty') {
+            return redirect('/faculty');
         }
     }
 }
