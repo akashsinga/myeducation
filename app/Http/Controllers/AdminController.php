@@ -75,7 +75,6 @@ class AdminController extends Controller
             break;
         }
     }
-<<<<<<< HEAD
     public function AddClassroom(Request $request)
     {
         Classroom::create([
@@ -85,7 +84,7 @@ class AdminController extends Controller
             'class_teacher'=>$request->input('class_teacher')
         ]);
         return redirect('/admin/classrooms/add')->with('status','Classroom added succesfully');
-=======
+    }
     public function addSubject(Request $request)
     {
         Subject::create([
@@ -94,6 +93,5 @@ class AdminController extends Controller
             'credits'=>$request->input('credits'),
             'department'=>$request->input('dept'),
         ]);
->>>>>>> 559466ab641e69f68c0c9f0ed2b55f8fa3b37f81
     }
 }
