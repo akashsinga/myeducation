@@ -93,11 +93,10 @@ class AdminController extends Controller
     public function addDepartment(Request $request)
     {
         Department::create([
-            'id'=> $request->input('id'),
-            'name'=>$request->input('name'),
+            'name'=>$request->input('department_name'),
             'hod'=>' '
             ]);
-        return redirect('/admin/department/add')->with('status', 'Department Added Successfully');
+        return redirect('/admin/departments/add')->with('status', 'Department Added Successfully');
     }
     public function AddClassroom(Request $request)
     {
