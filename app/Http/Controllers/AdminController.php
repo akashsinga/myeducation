@@ -47,6 +47,10 @@ class AdminController extends Controller
     {
         return view('admin.forms.addstudent');
     }
+    public function viewAddDepartment()
+    {
+        return view('admin.forms.adddepartments');
+    }
     public function viewAddFaculty()
     {
         return view('admin.forms.addfaculty');
@@ -84,7 +88,7 @@ class AdminController extends Controller
             'credits'=>$request->input('credits'),
             'department'=>$request->input('dept'),
         ]);
-        return redirect('/admin/classrooms/add')->with('status', 'Classroom Added Successfully');
+        return redirect('/admin/subjects/add')->with('status', 'Subject Added Successfully');
     }
     public function addDepartment(Request $request)
     {
