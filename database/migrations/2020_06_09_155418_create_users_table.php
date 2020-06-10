@@ -23,8 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('mobile');
             $table->string('email');
             $table->string('password');
-            $table->longText('address');
-            $table->string('type');
+            $table->longText('address')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }

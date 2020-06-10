@@ -52,6 +52,7 @@ class ComposerStaticInitee5967ce7ae4e8d9a9a86369309ba003
         array (
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
             'Tests\\' => 6,
+            'TaylorNetwork\\UsernameGenerator\\' => 32,
         ),
         'S' => 
         array (
@@ -191,6 +192,10 @@ class ComposerStaticInitee5967ce7ae4e8d9a9a86369309ba003
         'Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
+        ),
+        'TaylorNetwork\\UsernameGenerator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src',
         ),
         'Symfony\\Polyfill\\Php73\\' => 
         array (
@@ -4680,6 +4685,16 @@ class ComposerStaticInitee5967ce7ae4e8d9a9a86369309ba003
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
         'Symfony\\Polyfill\\Php73\\Php73' => __DIR__ . '/..' . '/symfony/polyfill-php73/Php73.php',
+        'TaylorNetwork\\UsernameGenerator\\Drivers\\BaseDriver' => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src/Drivers/BaseDriver.php',
+        'TaylorNetwork\\UsernameGenerator\\Drivers\\EmailDriver' => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src/Drivers/EmailDriver.php',
+        'TaylorNetwork\\UsernameGenerator\\Drivers\\NameDriver' => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src/Drivers/NameDriver.php',
+        'TaylorNetwork\\UsernameGenerator\\Facades\\UsernameGenerator' => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src/Facades/UsernameGenerator.php',
+        'TaylorNetwork\\UsernameGenerator\\FindSimilarUsernames' => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src/FindSimilarUsernames.php',
+        'TaylorNetwork\\UsernameGenerator\\GeneratesUsernames' => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src/GeneratesUsernames.php',
+        'TaylorNetwork\\UsernameGenerator\\Generator' => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src/Generator.php',
+        'TaylorNetwork\\UsernameGenerator\\ServiceProvider' => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src/ServiceProvider.php',
+        'TaylorNetwork\\UsernameGenerator\\Support\\LoadsConfig' => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src/Support/LoadsConfig.php',
+        'TaylorNetwork\\UsernameGenerator\\Support\\UsernameTooShortException' => __DIR__ . '/..' . '/taylornetwork/laravel-username-generator/src/Support/UsernameTooShortException.php',
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',

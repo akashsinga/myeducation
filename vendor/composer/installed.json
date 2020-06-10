@@ -5397,6 +5397,58 @@
         ]
     },
     {
+        "name": "taylornetwork/laravel-username-generator",
+        "version": "2.3.1",
+        "version_normalized": "2.3.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/taylornetwork/laravel-username-generator.git",
+            "reference": "f92ada669d30b09955e7374e3f00fcaeeb0ca86e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/taylornetwork/laravel-username-generator/zipball/f92ada669d30b09955e7374e3f00fcaeeb0ca86e",
+            "reference": "f92ada669d30b09955e7374e3f00fcaeeb0ca86e",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": ">=5.5",
+            "php": ">=7.1"
+        },
+        "require-dev": {
+            "orchestra/testbench": "^3.5",
+            "psy/psysh": "^0.9.4"
+        },
+        "time": "2019-10-31T20:15:31+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "TaylorNetwork\\UsernameGenerator\\ServiceProvider"
+                ],
+                "aliases": {
+                    "UsernameGenerator": "TaylorNetwork\\UsernameGenerator\\Facades\\UsernameGenerator"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "TaylorNetwork\\UsernameGenerator\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Sam Taylor",
+                "email": "sam@taylornetwork.ca"
+            }
+        ]
+    },
+    {
         "name": "theseer/tokenizer",
         "version": "1.1.3",
         "version_normalized": "1.1.3.0",
