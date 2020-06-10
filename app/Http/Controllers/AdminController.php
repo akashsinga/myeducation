@@ -23,6 +23,10 @@ class AdminController extends Controller
     {
         return view('admin.manageclassrooms');
     }
+    public function viewAddClassroom()
+    {
+        return view('admin.forms.addclassroom');
+    }
     public function viewSubjects()
     {
         return view('admin.managesubjects');
