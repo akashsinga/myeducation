@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Hash;
 use App\User;
+<<<<<<< HEAD
 use App\Models\Classroom;
+=======
+use App\Models\Department;
+>>>>>>> 0a1ffcba07f1dadc85056799dde2655eaaaac90d
 
 class AdminController extends Controller
 {
@@ -83,6 +87,16 @@ class AdminController extends Controller
             'credits'=>$request->input('credits'),
             'department'=>$request->input('dept'),
         ]);
+        return redirect('/admin/classrooms/add')->with('status', 'Classroom Added Successfully');
+    }
+    public function addDepartment(Request $request)
+    {
+        Department::create([
+            'id'=> $request->input('id'),
+            'name'=>$request->input('name'),
+            'hod'=>' '
+            ]);
+        return redirect('/admin/department/add')->with('status', 'Department Added Successfully');
     }
     public function AddClassroom(Request $request)
     {

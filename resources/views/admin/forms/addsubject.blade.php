@@ -11,6 +11,11 @@ Admin | Add Subject
                 <p class="card-category">Subject information</p>
             </div>
             <div class="card-body">
+                @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+                @endif
                 <div class="col-8">
                     <div class="row">
                         <label class="col-sm-2 col-form-label">Subject Code</label>
