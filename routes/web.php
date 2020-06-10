@@ -46,8 +46,6 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::post('/admin/faculty/add/submit', 'AdminController@addUser');
     Route::post('/admin/subject/add/submit', 'AdminController@addSubject');
     Route::post('/admin/department/add/submit', 'AdminController@addDepartment');
-    Route::post('/admin/department/add/submit', 'AdminController@addDepartment');
-    Route::post('/admin/subject/add/submit', 'AdminController@addSubject');
     Route::post('/admin/classroom/add/submit', 'AdminController@addClassroom');
 });
 Route::group(['middleware'=>['auth','student']], function () {
