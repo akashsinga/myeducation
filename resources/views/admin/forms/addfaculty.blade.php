@@ -5,6 +5,7 @@ Admin | Add Faculty
 @section('content')
 <div class="col-md-12">
     <form method="post" action="#" autocomplete="off" class="form-horizontal">
+        <input type="hidden" name="type" value="faculty">
         <div class="card ">
             <div class="card-header card-header-primary">
                 <h4 class="card-title">Add Faculty</h4>
