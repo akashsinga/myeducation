@@ -4,7 +4,9 @@ Admin | Add Student
 @endsection
 @section('content')
 <div class="col-md-12">
-    <form method="post" action="#" autocomplete="off" class="form-horizontal">
+    <form method="post" action="/admin/students/add/submit" autocomplete="off" class="form-horizontal" method="POST">
+        {{csrf_field()}}
+        {{method_field('POST')}}
         <input type="hidden" name="type" value="student">
         <div class="card ">
             <div class="card-header card-header-primary">
@@ -12,6 +14,11 @@ Admin | Add Student
                 <p class="card-category">Student information</p>
             </div>
             <div class="card-body">
+                @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+                @endif
                 <div class="col-8">
                     <div class="row">
                         <label class="col-sm-2 col-form-label">Student Name</label>
@@ -35,7 +42,7 @@ Admin | Add Student
                         <label class="col-sm-2 col-form-label">Department</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <select class="custom-select">
+                                <select class="custom-select" name="department" id="department">
                                     <option value="1">CSE</option>
                                     <option value="2">IT</option>
                                     <option value="3">EIE</option>
@@ -60,9 +67,9 @@ Admin | Add Student
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select" name="section">
-                                    <option>A</option>
-                                    <option>B</option>
-                                    <option>C</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
                                 </select>
                             </div>
                         </div>

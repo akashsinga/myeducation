@@ -4,7 +4,9 @@ Admin | Add Faculty
 @endsection
 @section('content')
 <div class="col-md-12">
-    <form method="post" action="#" autocomplete="off" class="form-horizontal">
+    <form method="post" action="/admin/faculty/add/submit" autocomplete="off" class="form-horizontal">
+        {{csrf_field()}}
+        {{method_field('POST')}}
         <input type="hidden" name="type" value="faculty">
         <div class="card ">
             <div class="card-header card-header-primary">
@@ -54,9 +56,9 @@ Admin | Add Faculty
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select">
-                                    <option>CSE</option>
-                                    <option>IT</option>
-                                    <option>EIE</option>
+                                    <option value="1">CSE</option>
+                                    <option value="2">IT</option>
+                                    <option value="3">EIE</option>
                                 </select>
                             </div>
                         </div>
