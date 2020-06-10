@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Hash;
 use App\User;
+use App\Models\Classroom;
 
 class AdminController extends Controller
 {
@@ -73,5 +74,15 @@ class AdminController extends Controller
                 return redirect('/admin/faculty/add')->with('status', 'User Added Successfully');
             break;
         }
+    }
+    public function AddClassroom(Request $request)
+    {
+        Classroom::create([
+            'department'=>$request->input('department'),
+            'year'=>$request->input('year'),
+            'section'=>$request->input('section'),
+            'class_teacher'=>$request->input('class_teacher')
+        ]);
+        return redirect('/admin/classrooms/add')->with('status','Classroom added succesfully');
     }
 }

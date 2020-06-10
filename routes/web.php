@@ -23,6 +23,7 @@ Route::get('/logout', function () {
 })->name('logout');
 
 Auth::routes(['register'=>false]);
+
 Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/home', function () {
         return redirect('admin/dashboard');
@@ -43,6 +44,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/admin/classrooms/add', 'AdminController@viewAddClassroom');
     Route::post('/admin/students/add/submit', 'AdminController@addUser');
     Route::post('/admin/faculty/add/submit', 'AdminController@addUser');
+    Route::post('/admin/classroom/add/submit', 'AdminController@addClassroom');
 });
 Route::group(['middleware'=>['auth','student']], function () {
     Route::get('/home', function () {
