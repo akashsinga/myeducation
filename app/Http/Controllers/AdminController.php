@@ -8,6 +8,7 @@ use Hash;
 use App\User;
 use App\Models\Classroom;
 use App\Models\Department;
+use App\Models\Subject;
 
 class AdminController extends Controller
 {
