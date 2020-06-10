@@ -44,7 +44,11 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/admin/classrooms/add', 'AdminController@viewAddClassroom');
     Route::post('/admin/students/add/submit', 'AdminController@addUser');
     Route::post('/admin/faculty/add/submit', 'AdminController@addUser');
+<<<<<<< HEAD
     Route::post('/admin/classroom/add/submit', 'AdminController@addClassroom');
+=======
+    Route::post('/admin/subject/add/submit', 'AdminController@addSubject');
+>>>>>>> 559466ab641e69f68c0c9f0ed2b55f8fa3b37f81
 });
 Route::group(['middleware'=>['auth','student']], function () {
     Route::get('/home', function () {
