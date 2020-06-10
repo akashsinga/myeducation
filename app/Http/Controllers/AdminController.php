@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Hash;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -42,5 +44,26 @@ class AdminController extends Controller
     public function viewAddSubject()
     {
         return view('admin.forms.addsubject');
+    }
+    public function addUser(Request $request)
+    {
+        User::create([
+            'full_name' =>$request->input('full_name'),
+            'father_name' =>$request->input('father_name'),
+            'department' => $request->input('department'),
+            'mobile' =>$request->input('mobile'),
+            'email' => $request->input('email'),
+            'password' => Hash::make('12345678'),
+            'address' =>$request->input('address'),
+            'type' => $request->input('type'),
+        ]);
+        switch ($request->input('type')) {
+            case 'student':
+                return redirect('/admin/students/add')->with('status', 'User Added Successfully');
+            break;
+            case 'faculty':
+                return redirect('/admin/faculty/add')->with('status', 'User Added Successfully');
+            break;
+        }
     }
 }
