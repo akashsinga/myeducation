@@ -83,6 +83,7 @@ class AdminController extends Controller
             'credits'=>$request->input('credits'),
             'department'=>$request->input('dept'),
         ]);
+        return redirect('/admin/classrooms/add')->with('status', 'Classroom Added Successfully');
     }
     public function addDepartment(Request $request)
     {
@@ -91,6 +92,6 @@ class AdminController extends Controller
             'name'=>$request->input('name'),
             'hod'=>' '
             ]);
-            return redirect('/admin/department/add')->with('status', 'Department Added Successfully');
+        return redirect('/admin/department/add')->with('status', 'Department Added Successfully');
     }
 }
