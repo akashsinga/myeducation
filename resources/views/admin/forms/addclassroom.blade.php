@@ -13,7 +13,7 @@ Admin | Add Classroom
             <div class="card-body">
                 <div class="col-8">
                     <div class="row">
-                    <label class="col-sm-2 col-form-label">Department</label>
+                        <label class="col-sm-2 col-form-label">Department</label>
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select">
@@ -62,7 +62,7 @@ Admin | Add Classroom
             <div class="card-footer">
                 <div class="row col-sm-7">
                     <button type="submit" class="btn btn-success">Add</button>
-                    <button type="submit" class="btn btn-danger">Clear</button>
+                    <button type="resets" class="btn btn-danger">Clear</button>
                 </div>
             </div>
         </div>
