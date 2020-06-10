@@ -13,19 +13,11 @@ Admin | Add Classroom
                 <p class="card-category">Classroom information</p>
             </div>
             <div class="card-body">
-<<<<<<< HEAD
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-=======
                 @if (session('status'))
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}
                 </div>
                 @endif
->>>>>>> 0a1ffcba07f1dadc85056799dde2655eaaaac90d
                 <div class="col-8">
                     <div class="row">
                         <label class="col-sm-2 col-form-label">Department</label>

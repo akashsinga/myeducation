@@ -6,11 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Hash;
 use App\User;
-<<<<<<< HEAD
 use App\Models\Classroom;
-=======
 use App\Models\Department;
->>>>>>> 0a1ffcba07f1dadc85056799dde2655eaaaac90d
 
 class AdminController extends Controller
 {
@@ -106,6 +103,6 @@ class AdminController extends Controller
             'section'=>$request->input('section'),
             'class_teacher'=>$request->input('class_teacher')
         ]);
-        return redirect('/admin/classrooms/add')->with('status','Classroom added succesfully');
+        return redirect('/admin/classrooms/add')->with('status', 'Classroom added succesfully');
     }
 }
