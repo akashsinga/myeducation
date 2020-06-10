@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Hash;
 use App\User;
+use App\Models\Classroom;
 use App\Models\Department;
 
 class AdminController extends Controller
@@ -75,15 +76,6 @@ class AdminController extends Controller
             break;
         }
     }
-    public function addDepartment(Request $request)
-    {
-        Department::create([
-            'id'=> $request->input('id'),
-            'name'=>$request->input('name'),
-            'hod'=>' '
-            ]);
-            return redirect('/admin/department/add')->with('status', 'Department Added Successfully');
-        }
     public function addSubject(Request $request)
     {
         Subject::create([
@@ -92,5 +84,25 @@ class AdminController extends Controller
             'credits'=>$request->input('credits'),
             'department'=>$request->input('dept'),
         ]);
+        return redirect('/admin/classrooms/add')->with('status', 'Classroom Added Successfully');
+    }
+    public function addDepartment(Request $request)
+    {
+        Department::create([
+            'id'=> $request->input('id'),
+            'name'=>$request->input('name'),
+            'hod'=>' '
+            ]);
+        return redirect('/admin/department/add')->with('status', 'Department Added Successfully');
+    }
+    public function AddClassroom(Request $request)
+    {
+        Classroom::create([
+            'department'=>$request->input('department'),
+            'year'=>$request->input('year'),
+            'section'=>$request->input('section'),
+            'class_teacher'=>$request->input('class_teacher')
+        ]);
+        return redirect('/admin/classrooms/add')->with('status','Classroom added succesfully');
     }
 }
