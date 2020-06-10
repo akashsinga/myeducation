@@ -103,6 +103,6 @@ class AdminController extends Controller
             'section'=>$request->input('section'),
             'class_teacher'=>$request->input('class_teacher')
         ]);
-        return redirect('/admin/classrooms/add')->with('status','Classroom added succesfully');
+        return redirect('/admin/classrooms/add')->with('status', 'Classroom added succesfully');
     }
 }
