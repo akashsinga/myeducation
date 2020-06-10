@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0dcbdc80776ca79d6311b8f92c5a4b5",
+    "content-hash": "dabea95a30f0df46520705e786fc1f93",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3326,6 +3326,56 @@
             "time": "2020-04-12T16:45:47+00:00"
         },
         {
+            "name": "taylornetwork/laravel-username-generator",
+            "version": "2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/taylornetwork/laravel-username-generator.git",
+                "reference": "f92ada669d30b09955e7374e3f00fcaeeb0ca86e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/taylornetwork/laravel-username-generator/zipball/f92ada669d30b09955e7374e3f00fcaeeb0ca86e",
+                "reference": "f92ada669d30b09955e7374e3f00fcaeeb0ca86e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.5",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5",
+                "psy/psysh": "^0.9.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TaylorNetwork\\UsernameGenerator\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "UsernameGenerator": "TaylorNetwork\\UsernameGenerator\\Facades\\UsernameGenerator"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TaylorNetwork\\UsernameGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sam Taylor",
+                    "email": "sam@taylornetwork.ca"
+                }
+            ],
+            "time": "2019-10-31T20:15:31+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.2",
             "source": {
@@ -5487,6 +5537,5 @@
     "platform": {
         "php": "^7.2.5"
     },
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }

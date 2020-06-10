@@ -16,15 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/logout', function ()
-{
+Route::get('/logout', function () {
     auth()->logout();
     Session()->flush();
     return Redirect::to('/');
 })->name('logout');
 
 Auth::routes(['register'=>false]);
-//  Route::group(['middleware'=>['auth','admin']],function(){
+Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/home', function () {
         return redirect('admin/dashboard');
     });
@@ -41,4 +40,24 @@ Auth::routes(['register'=>false]);
     Route::get('/admin/faculty/add', 'AdminController@viewAddFaculty');
     Route::get('/admin/subjects/add', 'AdminController@viewAddSubject');
     Route::get('/admin/classrooms/add', 'AdminController@viewAddClassroom');
-// });
+    Route::post('/admin/students/add/submit', 'AdminController@addUser');
+    Route::post('/admin/faculty/add/submit', 'AdminController@addUser');
+});
+Route::group(['middleware'=>['auth','student']], function () {
+    Route::get('/home', function () {
+        return redirect('student/dashboard');
+    });
+    Route::get('/student', function () {
+        return redirect('student/dashboard');
+    });
+    Route::get('/student/dashboard', 'StudentController@index');
+});
+Route::group(['middleware'=>['auth','faculty']], function () {
+    Route::get('/home', function () {
+        return redirect('faculty/dashboard');
+    });
+    Route::get('/faculty', function () {
+        return redirect('faculty/dashboard');
+    });
+    Route::get('/faculty/dashboard', 'FacultyController@index');
+});

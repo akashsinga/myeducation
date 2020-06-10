@@ -5,10 +5,13 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use TaylorNetwork\UsernameGenerator\GeneratesUsernames;
+use TaylorNetwork\UsernameGenerator\FindSimilarUsernames;
+use TaylorNetwork\UsernameGenerator\Generator;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable,FindSimilarUsernames,GeneratesUsernames;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'full_name','father_name','department','mobile', 'email', 'password','address','type'
     ];
 
     /**
@@ -33,7 +36,4 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 }

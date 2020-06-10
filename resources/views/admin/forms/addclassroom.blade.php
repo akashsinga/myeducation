@@ -57,15 +57,6 @@ Admin | Add Classroom
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <label class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-7">
-                            <div class="form-group">
-                                <input class="form-control" name="email" id="input-email" type="email"
-                                    placeholder="Email" required="true" aria-required="true" />
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="card-footer">
