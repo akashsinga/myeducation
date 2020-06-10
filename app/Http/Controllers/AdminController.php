@@ -83,5 +83,14 @@ class AdminController extends Controller
             'hod'=>' '
             ]);
             return redirect('/admin/department/add')->with('status', 'Department Added Successfully');
+        }
+    public function addSubject(Request $request)
+    {
+        Subject::create([
+            'code'=>$request->input('subject_code'),
+            'name'=>$request->input('sname'),
+            'credits'=>$request->input('credits'),
+            'department'=>$request->input('dept'),
+        ]);
     }
 }

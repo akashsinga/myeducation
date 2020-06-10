@@ -4,7 +4,7 @@ Admin | Add Subject
 @endsection
 @section('content')
 <div class="col-md-12">
-    <form method="post" action="#" autocomplete="off" class="form-horizontal">
+    <form method="post" action="/admin/subject/add/submit" autocomplete="off" class="form-horizontal">
         <div class="card ">
             <div class="card-header card-header-primary">
                 <h4 class="card-title">Add Subject</h4>
@@ -34,7 +34,7 @@ Admin | Add Subject
                         <label class="col-sm-2 col-form-label">Department</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <select class="custom-select">
+                                <select class="custom-select" name="dept">
                                     <option>CSE</option>
                                     <option>IT</option>
                                 </select>
