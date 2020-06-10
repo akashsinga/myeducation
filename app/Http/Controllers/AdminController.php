@@ -13,6 +13,10 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+    public function viewDepartments()
+    {
+        return view('admin.managedepartments');
+    }
     public function viewStudents()
     {
         return view('admin.managestudents');
@@ -24,6 +28,10 @@ class AdminController extends Controller
     public function viewClassrooms()
     {
         return view('admin.manageclassrooms');
+    }
+    public function viewAddClassroom()
+    {
+        return view('admin.forms.addclassroom');
     }
     public function viewSubjects()
     {

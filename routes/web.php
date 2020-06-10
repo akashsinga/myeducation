@@ -31,6 +31,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
         return redirect('admin/dashboard');
     });
     Route::get('/admin/dashboard', 'AdminController@index');
+    Route::get('/admin/departments', 'AdminController@viewDepartments');
     Route::get('/admin/students', 'AdminController@viewStudents');
     Route::get('/admin/faculty', 'AdminController@viewFaculty');
     Route::get('/admin/classrooms', 'AdminController@viewClassrooms');
@@ -39,6 +40,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/admin/students/add', 'AdminController@viewAddStudent');
     Route::get('/admin/faculty/add', 'AdminController@viewAddFaculty');
     Route::get('/admin/subjects/add', 'AdminController@viewAddSubject');
+    Route::get('/admin/classrooms/add', 'AdminController@viewAddClassroom');
     Route::post('/admin/students/add/submit', 'AdminController@addUser');
     Route::post('/admin/faculty/add/submit', 'AdminController@addUser');
 });
