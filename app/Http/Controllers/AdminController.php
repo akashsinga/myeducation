@@ -9,6 +9,7 @@ use App\User;
 use App\Models\Classroom;
 use App\Models\Department;
 use App\Models\Subject;
+use App\Models\Student;
 
 class AdminController extends Controller
 {
@@ -46,7 +47,9 @@ class AdminController extends Controller
     }
     public function viewAddStudent()
     {
-        return view('admin.forms.addstudent');
+        $departments=Department::all();
+        $classrooms=Classroom::all();
+        return view('admin.forms.addstudent')->with('departments', $departments)->with('classrooms', $classrooms);
     }
     public function viewAddDepartment()
     {
@@ -72,12 +75,25 @@ class AdminController extends Controller
             'address' =>$request->input('address'),
             'type' => $request->input('type'),
         ]);
+        $user_id=User::latest()->first()->id;
         switch ($request->input('type')) {
-            case 'student':
-                return redirect('/admin/students/add')->with('status', 'User Added Successfully');
+            case 'student':{
+                $classroom=Classroom::select('id')->where('year', $request->input('year'))->where('section', $request->input('section'))->get();
+                $id=1;
+                foreach ($classroom as $c) {
+                    $id=$c->id;
+                }
+                Student::create([
+                    'student_id'=>$user_id,
+                    'rollnumber'=>'',
+                    'classroom_id'=>$id,
+                    'score'=>0.0
+                ]);
+                return redirect('/admin/students/add')->with('status', 'Student Added Successfully');
+            }
             break;
             case 'faculty':
-                return redirect('/admin/faculty/add')->with('status', 'User Added Successfully');
+                return redirect('/admin/faculty/add')->with('status', 'Faculty Added Successfully');
             break;
         }
     }
