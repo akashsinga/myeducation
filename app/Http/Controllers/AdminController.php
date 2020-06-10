@@ -99,7 +99,7 @@ class AdminController extends Controller
             ]);
         return redirect('/admin/departments/add')->with('status', 'Department Added Successfully');
     }
-    public function AddClassroom(Request $request)
+    public function addClassroom(Request $request)
     {
         Classroom::create([
             'department'=>$request->input('department'),
