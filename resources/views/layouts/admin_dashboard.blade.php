@@ -43,6 +43,13 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    <li
+                        class="{{(Request::is('admin/departments') || Request::is('admin/departments/*'))?'active':''}}">
+                        <a class="nav-link" href="/admin/departments">
+                            <i class="material-icons">person</i>
+                            <p>Manage Departments</p>
+                        </a>
+                    </li>
                     <li class="{{(Request::is('admin/students') || Request::is('admin/students/*'))?'active':''}}">
                         <a class="nav-link" href="/admin/students">
                             <i class="material-icons">person</i>

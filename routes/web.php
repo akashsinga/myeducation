@@ -31,6 +31,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
         return redirect('admin/dashboard');
     });
     Route::get('/admin/dashboard', 'AdminController@index');
+    Route::get('/admin/departments', 'AdminController@viewDepartments');
     Route::get('/admin/students', 'AdminController@viewStudents');
     Route::get('/admin/faculty', 'AdminController@viewFaculty');
     Route::get('/admin/classrooms', 'AdminController@viewClassrooms');
