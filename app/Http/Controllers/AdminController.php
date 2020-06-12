@@ -19,11 +19,13 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
+
     public function viewDepartments()
     {
         $departments=Department::all();
         return view('admin.managedepartments')->with('departments', $departments);
     }
+
     public function viewStudents()
     {
         $students=DB::table('users')
@@ -34,6 +36,7 @@ class AdminController extends Controller
         ->paginate(15);
         return view('admin.managestudents')->with('students', $students);
     }
+
     public function viewFaculty()
     {
         $faculty=DB::table('users')
@@ -43,6 +46,7 @@ class AdminController extends Controller
         ->paginate(15);
         return view('admin.managefaculty')->with('faculty', $faculty);
     }
+
     public function viewClassrooms()
     {
         $classrooms=DB::table('classrooms')
@@ -53,6 +57,7 @@ class AdminController extends Controller
         ->paginate(15);
         return view('admin.manageclassrooms')->with('classrooms', $classrooms);
     }
+
     public function viewSubjects()
     {
         $subjects=DB::table('subjects')
@@ -61,33 +66,45 @@ class AdminController extends Controller
         ->paginate(15);
         return view('admin.managesubjects')->with('subjects', $subjects);
     }
+
     public function viewSchedule()
     {
         return view('admin.academicschedule');
     }
+    
+    public function viewLeaveApplications()
+    {
+        return view('admin.leaveapplications');
+    }
+
     public function viewAddClassroom()
     {
         $departments=Department::all();
         return view('admin.forms.addclassroom')->with('departments', $departments);
     }
+
     public function viewAddStudent()
     {
         $departments=Department::all();
         $classrooms=Classroom::all();
         return view('admin.forms.addstudent')->with('departments', $departments)->with('classrooms', $classrooms);
     }
+
     public function viewAddDepartment()
     {
         return view('admin.forms.adddepartments');
     }
+
     public function viewAddFaculty()
     {
         return view('admin.forms.addfaculty');
     }
+
     public function viewAddSubject()
     {
         return view('admin.forms.addsubject');
     }
+
     public function addUser(Request $request)
     {
         User::create([
@@ -130,6 +147,7 @@ class AdminController extends Controller
             break;
         }
     }
+
     public function addSubject(Request $request)
     {
         Subject::create([
@@ -140,6 +158,7 @@ class AdminController extends Controller
         ]);
         return redirect('/admin/subjects/add')->with('status', 'Subject Added Successfully');
     }
+
     public function addDepartment(Request $request)
     {
         Department::create([
@@ -148,6 +167,7 @@ class AdminController extends Controller
             ]);
         return redirect('/admin/departments/add')->with('status', 'Department Added Successfully');
     }
+
     public function addClassroom(Request $request)
     {
         Classroom::create([

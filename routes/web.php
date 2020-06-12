@@ -38,6 +38,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/admin/classrooms', 'AdminController@viewClassrooms');
     Route::get('/admin/subjects', 'AdminController@viewSubjects');
     Route::get('/admin/schedule', 'AdminController@viewSchedule');
+    Route::get('/admin/leaves/applications', 'AdminController@viewLeaveApplications');
     Route::get('/admin/students/add', 'AdminController@viewAddStudent');
     Route::get('/admin/faculty/add', 'AdminController@viewAddFaculty');
     Route::get('/admin/subjects/add', 'AdminController@viewAddSubject');
