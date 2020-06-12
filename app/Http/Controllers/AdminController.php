@@ -39,7 +39,7 @@ class AdminController extends Controller
     public function viewSubjects()
     {
         $subjects=Subject::all();
-        return view('admin.managesubjects')->with('subject',$subjects);
+        return view('admin.managesubjects')->with('subjects',$subjects);
     }
     public function viewSchedule()
     {

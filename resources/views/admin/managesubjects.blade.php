@@ -54,7 +54,7 @@ Admin | Manage Subjects
                                         {{$subject->department}}
                                     </td>
                                     <td>
-                                        {[$subject->credits]}
+                                        {{$subject->credits}}
                                     </td>
                                 @endforeach
                             </tbody>
