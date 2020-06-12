@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Subject;
 
 class SubjectSeeder extends Seeder
 {
@@ -11,6 +12,6 @@ class SubjectSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Subject::class,50)->create();
     }
 }
