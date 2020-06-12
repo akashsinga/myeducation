@@ -68,6 +68,28 @@
                             <p>Manage Classrooms</p>
                         </a>
                     </li>
+                    <li class="{{(Request::is('admin/leaves') || Request::is('admin/leaves/*'))?'active':''}}">
+                        <a class="nav-link" data-toggle="collapse" href="#reports" aria-expanded="true">
+                            <i class="material-icons">pending</i>
+                            <p>Manage Leaves</p>
+                        </a>
+                        <div class="collapse" id="reports">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span class="sidebar-normal">Available Leaves</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/leaves/applications">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span class="sidebar-normal">Leave Applications</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#reports" aria-expanded="true">
                             <i class="material-icons">analytics</i>
@@ -91,6 +113,12 @@
                                     <a class="nav-link" href="#">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span class="sidebar-normal">Performance Reports</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                        <span class="sidebar-normal">Leave Reports</span>
                                     </a>
                                 </li>
                             </ul>

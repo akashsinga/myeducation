@@ -170,6 +170,7 @@
                     </div>
                 </div>
             </nav>
+
             <div class="content">
                 @yield('content')
             </div>
