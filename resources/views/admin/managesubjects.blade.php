@@ -20,6 +20,7 @@ Admin | Manage Subjects
                     <a href="#"class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
+                {{$subjects->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
