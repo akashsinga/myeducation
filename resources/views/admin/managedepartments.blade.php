@@ -44,11 +44,13 @@ Admin | Manage Departments
                                     <td>
                                         {{$department->hod}}
                                     </td>
-                                    </tr>
-                                    @endforeach
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                        {{$departments->links()}}
+                        <div class="pagination">
+                            {{$departments->links()}}
+                        </div>
                     </div>
                 </div>
             </div>
