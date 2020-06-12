@@ -34,18 +34,18 @@ Admin | Manage Departments
                                 </th>
                             </thead>
                             <tbody>
-                                @for ($i = 1; $i <=10; $i++) <tr>
+                                @foreach($departments as $department)<tr>
                                     <td>
-                                        {{$i}}
+                                        {{$department->id}}
                                     </td>
                                     <td>
-                                        Department {{$i}}
+                                        {{$department->name}}
                                     </td>
                                     <td>
-                                        Faculty {{$i}}
+                                        {{$department->hod}}
                                     </td>
                                     </tr>
-                                    @endfor
+                                    @endforeach
                             </tbody>
                         </table>
                     </div>

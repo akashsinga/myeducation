@@ -40,23 +40,23 @@ Admin | Manage Classrooms
                                 </th>
                             </thead>
                             <tbody>
-                                @for ($i = 1; $i <=10; $i++) <tr>
+                                @foreach($classrooms as $classroom)<tr>
                                     <td>
-                                        {{$i}}
+                                        {{$classroom->id}}
                                     </td>
                                     <td>
-                                        CSE
+                                        {{$classroom->name}}
                                     </td>
                                     <td>
-                                        3
+                                        {{$classroom->year}}
                                     </td>
                                     <td>
-                                        {{$i}}
+                                        {{$classroom->section}}
                                     </td>
                                     <td>
-                                        Faculty {{$i}}
+                                        {{$classroom->full_name}}
                                     </td>
-                                    @endfor
+                                    @endforeach
                             </tbody>
                         </table>
                     </div>

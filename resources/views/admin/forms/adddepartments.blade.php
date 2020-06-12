@@ -19,10 +19,10 @@ Admin | Add Department
                     {{ session('status') }}
                 </div>
                 @endif
-                <div class="col-8">
+                <div class="col-12">
                     <div class="row">
                         <label class="col-sm-2 col-form-label">Department Name</label>
-                        <div class="col-sm-7">
+                        <div class="col-sm-5">
                             <div class="form-group">
                                 <input class="form-control" name="department_name" id="input-fname" type="text"
                                     placeholder="Department Name" required="true" aria-required="true" />
@@ -31,7 +31,7 @@ Admin | Add Department
                     </div>
                     <div class="row">
                         <label class="col-sm-2 col-form-label">Head Of the Department</label>
-                        <div class="col-sm-7">
+                        <div class="col-sm-5">
                             <div class="form-group">
                                 <input class="form-control" name="hod_name" id="input-fname" type="text"
                                     placeholder="Head Of the Department" required="true" aria-required="true" />

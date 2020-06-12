@@ -5,6 +5,8 @@ Admin | Add Subject
 @section('content')
 <div class="col-md-12">
     <form method="post" action="/admin/subject/add/submit" autocomplete="off" class="form-horizontal">
+        {{csrf_field()}}
+        {{method_field('POST')}}
         <div class="card ">
             <div class="card-header card-header-primary">
                 <h4 class="card-title">Add Subject</h4>
@@ -40,8 +42,8 @@ Admin | Add Subject
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select" name="dept">
-                                    <option>CSE</option>
-                                    <option>IT</option>
+                                    <option value="1">CSE</option>
+                                    <option value="2">IT</option>
                                 </select>
                             </div>
                         </div>

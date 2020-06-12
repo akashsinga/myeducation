@@ -24,10 +24,9 @@ Admin | Add Classroom
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select" name="department">
-                                    <option value="1">CSE</option>
-                                    <option value="2">IT</option>
-                                    <option value="3">EIE</option>
-                                    <option value="4">ECE</option>
+                                    @foreach($departments as $department)
+                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -36,11 +35,8 @@ Admin | Add Classroom
                         <label class="col-sm-2 col-form-label">Year</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <select class="custom-select" name="year">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
+                                <input class="form-control" name="year" id="input-email" type="text" placeholder="Year"
+                                    required="true" aria-required="true" />
                             </div>
                         </div>
                     </div>
@@ -48,11 +44,8 @@ Admin | Add Classroom
                         <label class="col-sm-2 col-form-label">Section</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <select class="custom-select" name="section">
-                                    <option>A</option>
-                                    <option>B</option>
-                                    <option>C</option>
-                                </select>
+                                <input class="form-control" name="section" id="input-email" type="text"
+                                    placeholder="Section" required="true" aria-required="true" />
                             </div>
                         </div>
                     </div>
@@ -70,11 +63,7 @@ Admin | Add Classroom
             <div class="card-footer">
                 <div class="row col-sm-7">
                     <button type="submit" class="btn btn-success">Add</button>
-<<<<<<< HEAD
                     <button type="resets" class="btn btn-danger">Clear</button>
-=======
-                    <button type="reset" class="btn btn-danger">Clear</button>
->>>>>>> 96ece921c70f1a2b5ea570fe1ee6c9b60cdfb8c7
                 </div>
             </div>
         </div>

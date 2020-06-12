@@ -37,58 +37,24 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="{{(Request::is('admin/dashboard'))?'active':''}}">
-                        <a class="nav-link" href="/admin/dashboard">
+                    <li class="{{(Request::is('faculty/dashboard'))?'active':''}}">
+                        <a class="nav-link" href="/faculty/dashboard">
                             <i class="material-icons">dashboard</i>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li
-                        class="{{(Request::is('admin/departments') || Request::is('admin/departments/*'))?'active':''}}">
-                        <a class="nav-link" href="/admin/departments">
-                            <i class="material-icons">bookmarks</i>
-                            <p>Manage Departments</p>
-                        </a>
-                    </li>
-                    <li class="{{(Request::is('admin/students') || Request::is('admin/students/*'))?'active':''}}">
-                        <a class="nav-link" href="/admin/students">
+                        class="{{(Request::is('faculty/departments') || Request::is('faculty/departments/*'))?'active':''}}">
+                        <a class="nav-link" href="/faculty/departments">
                             <i class="material-icons">person</i>
-                            <p>Manage Students</p>
+                            <p>Manage Attendance </p>
                         </a>
                     </li>
-                    <li class="{{(Request::is('admin/faculty') || Request::is('admin/faculty/*'))?'active':''}}">
-                        <a class="nav-link" href="/admin/faculty">
-                            <i class="material-icons">person</i>
-                            <p>Manage Faculty</p>
-                        </a>
-                    </li>
-                    <li class="{{(Request::is('admin/classrooms') || Request::is('admin/classrooms/*'))?'active':''}}">
-                        <a class="nav-link" href="/admin/classrooms">
-                            <i class="material-icons">airplay</i>
-                            <p>Manage Classrooms</p>
-                        </a>
-                    </li>
-                    <li class="{{(Request::is('admin/leaves') || Request::is('admin/leaves/*'))?'active':''}}">
-                        <a class="nav-link" data-toggle="collapse" href="#reports" aria-expanded="true">
+                    <li class="{{(Request::is('faculty/leaves') || Request::is('faculty/leaves/*'))?'active':''}}">
+                        <a class="nav-link" href="/faculty/leaves">
                             <i class="material-icons">pending</i>
-                            <p>Manage Leaves</p>
+                            <p>My Leaves</p>
                         </a>
-                        <div class="collapse" id="reports">
-                            <ul class="nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <i class="material-icons">keyboard_arrow_right</i>
-                                        <span class="sidebar-normal">Available Leaves</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin/leaves/applications">
-                                        <i class="material-icons">keyboard_arrow_right</i>
-                                        <span class="sidebar-normal">Leave Applications</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#reports" aria-expanded="true">
@@ -115,29 +81,17 @@
                                         <span class="sidebar-normal">Performance Reports</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <i class="material-icons">keyboard_arrow_right</i>
-                                        <span class="sidebar-normal">Leave Reports</span>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </li>
-                    <li class="{{(Request::is('admin/subjects') || Request::is('admin/subjects/*'))?'active':''}}">
-                        <a class="nav-link" href="/admin/subjects">
-                            <i class="material-icons">library_books</i>
-                            <p>Manage Subjects</p>
-                        </a>
-                    </li>
-                    <li class="{{(Request::is('admin/notifications'))?'active':''}}">
+                    <li class="{{(Request::is('faculty/notifications'))?'active':''}}">
                         <a class="nav-link" href="#">
                             <i class="material-icons">notifications</i>
                             <p>Notifications</p>
                         </a>
                     </li>
-                    <li class="{{(Request::is('admin/schedule') || Request::is('admin/schedule/*'))?'active':''}}">
-                        <a class="nav-link" href="/admin/schedule">
+                    <li class="{{(Request::is('faculty/schedule') || Request::is('faculty/schedule/*'))?'active':''}}">
+                        <a class="nav-link" href="/faculty/schedule">
                             <i class="material-icons">calendar_today</i>
                             <p>Academic Schedule</p>
                         </a>
@@ -230,7 +184,6 @@
             </footer>
         </div>
     </div>
-
     <!--   Core JS Files   -->
     <script src="{{URL::asset('assets/js/core/jquery.min.js')}}"></script>
     <script src="{{URL::asset('assets/js/core/popper.min.js')}}"></script>

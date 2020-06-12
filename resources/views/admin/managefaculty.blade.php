@@ -46,30 +46,30 @@ Admin | Manage Faculty
                                 </th>
                             </thead>
                             <tbody>
-                                @for ($i = 1; $i <=10; $i++) <tr>
+                                @foreach($faculty as $facult)<tr>
                                     <td>
-                                        {{$i}}
+                                        {{$facult->id}}
                                     </td>
                                     <td>
-                                        Faculty {{$i}}
+                                        {{$facult->full_name}}
                                     </td>
                                     <td>
-                                        CSE
+                                        {{$facult->name}}
                                     </td>
                                     <td>
-                                        Asst.Prof
+                                        {{$facult->designation}}
                                     </td>
                                     <td>
-                                        Mtech
+                                        {{$facult->qualification}}
                                     </td>
                                     <td>
-                                        44444444444
+                                        {{$facult->mobile}}
                                     </td>
                                     <td>
-                                        something@something.com
+                                        {{$facult->email}}
                                     </td>
-                                    </tr>
-                                    @endfor
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

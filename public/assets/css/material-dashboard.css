@@ -14579,19 +14579,23 @@
         
         .sidebar .nav li:hover>a,
         .sidebar .nav li .dropdown-menu a:hover,
-        .sidebar .nav li .dropdown-menu a:focus,
-        .sidebar .nav li.active>[data-toggle="collapse"] {
+        .sidebar .nav li .dropdown-menu a:focus{
             background-color: rgba(200, 200, 200, 0.2);
             color: #3C4858;
             box-shadow: none;
         }
+        .sidebar .nav li.active>[data-toggle="collapse"]{
+            background-color: #ff9800;
+            box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(255, 152, 0, 0.4);
+            color: #ffffff;
+        } 
         
         .sidebar .nav li.active>[data-toggle="collapse"] i {
-            color: #a9afbb;
+            color: #ffffff;
         }
         
         .sidebar .nav li.active>a,
-        .sidebar .nav li.active>a i {
+        .sidebar .nav li.active>a i{
             color: #fff;
         }
         
@@ -16259,7 +16263,9 @@
         .table.table-hover tbody tr:hover {
             background-color: #f5f5f5;
         }
-        
+        .table tbody tr:hover{
+            background-color: rgba(200, 200, 200, 0.2);
+        }
         .dataTable>thead>tr>th,
         .dataTable>tbody>tr>th,
         .dataTable>tfoot>tr>th,
