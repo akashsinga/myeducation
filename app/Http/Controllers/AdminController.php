@@ -17,7 +17,10 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $student_count=DB::table('users')->where('type','student')->count();
+        $faculty_count=DB::table('users')->where('type','faculty')->count();
+        $classroom_count=Classroom::all()->count();
+        return view('admin.dashboard')->with('student_count', $student_count)->with('faculty_count', $faculty_count)->with('classroom_count', $classroom_count);
     }
 
     public function viewDepartments()
