@@ -48,6 +48,7 @@ Admin | Manage Departments
                                     @endforeach
                             </tbody>
                         </table>
+                        {{$departments->links()}}
                     </div>
                 </div>
             </div>
