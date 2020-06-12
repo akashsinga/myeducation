@@ -30,6 +30,7 @@ class AdminController extends Controller
         ->join('students', 'students.student_id', '=', 'users.id')
         ->join('classrooms', 'classrooms.id', '=', 'students.classroom_id')
         ->join('departments', 'departments.id', '=', 'users.department')
+        ->select('students.id', 'users.full_name', 'users.father_name', 'departments.name', 'classrooms.year', 'classrooms.section', 'users.mobile', 'users.email')
         ->paginate(15);
         return view('admin.managestudents')->with('students', $students);
     }
@@ -38,6 +39,7 @@ class AdminController extends Controller
         $faculty=DB::table('users')
         ->join('management', 'management.user_id', '=', 'users.id')
         ->join('departments', 'departments.id', '=', 'users.department')
+        ->select('management.id', 'users.full_name', 'departments.name', 'management.designation', 'management.qualification', 'users.mobile', 'users.email')
         ->paginate(15);
         return view('admin.managefaculty')->with('faculty', $faculty);
     }
@@ -49,7 +51,6 @@ class AdminController extends Controller
         ->join('users', 'users.id', '=', 'management.user_id')
         ->select('classrooms.id', 'departments.name', 'classrooms.year', 'classrooms.section', 'users.full_name')
         ->paginate(15);
-        // print_r($classrooms);
         return view('admin.manageclassrooms')->with('classrooms', $classrooms);
     }
     public function viewSubjects()
@@ -57,8 +58,7 @@ class AdminController extends Controller
         $subjects=DB::table('subjects')
         ->join('departments', 'departments.id', "=", 'subjects.department')
         ->select('subjects.id', 'subjects.name', 'subjects.credits', 'subjects.code', 'departments.name as Dept_name')
-        ->get()
-        ->toArray();
+        ->paginate(15);
         return view('admin.managesubjects')->with('subjects', $subjects);
     }
     public function viewSchedule()
@@ -67,7 +67,8 @@ class AdminController extends Controller
     }
     public function viewAddClassroom()
     {
-        return view('admin.forms.addclassroom');
+        $departments=Department::all();
+        return view('admin.forms.addclassroom')->with('departments', $departments);
     }
     public function viewAddStudent()
     {
