@@ -11,7 +11,7 @@ Admin | Dashboard
                     <i class="material-icons">person</i>
                 </div>
                 <p class="card-category">Students</p>
-                <h3 class="card-title">233 | 245 </h3>
+                <h3 class="card-title">{{$student_count}}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -27,7 +27,7 @@ Admin | Dashboard
                     <i class="material-icons">person</i>
                 </div>
                 <p class="card-category">Faculty</p>
-                <h3 class="card-title">233</h3>
+                <h3 class="card-title">{{$faculty_count}}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -59,7 +59,7 @@ Admin | Dashboard
                     <i class="material-icons">airplay</i>
                 </div>
                 <p class="card-category">Classrooms</p>
-                <h3 class="card-title">245</h3>
+                <h3 class="card-title">{{$classroom_count}}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
