@@ -40,23 +40,23 @@ Admin | Manage Subjects
                                 </th>
                             </thead>
                             <tbody>
-                                @for ($i = 1; $i <=10; $i++) <tr>
+                                @foreach($subjects as $subject)<tr>
                                     <td>
-                                        {{$i}}
+                                        {{$subject->id}}
                                     </td>
                                     <td>
-                                        SBJ{{$i}}
+                                        {{$subject->code}}
                                     </td>
                                     <td>
-                                        Subject {{$i}}
+                                        {{$subject->name}}
                                     </td>
                                     <td>
-                                        CSE
+                                        {{$subject->department}}
                                     </td>
                                     <td>
-                                        3
+                                        {[$subject->credits]}
                                     </td>
-                                    @endfor
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

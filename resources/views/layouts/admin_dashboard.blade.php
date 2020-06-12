@@ -46,7 +46,7 @@
                     <li
                         class="{{(Request::is('admin/departments') || Request::is('admin/departments/*'))?'active':''}}">
                         <a class="nav-link" href="/admin/departments">
-                            <i class="material-icons">person</i>
+                            <i class="material-icons">bookmarks</i>
                             <p>Manage Departments</p>
                         </a>
                     </li>

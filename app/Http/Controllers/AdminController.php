@@ -10,6 +10,7 @@ use App\Models\Classroom;
 use App\Models\Department;
 use App\Models\Subject;
 use App\Models\Student;
+use App\Models\Management;
 
 class AdminController extends Controller
 {
@@ -19,7 +20,8 @@ class AdminController extends Controller
     }
     public function viewDepartments()
     {
-        return view('admin.managedepartments');
+        $departments=Department::all();
+        return view('admin.managedepartments')->with('departments',$departments);
     }
     public function viewStudents()
     {
@@ -31,19 +33,21 @@ class AdminController extends Controller
     }
     public function viewClassrooms()
     {
-        return view('admin.manageclassrooms');
-    }
-    public function viewAddClassroom()
-    {
-        return view('admin.forms.addclassroom');
+        $classrooms=Classroom::all();
+        return view('admin.manageclassrooms')->with('classrooms',$classrooms);
     }
     public function viewSubjects()
     {
-        return view('admin.managesubjects');
+        $subjects=Subject::all();
+        return view('admin.managesubjects')->with('subject',$subjects);
     }
     public function viewSchedule()
     {
         return view('admin.academicschedule');
+    }
+    public function viewAddClassroom()
+    {
+        return view('admin.forms.addclassroom');
     }
     public function viewAddStudent()
     {
@@ -92,8 +96,15 @@ class AdminController extends Controller
                 return redirect('/admin/students/add')->with('status', 'Student Added Successfully');
             }
             break;
-            case 'faculty':
+            case 'faculty':{
+                Management::create([
+                    'user_id'=>$user_id,
+                    'designation'=>$request->input('designation'),
+                    'qualification'=>$request->input('qualification'),
+                    'salary'=>$request->input('salary')
+                ]);
                 return redirect('/admin/faculty/add')->with('status', 'Faculty Added Successfully');
+            }
             break;
         }
     }

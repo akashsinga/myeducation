@@ -78,6 +78,15 @@ Admin | Add Faculty
                         </div>
                     </div>
                     <div class="row">
+                        <label class="col-sm-2 col-form-label">Salary</label>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="salary" id="input-email" placeholder="Salary"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <label class="col-sm-2 col-form-label">Address</label>
                         <div class="col-sm-7">
                             <div class="form-group">
