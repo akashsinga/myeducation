@@ -51,7 +51,7 @@ Admin | Manage Subjects
                                         {{$subject->name}}
                                     </td>
                                     <td>
-                                        {{$subject->department}}
+                                        {{$subject->Dept_name}}
                                     </td>
                                     <td>
                                         {{$subject->credits}}

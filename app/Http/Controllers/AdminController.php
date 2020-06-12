@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Hash;
 use App\User;
 use App\Models\Classroom;
+use DB;
 use App\Models\Department;
 use App\Models\Subject;
 use App\Models\Student;
@@ -21,25 +22,44 @@ class AdminController extends Controller
     public function viewDepartments()
     {
         $departments=Department::all();
-        return view('admin.managedepartments')->with('departments',$departments);
+        return view('admin.managedepartments')->with('departments', $departments);
     }
     public function viewStudents()
     {
-        return view('admin.managestudents');
+        $students=DB::table('users')
+        ->join('students', 'students.student_id', '=', 'users.id')
+        ->join('classrooms', 'classrooms.id', '=', 'students.classroom_id')
+        ->join('departments', 'departments.id', '=', 'users.department')
+        ->paginate(15);
+        return view('admin.managestudents')->with('students', $students);
     }
     public function viewFaculty()
     {
-        return view('admin.managefaculty');
+        $faculty=DB::table('users')
+        ->join('management', 'management.user_id', '=', 'users.id')
+        ->join('departments', 'departments.id', '=', 'users.department')
+        ->paginate(15);
+        return view('admin.managefaculty')->with('faculty', $faculty);
     }
     public function viewClassrooms()
     {
-        $classrooms=Classroom::all();
-        return view('admin.manageclassrooms')->with('classrooms',$classrooms);
+        $classrooms=DB::table('classrooms')
+        ->join('departments', 'departments.id', '=', 'classrooms.department')
+        ->join('management', 'classrooms.class_teacher', '=', 'management.id')
+        ->join('users', 'users.id', '=', 'management.user_id')
+        ->select('classrooms.id', 'departments.name', 'classrooms.year', 'classrooms.section', 'users.full_name')
+        ->paginate(15);
+        // print_r($classrooms);
+        return view('admin.manageclassrooms')->with('classrooms', $classrooms);
     }
     public function viewSubjects()
     {
-        $subjects=Subject::all();
-        return view('admin.managesubjects')->with('subjects',$subjects);
+        $subjects=DB::table('subjects')
+        ->join('departments', 'departments.id', "=", 'subjects.department')
+        ->select('subjects.id', 'subjects.name', 'subjects.credits', 'subjects.code', 'departments.name as Dept_name')
+        ->get()
+        ->toArray();
+        return view('admin.managesubjects')->with('subjects', $subjects);
     }
     public function viewSchedule()
     {
@@ -101,6 +121,7 @@ class AdminController extends Controller
                     'user_id'=>$user_id,
                     'designation'=>$request->input('designation'),
                     'qualification'=>$request->input('qualification'),
+                    'leaves'=>30,
                     'salary'=>$request->input('salary')
                 ]);
                 return redirect('/admin/faculty/add')->with('status', 'Faculty Added Successfully');

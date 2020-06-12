@@ -42,8 +42,17 @@ Admin | Add Faculty
                         <label class="col-sm-2 col-form-label">Qualification</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <input class="form-control" name="faculty_qual" id="input-name" type="text"
+                                <input class="form-control" name="qualification" id="input-name" type="text"
                                     placeholder="Qualification" required="true" aria-required="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">Designation</label>
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <input class="form-control" name="designation" id="input-name" type="text"
+                                    placeholder="Designation" required="true" aria-required="true" />
                             </div>
                         </div>
                     </div>
@@ -81,8 +90,8 @@ Admin | Add Faculty
                         <label class="col-sm-2 col-form-label">Salary</label>
                         <div class="col-sm-7">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="salary" id="input-email" placeholder="Salary"
-                                    required>
+                                <input type="text" class="form-control" name="salary" id="input-email"
+                                    placeholder="Salary" required>
                             </div>
                         </div>
                     </div>
