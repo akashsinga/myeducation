@@ -43,9 +43,9 @@ Admin | Add Student
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select" name="department" id="department">
-                                    <option value="1">CSE</option>
-                                    <option value="2">IT</option>
-                                    <option value="3">EIE</option>
+                                    @foreach($departments as $department)
+                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -55,9 +55,9 @@ Admin | Add Student
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select" name="year">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                    @foreach($classrooms as $classroom)
+                                    <option value="{{$classroom->year}}">{{$classroom->year}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -67,9 +67,9 @@ Admin | Add Student
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select" name="section">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
+                                    @foreach($classrooms as $classroom)
+                                    <option value="{{$classroom->section}}">{{$classroom->section}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
