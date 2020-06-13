@@ -37,11 +37,8 @@ Admin | Manage Classrooms
                                 <th>
                                     Class Teacher
                                 </th>
-                                <th>
-                                    Edit
-                                </th>
-                                <th>
-                                    Delete
+                                <th class="text-right">
+                                    Actions
                                 </th>
                             </thead>
                             <tbody>
@@ -61,11 +58,12 @@ Admin | Manage Classrooms
                                     <td>
                                         {{$classroom->full_name}}
                                     </td>
-                                    <td>
-                                        <a href="#" class="btn btn-warning"><i class="material-icons">edit</i>Edit</a>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
+                                    <td class="text-right">
+                                        <a href="#" class="btn btn-warning btn-sm"><i
+                                                class="material-icons">edit</i></a>
+
+                                        <a href="#" class="btn btn-danger btn-sm"><i
+                                                class="material-icons">clear</i></a>
                                     </td>
                                     @endforeach
                             </tbody>

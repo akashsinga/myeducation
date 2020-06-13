@@ -43,11 +43,8 @@ Admin | Manage Faculty
                                 <th>
                                     Email
                                 </th>
-                                <th>
-                                    Edit
-                                </th>
-                                <th>
-                                    Delete
+                                <th class="text-right">
+                                    Actions
                                 </th>
                             </thead>
                             <tbody>
@@ -73,13 +70,11 @@ Admin | Manage Faculty
                                     <td>
                                         {{$facult->email}}
                                     </td>
-                                    <td>
+                                    <td class="text-right">
                                         <a href="/admin/faculty/edit/{{$facult->id}}" class="btn btn-warning btn-sm"><i
-                                                class="material-icons">edit</i>Edit</a>
-                                    </td>
-                                    <td>
+                                                class="material-icons">edit</i></a>
                                         <a href="/admin/faculty/delete/{{$facult->id}}" class="btn btn-danger btn-sm"><i
-                                                class="material-icons">clear</i>Delete</a>
+                                                class="material-icons">clear</i></a>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -81,11 +81,11 @@ Admin | Manage Students
                                     </td>
                                     <td>
                                         <a href="/admin/students/edit/{{$student->id}}"
-                                            class="btn btn-warning btn-sm"><i class="material-icons">edit</i>Edit</a>
+                                            class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
                                     </td>
                                     <td>
                                         <a href="/admin/students/delete/{{$student->id}}"
-                                            class="btn btn-danger btn-sm"><i class="material-icons">clear</i>Delete</a>
+                                            class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
                                     </td>
                                 </tr>
                                 @endforeach
