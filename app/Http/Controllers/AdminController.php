@@ -17,8 +17,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $student_count=DB::table('users')->where('type','student')->count();
-        $faculty_count=DB::table('users')->where('type','faculty')->count();
+        $student_count=DB::table('users')->where('type', 'student')->count();
+        $faculty_count=DB::table('users')->where('type', 'faculty')->count();
         $classroom_count=Classroom::all()->count();
         return view('admin.dashboard')->with('student_count', $student_count)->with('faculty_count', $faculty_count)->with('classroom_count', $classroom_count);
     }
@@ -180,5 +180,9 @@ class AdminController extends Controller
             'class_teacher'=>$request->input('class_teacher')
         ]);
         return redirect('/admin/classrooms/add')->with('status', 'Classroom added succesfully');
+    }
+
+    public function approveLeave($id)
+    {
     }
 }
