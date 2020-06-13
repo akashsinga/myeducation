@@ -120,48 +120,15 @@ class AdminController extends Controller
         return view('admin.forms.addsubject')->with('departments', $departments);
     }
 
-    public function addUser(Request $request)
+    public function storeUser(Request $request)
     {
         DB::beginTransaction();
         try {
-            $this->user=new User();
-            $user=$this->user->create([
-            'full_name' =>$request->input('full_name'),
-            'father_name' =>$request->input('father_name'),
-            'department' => $request->input('department'),
-            'mobile' =>$request->input('mobile'),
-            'email' => $request->input('email'),
-            'password' => Hash::make('12345678'),
-            'address' =>$request->input('address'),
-            'type' => $request->input('type'),
-        ]);
-            $user_id=User::latest()->first()->id;
-            if ($request->input('type')=='student') 
-            {
-                $classroom_id=Classroom::where('year', $request->input('year'))
-                ->where('section', $request->input('section'))->get();
-                $this->student=new Student();
-                $student=$this->student->create([
-                    'student_id'=>$user_id,
-                    'rollnumber'=>'',
-                    'classroom_id'=>$classroom_id,
-                    'score'=>0
-                ]);
-            }
-            elseif ($request->input('type')=='faculty') 
-            {
-                $this->management=new Management();
-                $management=$this->management->create([
-                    'user_id'=>$user_id,
-                    'designation'=>$request->input('designation'),
-                    'qualification'=>$request->input('qualification'),
-                    'salary'=>$request->input('salary'),
-                    'leaves'=>40
-                ]);
-            }
-            if ($user && ($management || $student)) {
+            $add_status=$this->addUser($request);
+            $type=$request->input('type');
+            if ($add_status) {
                 DB::commit();
-                return $request->input('type')=='student'?redirect('/admin/students/add')
+                return ($type=="student")?redirect('/admin/students/add')
                 ->with('status', 'Student Added Successfully'):redirect('/admin/faculty/add')
                 ->with('status', 'Faculty Added Successfully');
             } else {
@@ -169,6 +136,72 @@ class AdminController extends Controller
             }
         } catch (Exception $e) {
             DB::rollBack();
+        }
+    }
+
+    public function addUser(Request $request)
+    {
+        $user=new User();
+        $user->full_name=$request->input('full_name');
+        $user->father_name=$request->input('father_name');
+        $user->department=$request->input('department');
+        $user->mobile=$request->input('mobile');
+        $user->email=$request->input('email');
+        $user->password=Hash::make('12345678');
+        $user->address=$request->input('address');
+        $user->type=$request->input('type');
+        if ($user->save()) {
+            if ($user->type=="faculty") {
+                $faculty_status=$this->addManagement($request, $user->id);
+                if ($faculty_status) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } elseif ($user->type=="student") {
+                $student_status=$this->addStudent($request, $user->id);
+                if ($student_status) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function addStudent(Request $request, $id)
+    {
+        $classroom_id=Classroom::where('year', $request->input('year'))->where('section', $request->input('section'))->get();
+        $c=1;
+        foreach ($classroom_id as $class) {
+            $c=$class->id;
+        }
+        $student=new Student();
+        $student->student_id=$id;
+        $student->rollnumber='';
+        $student->classroom_id=$c;
+        $student->score=0;
+        if ($student->save()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function addManagement(Request $request, $id)
+    {
+        $management=new Management();
+        $management->user_id=$id;
+        $management->designation=$request->input('designation');
+        $management->qualification=$request->input('qualification');
+        $management->salary=$request->input('salary');
+        $management->leaves=40;
+        if ($management->save()) {
+            return true;
+        } else {
+            return false;
         }
     }
 
