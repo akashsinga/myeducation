@@ -20,6 +20,7 @@ Admin | Manage Departments
                     <a href="#" class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
+                {{$departments->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -44,8 +45,8 @@ Admin | Manage Departments
                                     <td>
                                         {{$department->hod}}
                                     </td>
-                                    </tr>
-                                    @endforeach
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
