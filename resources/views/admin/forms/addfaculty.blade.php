@@ -61,9 +61,9 @@ Admin | Add Faculty
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select" name="department" id="department">
-                                    <option value="1">CSE</option>
-                                    <option value="2">IT</option>
-                                    <option value="3">EIE</option>
+                                    @foreach($departments as $department)
+                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
