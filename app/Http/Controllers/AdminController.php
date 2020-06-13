@@ -25,7 +25,7 @@ class AdminController extends Controller
 
     public function viewDepartments()
     {
-        $departments=Department::all();
+        $departments=Department::paginate(15);
         return view('admin.managedepartments')->with('departments', $departments);
     }
 

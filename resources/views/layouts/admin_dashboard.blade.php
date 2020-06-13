@@ -69,11 +69,11 @@
                         </a>
                     </li>
                     <li class="{{(Request::is('admin/leaves') || Request::is('admin/leaves/*'))?'active':''}}">
-                        <a class="nav-link" data-toggle="collapse" href="#reports" aria-expanded="true">
+                        <a class="nav-link" data-toggle="collapse" href="#leaves" aria-expanded="true">
                             <i class="material-icons">pending</i>
                             <p>Manage Leaves</p>
                         </a>
-                        <div class="collapse" id="reports">
+                        <div class="collapse" id="leaves">
                             <ul class="nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
