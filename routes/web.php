@@ -25,12 +25,14 @@ Route::get('/logout', function () {
 Auth::routes(['register'=>false]);
 
 Route::group(['middleware'=>['auth','admin']], function () {
+    //admin group
     Route::get('/home', function () {
         return redirect('admin/dashboard');
     });
     Route::get('/admin', function () {
         return redirect('admin/dashboard');
     });
+    //view main pages
     Route::get('/admin/dashboard', 'AdminController@index');
     Route::get('/admin/departments', 'AdminController@viewDepartments');
     Route::get('/admin/students', 'AdminController@viewStudents');
@@ -38,17 +40,23 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/admin/classrooms', 'AdminController@viewClassrooms');
     Route::get('/admin/subjects', 'AdminController@viewSubjects');
     Route::get('/admin/schedule', 'AdminController@viewSchedule');
+    Route::get('/admin/leaves/applications', 'AdminController@viewLeaveApplications');
+
+    //forms
     Route::get('/admin/students/add', 'AdminController@viewAddStudent');
     Route::get('/admin/faculty/add', 'AdminController@viewAddFaculty');
     Route::get('/admin/subjects/add', 'AdminController@viewAddSubject');
     Route::get('/admin/classrooms/add', 'AdminController@viewAddClassroom');
+    Route::get('/admin/departments/add', 'AdminController@viewAddDepartment');
+
+    //form handling
     Route::post('/admin/students/add/submit', 'AdminController@addUser');
     Route::post('/admin/faculty/add/submit', 'AdminController@addUser');
-    Route::post('/admin/subject/add/submit', 'AdminController@addSubject');
-    Route::post('/admin/department/add/submit', 'AdminController@addDepartment');
     Route::post('/admin/department/add/submit', 'AdminController@addDepartment');
     Route::post('/admin/subject/add/submit', 'AdminController@addSubject');
     Route::post('/admin/classroom/add/submit', 'AdminController@addClassroom');
+    Route::post('/admin/leaves/applications/approve/{id}', 'AdminController@approveLeave');
+    Route::post('/admin/leaves/applications/reject/{id}', 'AdminController@rejectLeave');
 });
 Route::group(['middleware'=>['auth','student']], function () {
     Route::get('/home', function () {

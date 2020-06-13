@@ -15,11 +15,12 @@ Admin | Manage Students
                 </div>
                 <div class="row ml-auto">
                     <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
-                    <a href="/admin/students/add"class="btn btn-info"><i class="material-icons">add</i>Add</a>
+                    <a href="/admin/students/add" class="btn btn-info"><i class="material-icons">add</i>Add</a>
                     <a href="#" class="btn btn-warning"><i class="material-icons">edit</i>Edit</a>
-                    <a href="#"class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
+                    <a href="#" class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
+                    {{$students->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -49,33 +50,33 @@ Admin | Manage Students
                                 </th>
                             </thead>
                             <tbody>
-                                @for ($i = 1; $i <=10; $i++) <tr>
+                                @foreach($students as $student) <tr>
                                     <td>
-                                        {{$i}}
+                                        {{$student->id}}
                                     </td>
                                     <td>
-                                        Student {{$i}}
+                                        {{$student->full_name}}
                                     </td>
                                     <td>
-                                        Father {{$i}}
+                                        {{$student->father_name}}
                                     </td>
                                     <td>
-                                        CSE
+                                        {{$student->name}}
                                     </td>
                                     <td>
-                                        3
+                                        {{$student->year}}
                                     </td>
                                     <td>
-                                        A
+                                        {{$student->section}}
                                     </td>
                                     <td>
-                                        44444444444
+                                        {{$student->mobile}}
                                     </td>
                                     <td>
-                                        something@something.com
+                                        {{$student->email}}
                                     </td>
-                                    </tr>
-                                    @endfor
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

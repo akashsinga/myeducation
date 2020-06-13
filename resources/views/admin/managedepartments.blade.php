@@ -20,6 +20,7 @@ Admin | Manage Departments
                     <a href="#" class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
+                {{$departments->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -34,18 +35,18 @@ Admin | Manage Departments
                                 </th>
                             </thead>
                             <tbody>
-                                @for ($i = 1; $i <=10; $i++) <tr>
+                                @foreach($departments as $department)<tr>
                                     <td>
-                                        {{$i}}
+                                        {{$department->id}}
                                     </td>
                                     <td>
-                                        Department {{$i}}
+                                        {{$department->name}}
                                     </td>
                                     <td>
-                                        Faculty {{$i}}
+                                        {{$department->hod}}
                                     </td>
-                                    </tr>
-                                    @endfor
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

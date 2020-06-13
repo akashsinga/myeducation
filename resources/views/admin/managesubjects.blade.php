@@ -20,6 +20,7 @@ Admin | Manage Subjects
                     <a href="#"class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
+                {{$subjects->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -40,23 +41,23 @@ Admin | Manage Subjects
                                 </th>
                             </thead>
                             <tbody>
-                                @for ($i = 1; $i <=10; $i++) <tr>
+                                @foreach($subjects as $subject)<tr>
                                     <td>
-                                        {{$i}}
+                                        {{$subject->id}}
                                     </td>
                                     <td>
-                                        SBJ{{$i}}
+                                        {{$subject->code}}
                                     </td>
                                     <td>
-                                        Subject {{$i}}
+                                        {{$subject->name}}
                                     </td>
                                     <td>
-                                        CSE
+                                        {{$subject->Dept_name}}
                                     </td>
                                     <td>
-                                        3
+                                        {{$subject->credits}}
                                     </td>
-                                    @endfor
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

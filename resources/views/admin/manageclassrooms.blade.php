@@ -20,6 +20,7 @@ Admin | Manage Classrooms
                     <a href="#" class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
+                {{$classrooms->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -40,23 +41,23 @@ Admin | Manage Classrooms
                                 </th>
                             </thead>
                             <tbody>
-                                @for ($i = 1; $i <=10; $i++) <tr>
+                                @foreach($classrooms as $classroom)<tr>
                                     <td>
-                                        {{$i}}
+                                        {{$classroom->id}}
                                     </td>
                                     <td>
-                                        CSE
+                                        {{$classroom->name}}
                                     </td>
                                     <td>
-                                        3
+                                        {{$classroom->year}}
                                     </td>
                                     <td>
-                                        {{$i}}
+                                        {{$classroom->section}}
                                     </td>
                                     <td>
-                                        Faculty {{$i}}
+                                        {{$classroom->full_name}}
                                     </td>
-                                    @endfor
+                                    @endforeach
                             </tbody>
                         </table>
                     </div>
