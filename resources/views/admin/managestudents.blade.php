@@ -14,10 +14,8 @@ Admin | Manage Students
                     </div>
                 </div>
                 <div class="row ml-auto">
-                    <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
-                    <a href="/admin/students/add" class="btn btn-info"><i class="material-icons">add</i>Add</a>
-                    <a href="#" class="btn btn-warning"><i class="material-icons">edit</i>Edit</a>
-                    <a href="#" class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
+                    <a href="#" class="btn btn-success btn-md"><i class="material-icons">add</i>Import</a>
+                    <a href="/admin/students/add" class="btn btn-info btn-md"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
                     {{$students->links()}}
@@ -48,6 +46,12 @@ Admin | Manage Students
                                 <th>
                                     Email
                                 </th>
+                                <th>
+                                    Edit
+                                </th>
+                                <th>
+                                    Delete
+                                </th>
                             </thead>
                             <tbody>
                                 @foreach($students as $student) <tr>
@@ -74,6 +78,14 @@ Admin | Manage Students
                                     </td>
                                     <td>
                                         {{$student->email}}
+                                    </td>
+                                    <td>
+                                        <a href="/admin/students/edit/{{$student->id}}"
+                                            class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/students/delete/{{$student->id}}"
+                                            class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
                                     </td>
                                 </tr>
                                 @endforeach
