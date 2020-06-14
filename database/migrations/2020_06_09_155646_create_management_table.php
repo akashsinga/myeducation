@@ -20,7 +20,8 @@ class CreateManagementTable extends Migration
             $table->string('designation');
             $table->string('qualification');
             $table->double('salary');
-            $table->integer('leaves');
+            $table->integer('lop');
+            $table->integer('ccl');
             $table->timestamps();
         });
     }
