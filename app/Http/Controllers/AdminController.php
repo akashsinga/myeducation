@@ -18,6 +18,7 @@ class AdminController extends Controller
     protected $user;
     protected $management;
     protected $student;
+    //VIEWS
     public function index()
     {
         $student_count=DB::table('users')->where('type', 'student')->count();
@@ -119,7 +120,7 @@ class AdminController extends Controller
         $departments=Department::select('id', 'name')->distinct()->get();
         return view('admin.forms.addsubject')->with('departments', $departments);
     }
-
+    //FUNCTIONALITIES
     public function storeUser(Request $request)
     {
         DB::beginTransaction();
