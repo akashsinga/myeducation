@@ -153,18 +153,10 @@ class AdminController extends Controller
         if ($user->save()) {
             if ($user->type=="faculty") {
                 $faculty_status=$this->addManagement($request, $user->id);
-                if ($faculty_status) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return $faculty_status;
             } elseif ($user->type=="student") {
                 $student_status=$this->addStudent($request, $user->id);
-                if ($student_status) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return $student_status;
             }
         } else {
             return false;
@@ -183,11 +175,7 @@ class AdminController extends Controller
         $student->rollnumber='';
         $student->classroom_id=$c;
         $student->score=0;
-        if ($student->save()) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($student->save())?true:false;
     }
 
     public function addManagement(Request $request, $id)
@@ -198,11 +186,7 @@ class AdminController extends Controller
         $management->qualification=$request->input('qualification');
         $management->salary=$request->input('salary');
         $management->leaves=40;
-        if ($management->save()) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($management->save())?true:false;
     }
 
     public function addSubject(Request $request)
