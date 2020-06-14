@@ -195,7 +195,8 @@ class AdminController extends Controller
         $management->designation=$request->input('designation');
         $management->qualification=$request->input('qualification');
         $management->salary=$request->input('salary');
-        $management->leaves=40;
+        $management->lop=0;
+        $management->ccl=0;
         return ($management->save())?true:false;
     }
 
