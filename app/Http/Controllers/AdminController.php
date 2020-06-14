@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Hash;
 use App\User;
@@ -12,6 +13,7 @@ use App\Models\Department;
 use App\Models\Subject;
 use App\Models\Student;
 use App\Models\Management;
+use App\Imports\StudentImport;
 
 class AdminController extends Controller
 {
@@ -121,6 +123,13 @@ class AdminController extends Controller
         return view('admin.forms.addsubject')->with('departments', $departments);
     }
     //FUNCTIONALITIES
+    public function importStudents(Request $request)
+    {
+        $path=$request->file('importfile')->getRealPath();
+        $import_status=Excel::import(new StudentImport, $path);
+        return redirect('/admin/students')->with('status', 'Imported Successfully');
+    }
+    
     public function storeUser(Request $request)
     {
         DB::beginTransaction();

@@ -51,6 +51,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
 
     //form handling
     Route::post('/admin/students/add/submit', 'AdminController@storeUser');
+    Route::post('/admin/students/import/submit', 'AdminController@importStudents');
     Route::post('/admin/faculty/add/submit', 'AdminController@storeUser');
     Route::post('/admin/department/add/submit', 'AdminController@addDepartment');
     Route::post('/admin/subject/add/submit', 'AdminController@addSubject');
