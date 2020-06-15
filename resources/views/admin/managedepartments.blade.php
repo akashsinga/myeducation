@@ -15,10 +15,16 @@ Admin | Manage Departments
                 </div>
                 <div class="row ml-auto">
                     <a href="#" class="btn btn-success btn-sm"><i class="material-icons">add</i>Import</a>
-                    <a href="/admin/departments/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
+                    <a href="/admin/departments/add" class="btn btn-info btn-sm"><i
+                            class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
                     {{$departments->links()}}
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">

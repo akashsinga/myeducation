@@ -22,8 +22,7 @@ Route::get('/logout', function () {
     return Redirect::to('/');
 })->name('logout');
 
-Auth::routes(['register'=>false]);
-
+Auth::routes(['register'=>true]);
 Route::group(['middleware'=>['auth','admin']], function () {
     //admin group
     Route::get('/home', function () {

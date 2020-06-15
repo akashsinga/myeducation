@@ -5,6 +5,10 @@ namespace App\Imports;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use App\Models\Management;
+use DB;
+use App\User;
+use Hash;
+use App\Models\Department;
 
 class FacultyImport implements ToCollection
 {

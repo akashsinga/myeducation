@@ -21,6 +21,11 @@ Admin | Manage Faculty
                 </div>
                 <div class="card-body">
                     {{$faculty->links()}}
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -105,7 +110,7 @@ Admin | Manage Faculty
                     {{method_field('POST')}}
                     <hr>
                     <div class="alert alert-warning" role="alert">
-                        Remove the column names while uploading the file
+                        Remove the column names before uploading the file
                     </div>
                     <div class="col-8">
                         <label>Select File to Import</label>

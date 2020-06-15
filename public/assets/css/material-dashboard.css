@@ -5477,7 +5477,7 @@
         }
         
         .modal-open {
-            overflow: hidden;
+            overflow: auto;
         }
         
         .modal {
@@ -5489,6 +5489,7 @@
             z-index: 1050;
             display: none;
             overflow: hidden;
+            overflow-y:scroll;
             outline: 0;
         }
         

@@ -21,6 +21,11 @@ Admin | Manage Students
                 </div>
                 <div class="card-body">
                     {{$students->links()}}
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -82,8 +87,13 @@ Admin | Manage Students
                                         {{$student->email}}
                                     </td>
                                     <td>
-                                        <a href="/admin/students/edit/{{$student->id}}"
-                                            class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
+                                        <a href="" type="button" data-toggle="modal" data-target="#editform"
+                                            data-id="{{$student->id}}" data-full_name="{{$student->full_name}}"
+                                            data-father_name="{{$student->father_name}}" data-department="{{$student->name}}"
+                                            data-year="{{$student->year}}" data-section="{{$student->section}}"
+                                            data-mobile="{{$student->mobile}}" data-email="{{$student->email}}"
+                                            class="btn btn-warning btn-sm">
+                                            <i class="material-icons">edit</i></a>
                                     </td>
                                     <td>
                                         <a href="/admin/students/delete/{{$student->id}}"
@@ -97,6 +107,48 @@ Admin | Manage Students
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="modal fade" id="editform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/admin/students/edit/submit" id="editform" class="form-horizontal"
+                    method="POST">
+                    {{csrf_field()}}
+                    {{method_field('PUT')}}
+                    <input type="hidden" name="id" value="id" id="id">
+                    <input type="hidden" name="type" value="student">
+                    <label class="col-form-label">Student Name</label>
+                    <input type="text" class="form-control input-text" name="full_name" id="full_name">
+                    <label class="col-form-label">Father Name</label>
+                    <input type="text" class="form-control input-text" name="father_name" id="father_name">
+                    <label class="col-form-label">Department</label>
+                    <input type="text" class="form-control input-text" name="department" id="department">
+                    <label class="col-form-label">Year</label>
+                    <input type="text" class="form-control input-text" name="year" id="year">
+                    <label class="col-form-label">Section</label>
+                    <input type="text" class="form-control input-text" name="section" id="section">
+                    <label class="col-form-label">Mobile</label>
+                    <input type="text" class="form-control input-text" name="mobile" id="mobile">
+                    <label class="col-form-label">Email</label>
+                    <input type="text" class="form-control input-text" name="email" id="email"><label class="col-form-label">Email</label>
+                    <input type="text" class="form-control input-text" name="email" id="email">
+
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="resets" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+            </form>
     </div>
 </div>
 <div class="modal fade" id="importform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -126,11 +178,6 @@ Admin | Manage Students
                             <input type="file" id="importfile" name="importfile">
                         </div>
                     </div>
-                    <div class="col-8">
-                        <a href="{{url('samples/student_import_sample.xlsx')}}" class="btn btn-info btn-sm">Download
-                            Sample</a>
-                    </div>
-
             </div>
             <div class="modal-footer">
                 <button type="resets" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -140,4 +187,30 @@ Admin | Manage Students
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+$('#editform').on('show.bs.modal',function(event){
+    var button=$(event.relatedTarget)
+    var full_name=button.data('full_name')
+    var father_name=button.data('father_name')
+    var department=button.data('department')
+    var year=button.data('year')
+    var section=button.data('section')
+    var mobile=button.data('mobile')
+    var email=button.data('email')
+
+    var modal=$(this)
+
+    modal.find('.modal-title').text('Edit Student Information')
+    modal.find('.modal-body #full_name').val(full_name)
+    modal.find('.modal-body #father_name').val(father_name)
+    modal.find('.modal-body #department').val(department)
+    modal.find('.modal-body #year').val(year)
+    modal.find('.modal-body #section').val(section)
+    modal.find('.modal-body #mobile').val(mobile)
+    modal.find('.modal-body #email').val(email)
+
+})
+</script>
 @endsection
