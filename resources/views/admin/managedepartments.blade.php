@@ -14,8 +14,8 @@ Admin | Manage Departments
                     </div>
                 </div>
                 <div class="row ml-auto">
-                    <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
-                    <a href="/admin/departments/add" class="btn btn-info"><i class="material-icons">add</i>Add</a>
+                    <a href="#" class="btn btn-success btn-sm"><i class="material-icons">add</i>Import</a>
+                    <a href="/admin/departments/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
                     {{$departments->links()}}

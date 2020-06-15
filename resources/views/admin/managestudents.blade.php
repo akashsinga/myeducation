@@ -14,10 +14,10 @@ Admin | Manage Students
                     </div>
                 </div>
                 <div class="row ml-auto">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#importform">
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importform">
                         <i class="material-icons">add</i>Import</a>
                     </button>
-                    <a href="/admin/students/add" class="btn btn-info btn-md"><i class="material-icons">add</i>Add</a>
+                    <a href="/admin/students/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
                     {{$students->links()}}
@@ -114,11 +114,20 @@ Admin | Manage Students
                     autocomplete="off" class="form-horizontal" method="POST">
                     {{csrf_field()}}
                     {{method_field('POST')}}
+                    <hr>
+                    <div class="col-8">
+                        <label>Select File to Import</label>
+                    </div>
                     <div class="col-8">
                         <div class="form-file-simple inputFileVisible">
                             <input type="file" id="importfile" name="importfile">
                         </div>
                     </div>
+                    <div class="col-8">
+                        <a href="{{url('samples/student_import_sample.xlsx')}}" class="btn btn-info btn-sm">Download
+                            Sample</a>
+                    </div>
+
             </div>
             <div class="modal-footer">
                 <button type="resets" class="btn btn-secondary" data-dismiss="modal">Close</button>
