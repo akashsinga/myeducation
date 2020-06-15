@@ -15,7 +15,7 @@ Admin | Dashboard
             </div>
             <div class="card-footer">
                 <div class="stats">
-                    <a href="#pablo">View Details</a>
+                    <a href="/admin/students">View Details</a>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@ Admin | Dashboard
             </div>
             <div class="card-footer">
                 <div class="stats">
-                    <a href="#pablo">View Details</a>
+                    <a href="/admin/faculty">View Details</a>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@ Admin | Dashboard
             </div>
             <div class="card-footer">
                 <div class="stats">
-                    <a href="#pablo">View Details</a>
+                    <a href="/admin/complaints">View Details</a>
                 </div>
             </div>
         </div>

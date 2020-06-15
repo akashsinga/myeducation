@@ -50,6 +50,12 @@ class AdminController extends Controller
         return view('admin.managefaculty')->with('faculty', $faculty);
     }
 
+    public function viewComplaints()
+    {
+        // $complaints=DB::table("complaints")
+        return view('admin.complaints');
+    }
+
     public function viewClassrooms()
     {
         $classrooms=DB::table('classrooms')
