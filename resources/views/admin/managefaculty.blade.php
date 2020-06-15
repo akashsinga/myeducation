@@ -16,11 +16,9 @@ Admin | Manage Faculty
                 <div class="row ml-auto">
                     <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
                     <a href="/admin/faculty/add" class="btn btn-info"><i class="material-icons">add</i>Add</a>
-                    <a href="#" class="btn btn-warning"><i class="material-icons">edit</i>Edit</a>
-                    <a href="#" class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
-                {{$faculty->links()}}
+                    {{$faculty->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -45,6 +43,9 @@ Admin | Manage Faculty
                                 <th>
                                     Email
                                 </th>
+                                <th class="text-right">
+                                    Actions
+                                </th>
                             </thead>
                             <tbody>
                                 @foreach($faculty as $facult)<tr>
@@ -68,6 +69,12 @@ Admin | Manage Faculty
                                     </td>
                                     <td>
                                         {{$facult->email}}
+                                    </td>
+                                    <td class="text-right">
+                                        <a href="/admin/faculty/edit/{{$facult->id}}" class="btn btn-warning btn-sm"><i
+                                                class="material-icons">edit</i></a>
+                                        <a href="/admin/faculty/delete/{{$facult->id}}" class="btn btn-danger btn-sm"><i
+                                                class="material-icons">clear</i></a>
                                     </td>
                                 </tr>
                                 @endforeach

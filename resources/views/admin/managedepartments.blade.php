@@ -16,11 +16,9 @@ Admin | Manage Departments
                 <div class="row ml-auto">
                     <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
                     <a href="/admin/departments/add" class="btn btn-info"><i class="material-icons">add</i>Add</a>
-                    <a href="#" class="btn btn-warning"><i class="material-icons">edit</i>Edit</a>
-                    <a href="#" class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
-                {{$departments->links()}}
+                    {{$departments->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -33,6 +31,9 @@ Admin | Manage Departments
                                 <th>
                                     Head Of Department
                                 </th>
+                                <th>
+                                    Actions
+                                </th>
                             </thead>
                             <tbody>
                                 @foreach($departments as $department)<tr>
@@ -44,6 +45,12 @@ Admin | Manage Departments
                                     </td>
                                     <td>
                                         {{$department->hod}}
+                                    </td>
+                                    <td>
+                                        <a href="/admin/departments/edit/{{$department->id}}"
+                                            class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
+                                        <a href="/admin/departments/delete/{{$department->id}}"
+                                            class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
                                     </td>
                                 </tr>
                                 @endforeach

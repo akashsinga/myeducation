@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Hash;
 use App\User;
@@ -12,15 +13,23 @@ use App\Models\Department;
 use App\Models\Subject;
 use App\Models\Student;
 use App\Models\Management;
+use App\Imports\StudentImport;
 
 class AdminController extends Controller
 {
+    protected $user;
+    protected $management;
+    protected $student;
+    //VIEWS
     public function index()
     {
-        $student_count=DB::table('users')->where('type','student')->count();
-        $faculty_count=DB::table('users')->where('type','faculty')->count();
+        $student_count=DB::table('users')->where('type', 'student')->count();
+        $faculty_count=DB::table('users')->where('type', 'faculty')->count();
         $classroom_count=Classroom::all()->count();
-        return view('admin.dashboard')->with('student_count', $student_count)->with('faculty_count', $faculty_count)->with('classroom_count', $classroom_count);
+        return view('admin.dashboard')
+        ->with('student_count', $student_count)
+        ->with('faculty_count', $faculty_count)
+        ->with('classroom_count', $classroom_count);
     }
 
     public function viewDepartments()
@@ -94,9 +103,13 @@ class AdminController extends Controller
 
     public function viewAddStudent()
     {
-        $departments=Department::all();
-        $classrooms=Classroom::all();
-        return view('admin.forms.addstudent')->with('departments', $departments)->with('classrooms', $classrooms);
+        $departments=Department::select('id', 'name')->distinct()->get();
+        $years=Classroom::select('year')->distinct()->get();
+        $sections=Classroom::select('section')->distinct()->get();
+        return view('admin.forms.addstudent')
+        ->with('departments', $departments)
+        ->with('years', $years)
+        ->with('sections', $sections);
     }
 
     public function viewAddDepartment()
@@ -106,55 +119,91 @@ class AdminController extends Controller
 
     public function viewAddFaculty()
     {
-        return view('admin.forms.addfaculty');
+        $departments=Department::select('id', 'name')->distinct()->get();
+        return view('admin.forms.addfaculty')->with('departments', $departments);
     }
 
     public function viewAddSubject()
     {
-        return view('admin.forms.addsubject');
+        $departments=Department::select('id', 'name')->distinct()->get();
+        return view('admin.forms.addsubject')->with('departments', $departments);
+    }
+    //FUNCTIONALITIES
+    public function importStudents(Request $request)
+    {
+        $path=$request->file('importfile')->getRealPath();
+        $import_status=Excel::import(new StudentImport, $path);
+        return redirect('/admin/students')->with('status', 'Imported Successfully');
+    }
+    
+    public function storeUser(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $add_status=$this->addUser($request);
+            $type=$request->input('type');
+            if ($add_status) {
+                DB::commit();
+                return ($type=="student")?redirect('/admin/students/add')
+                ->with('status', 'Student Added Successfully'):redirect('/admin/faculty/add')
+                ->with('status', 'Faculty Added Successfully');
+            } else {
+                DB::rollBack();
+            }
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
     }
 
     public function addUser(Request $request)
     {
-        User::create([
-            'full_name' =>$request->input('full_name'),
-            'father_name' =>$request->input('father_name'),
-            'department' => $request->input('department'),
-            'mobile' =>$request->input('mobile'),
-            'email' => $request->input('email'),
-            'password' => Hash::make('12345678'),
-            'address' =>$request->input('address'),
-            'type' => $request->input('type'),
-        ]);
-        $user_id=User::latest()->first()->id;
-        switch ($request->input('type')) {
-            case 'student':{
-                $classroom=Classroom::select('id')->where('year', $request->input('year'))->where('section', $request->input('section'))->get();
-                $id=1;
-                foreach ($classroom as $c) {
-                    $id=$c->id;
-                }
-                Student::create([
-                    'student_id'=>$user_id,
-                    'rollnumber'=>'',
-                    'classroom_id'=>$id,
-                    'score'=>0.0
-                ]);
-                return redirect('/admin/students/add')->with('status', 'Student Added Successfully');
+        $user=new User();
+        $user->full_name=$request->input('full_name');
+        $user->father_name=$request->input('father_name');
+        $user->department=$request->input('department');
+        $user->mobile=$request->input('mobile');
+        $user->email=$request->input('email');
+        $user->password=Hash::make('12345678');
+        $user->address=$request->input('address');
+        $user->type=$request->input('type');
+        if ($user->save()) {
+            if ($user->type=="faculty") {
+                $faculty_status=$this->addManagement($request, $user->id);
+                return $faculty_status;
+            } elseif ($user->type=="student") {
+                $student_status=$this->addStudent($request, $user->id);
+                return $student_status;
             }
-            break;
-            case 'faculty':{
-                Management::create([
-                    'user_id'=>$user_id,
-                    'designation'=>$request->input('designation'),
-                    'qualification'=>$request->input('qualification'),
-                    'leaves'=>30,
-                    'salary'=>$request->input('salary')
-                ]);
-                return redirect('/admin/faculty/add')->with('status', 'Faculty Added Successfully');
-            }
-            break;
+        } else {
+            return false;
         }
+    }
+
+    public function addStudent(Request $request, $id)
+    {
+        $classroom_id=Classroom::where('year', $request->input('year'))->where('section', $request->input('section'))->get();
+        $c=1;
+        foreach ($classroom_id as $class) {
+            $c=$class->id;
+        }
+        $student=new Student();
+        $student->student_id=$id;
+        $student->rollnumber='';
+        $student->classroom_id=$c;
+        $student->score=0;
+        return ($student->save())?true:false;
+    }
+
+    public function addManagement(Request $request, $id)
+    {
+        $management=new Management();
+        $management->user_id=$id;
+        $management->designation=$request->input('designation');
+        $management->qualification=$request->input('qualification');
+        $management->salary=$request->input('salary');
+        $management->lop=0;
+        $management->ccl=0;
+        return ($management->save())?true:false;
     }
 
     public function addSubject(Request $request)
@@ -186,5 +235,9 @@ class AdminController extends Controller
             'class_teacher'=>$request->input('class_teacher')
         ]);
         return redirect('/admin/classrooms/add')->with('status', 'Classroom added succesfully');
+    }
+
+    public function approveLeave($id)
+    {
     }
 }
