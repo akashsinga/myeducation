@@ -55,8 +55,8 @@ Admin | Add Student
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select" name="year">
-                                    @foreach($classrooms as $classroom)
-                                    <option value="{{$classroom->year}}">{{$classroom->year}}</option>
+                                    @foreach($years as $year)
+                                    <option value="{{$year->year}}">{{$year->year}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -67,8 +67,8 @@ Admin | Add Student
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select" name="section">
-                                    @foreach($classrooms as $classroom)
-                                    <option value="{{$classroom->section}}">{{$classroom->section}}</option>
+                                    @foreach($sections as $section)
+                                    <option value="{{$section->section}}">{{$section->section}}</option>
                                     @endforeach
                                 </select>
                             </div>

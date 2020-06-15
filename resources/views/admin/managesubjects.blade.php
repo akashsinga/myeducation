@@ -15,12 +15,10 @@ Admin | Manage Subjects
                 </div>
                 <div class="row ml-auto">
                     <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
-                    <a href="/admin/subjects/add"class="btn btn-info"><i class="material-icons">add</i>Add</a>
-                    <a href="#" class="btn btn-warning"><i class="material-icons">edit</i>Edit</a>
-                    <a href="#"class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
+                    <a href="/admin/subjects/add" class="btn btn-info"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
-                {{$subjects->links()}}
+                    {{$subjects->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -35,9 +33,12 @@ Admin | Manage Subjects
                                 </th>
                                 <th>
                                     Department
-                                </th>                               
+                                </th>
                                 <th>
                                     Credits
+                                </th>
+                                <th class="text-center">
+                                    Actions
                                 </th>
                             </thead>
                             <tbody>
@@ -57,7 +58,13 @@ Admin | Manage Subjects
                                     <td>
                                         {{$subject->credits}}
                                     </td>
-                                @endforeach
+                                    <td class="text-right">
+                                        <a href="#" class="btn btn-warning btn-sm"><i
+                                                class="material-icons">edit</i></a>
+                                        <a href="#" class="btn btn-danger btn-sm"><i
+                                                class="material-icons">clear</i></a>
+                                    </td>
+                                    @endforeach
                             </tbody>
                         </table>
                     </div>

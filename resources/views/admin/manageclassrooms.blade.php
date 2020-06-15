@@ -16,11 +16,9 @@ Admin | Manage Classrooms
                 <div class="row ml-auto">
                     <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
                     <a href="/admin/classrooms/add" class="btn btn-info"><i class="material-icons">add</i>Add</a>
-                    <a href="#" class="btn btn-warning"><i class="material-icons">edit</i>Edit</a>
-                    <a href="#" class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
                 </div>
                 <div class="card-body">
-                {{$classrooms->links()}}
+                    {{$classrooms->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -39,6 +37,9 @@ Admin | Manage Classrooms
                                 <th>
                                     Class Teacher
                                 </th>
+                                <th class="text-right">
+                                    Actions
+                                </th>
                             </thead>
                             <tbody>
                                 @foreach($classrooms as $classroom)<tr>
@@ -56,6 +57,13 @@ Admin | Manage Classrooms
                                     </td>
                                     <td>
                                         {{$classroom->full_name}}
+                                    </td>
+                                    <td class="text-right">
+                                        <a href="#" class="btn btn-warning btn-sm"><i
+                                                class="material-icons">edit</i></a>
+
+                                        <a href="#" class="btn btn-danger btn-sm"><i
+                                                class="material-icons">clear</i></a>
                                     </td>
                                     @endforeach
                             </tbody>
