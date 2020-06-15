@@ -14,6 +14,7 @@ use App\Models\Subject;
 use App\Models\Student;
 use App\Models\Management;
 use App\Imports\StudentImport;
+use App\Imports\FacultyImport;
 
 class AdminController extends Controller
 {
@@ -129,7 +130,12 @@ class AdminController extends Controller
         $import_status=Excel::import(new StudentImport, $path);
         return redirect('/admin/students')->with('status', 'Imported Successfully');
     }
-    
+    public function importFaculty(Request $request)
+    {
+        $path=$request->file('importfile')->getRealPath();
+        $import_status=Excel::import(new FacultyImport, $path);
+        return redirect('/admin/faculty')->with('status', 'Imported Successfully');
+    }
     public function storeUser(Request $request)
     {
         DB::beginTransaction();

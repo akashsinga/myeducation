@@ -115,6 +115,9 @@ Admin | Manage Students
                     {{csrf_field()}}
                     {{method_field('POST')}}
                     <hr>
+                    <div class="alert alert-warning" role="alert">
+                        Remove the column names before uploading the file
+                    </div>
                     <div class="col-8">
                         <label>Select File to Import</label>
                     </div>
