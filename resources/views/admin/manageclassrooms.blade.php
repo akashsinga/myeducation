@@ -65,6 +65,7 @@ Admin | Manage Classrooms
                                         <a href="#" class="btn btn-danger btn-sm"><i
                                                 class="material-icons">clear</i></a>
                                     </td>
+                                    </tr>
                                     @endforeach
                             </tbody>
                         </table>

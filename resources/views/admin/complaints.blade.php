@@ -13,13 +13,8 @@ Admin | Complaints
                         <p class="card-category">Complaints Registered</p>
                     </div>
                 </div>
-                <div class="row ml-auto">
-                    <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
-                    <a href="/admin/faculty/add" class="btn btn-info"><i class="material-icons">add</i>Add</a>
-                    <a href="#" class="btn btn-warning"><i class="material-icons">edit</i>Edit</a>
-                    <a href="#" class="btn btn-danger"><i class="material-icons">clear</i>Delete</a>
-                </div>
                 <div class="card-body">
+                {{$complaints->links()}}
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
@@ -27,15 +22,46 @@ Admin | Complaints
                                     ID
                                 </th>
                                 <th>
-                                    Faculty Name
+                                    Type
                                 </th>
                                 <th>
-                                    Department
+                                    Description
                                 </th>
                                 <th>
-                                    Designation
+                                    Classroom
+                                </th>
+                                <th>
+                                    Student ID
+                                </th>
+                                <th>
+                                    Status
                                 </th>
                             </thead>
+                            <tbody>
+                                @foreach($complaints as $complaint)
+                                    <tr>
+                                        <td>
+                                            {{$complaint->id}}
+                                        </td>
+                                        <td>
+                                            {{$complaint->type}}
+                                        </td>
+                                        <td>
+                                            {{$complaint->description}}
+                                        </td>
+                                        <td>
+                                            {{$complaint->name}} 
+                                            {{$complaint->year}}-{{$complaint->section}}
+                                        </td>
+                                        <td>
+                                            {{$complaint->full_name}}
+                                        </td>
+                                        <td>
+                                            {{$complaint->status}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>

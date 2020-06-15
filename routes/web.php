@@ -22,7 +22,7 @@ Route::get('/logout', function () {
     return Redirect::to('/');
 })->name('logout');
 
-Auth::routes(['register'=>false]);
+Auth::routes(['register'=>true]);
 
 Route::group(['middleware'=>['auth','admin']], function () {
     //admin group
@@ -58,7 +58,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::post('/admin/subject/add/submit', 'AdminController@addSubject');
     Route::post('/admin/classroom/add/submit', 'AdminController@addClassroom');
     Route::post('/admin/leaves/applications/approve/{id}', 'AdminController@approveLeave');
-    Route::post('/admin/leaves/applications/reject/{id}', 'AdminController@rejectLeave');
+    Route::post('/admin/leaves/applications/reject/{id}', 'AdminController@rejectLeave');//check here
 });
 Route::group(['middleware'=>['auth','student']], function () {
     Route::get('/home', function () {

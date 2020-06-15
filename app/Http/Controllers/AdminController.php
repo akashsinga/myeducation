@@ -61,8 +61,14 @@ class AdminController extends Controller
 
     public function viewComplaints()
     {
-        // $complaints=DB::table("complaints")
-        return view('admin.complaints');
+        $complaints=DB::table("complaints")
+        ->join('types','types.id',"=","complaints.type")
+        ->join('students','students.id','=','complaints.student_id')
+        ->join('classrooms','students.classroom_id','=','classrooms.id')
+        ->join('users','users.id','=','students.student_id')
+        ->join('departments','departments.id','=','users.department')
+        ->select('complaints.id','users.full_name','types.type','complaints.description','complaints.status','classrooms.year','classrooms.section','departments.name') ->paginate(15);
+        return view('admin.complaints')->with('complaints', $complaints);
     }
 
     public function viewClassrooms()
