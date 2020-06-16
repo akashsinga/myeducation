@@ -30,7 +30,7 @@ class StudentImport implements ToCollection
                     'email'=>$row[4],
                     'password'=>Hash::make('12345678'),
                     'address'=>$row[5],
-                    'type'=>$row[6]
+                    'type'=>"student"
                 ]);
                 $user_id=$user->id;
                 $classroom=Classroom::where('department', $department[0]->id)->where('year', $row[7])->where('section', $row[8])->get();
