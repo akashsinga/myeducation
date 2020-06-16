@@ -21,32 +21,35 @@ Admin | Manage Students
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered" id="example">
+                        <table class="table table-striped table-bordered dataTable-content"  style="width:100%" id="example">
                             <thead class="text-primary">
-                                    <th>
-                                        Admno
-                                    </th>
-                                    <th>
-                                        Student Name
-                                    </th>
-                                    <th>
-                                        Father's Name
-                                    </th>
-                                    <th>
-                                        Department
-                                    </th>
-                                    <th>
-                                        Year
-                                    </th>
-                                    <th>
-                                        Section
-                                    </th>
-                                    <th>
-                                        Mobile
-                                    </th>
-                                    <th>
-                                        Email
-                                    </th>
+                                <th>
+                                    Admno
+                                </th>
+                                <th>
+                                    Student Name
+                                </th>
+                                <th>
+                                    Father's Name
+                                </th>
+                                <th>
+                                    Department
+                                </th>
+                                <th>
+                                    Year
+                                </th>
+                                <th>
+                                    Section
+                                </th>
+                                <th>
+                                    Mobile
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
                             </thead>
                         </table>
                     </div>
@@ -86,6 +89,9 @@ Admin | Manage Students
                 },
                 {
                     data: "email"
+                },
+                {
+                    data: "action"
                 },
             ]
         });

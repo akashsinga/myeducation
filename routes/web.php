@@ -51,6 +51,8 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/admin/departments/add', 'AdminController@viewAddDepartment');
 
     //form handling
+    Route::post('/admin/students/edit/{id}', 'AdminController@editStudent')->name('admin.students.edit');
+    Route::post('/admin/students/delete/{id}', 'AdminController@editStudent')->name('admin.students.delete');
     Route::post('/admin/students/add/submit', 'AdminController@storeUser');
     Route::post('/admin/students/import/submit', 'AdminController@importStudents');
     Route::post('/admin/faculty/add/submit', 'AdminController@storeUser');

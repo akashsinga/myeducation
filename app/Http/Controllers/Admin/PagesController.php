@@ -37,13 +37,12 @@ class PagesController extends Controller
             ->join('departments', 'departments.id', '=', 'users.department')
             ->select('students.id', 'users.full_name', 'users.father_name', 'departments.name', 'classrooms.year', 'classrooms.section', 'users.mobile', 'users.email')
             ->get();
-            return Datatables::of($students)->addColumn('action', function ($row) {
-                return '<a href="/admin/students/edit/'. $row->id.' " class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>';
+            return Datatables::of($students)->addColumn('action', function ($query) {
+                return 
+                '<a href="' . route("admin.students.edit", $query->id) . '" class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
+                <a href="' . route('admin.students.delete', $query->id) . '" class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
+                ';
             })
-            ->editColumn('delete', function ($row) {
-                return '<a href="/admin/students/delete/'. $row->id.' " class="btn btn-danger btn-sm"><i class="material-icons">cross</i></a>';
-            })
-            ->rawColumns(['delete' => 'delete','action' => 'action'])
             ->make(true);
         }
         return view('admin.managestudents');
