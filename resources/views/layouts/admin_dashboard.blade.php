@@ -62,8 +62,7 @@
                             <p>Manage Faculty</p>
                         </a>
                     </li>
-                    <li
-                        class="{{(Request::is('admin/complaints') || Request::is('admin/departments/*'))?'active':''}}">
+                    <li class="{{(Request::is('admin/complaints') || Request::is('admin/departments/*'))?'active':''}}">
                         <a class="nav-link" href="/admin/complaints">
                             <i class="material-icons">report_problem</i>
                             <p>Complaints</p>
@@ -281,8 +280,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
     <!-- Library for adding dinamically elements -->
     <script src="{{URL::asset('assets/js/plugins/arrive.min.js')}}"></script>
-    <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE'"></script>
     <!-- Chartist JS -->
     <script src="{{URL::asset('assets/js/plugins/chartist.min.js')}}"></script>
     <!--  Notifications Plugin    -->

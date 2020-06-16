@@ -33,15 +33,15 @@ Route::group(['middleware'=>['auth','admin']], function () {
         return redirect('admin/dashboard');
     });
     //view main pages
-    Route::get('/admin/dashboard', 'AdminController@index');
-    Route::get('/admin/departments', 'AdminController@viewDepartments');
-    Route::get('/admin/students', 'AdminController@viewStudents');
-    Route::get('/admin/faculty', 'AdminController@viewFaculty');
-    Route::get('/admin/complaints', 'AdminController@viewComplaints');
-    Route::get('/admin/classrooms', 'AdminController@viewClassrooms');
-    Route::get('/admin/subjects', 'AdminController@viewSubjects');
-    Route::get('/admin/schedule', 'AdminController@viewSchedule');
-    Route::get('/admin/leaves/applications', 'AdminController@viewLeaveApplications');
+    Route::get('/admin/dashboard', 'Admin\PagesController@index');
+    Route::get('/admin/departments', 'Admin\PagesController@viewDepartments');
+    Route::get('/admin/students', 'Admin\PagesController@viewStudents')->name('admin.students');
+    Route::get('/admin/faculty', 'Admin\PagesController@viewFaculty');
+    Route::get('/admin/complaints', 'Admin\PagesController@viewComplaints');
+    Route::get('/admin/classrooms', 'Admin\PagesController@viewClassrooms');
+    Route::get('/admin/subjects', 'Admin\PagesController@viewSubjects');
+    Route::get('/admin/schedule', 'Admin\PagesController@viewSchedule');
+    Route::get('/admin/leaves/applications', 'Admin\PagesController@viewLeaveApplications');
 
     //forms
     Route::get('/admin/students/add', 'AdminController@viewAddStudent');

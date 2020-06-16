@@ -14,15 +14,14 @@ Admin | Manage Students
                     </div>
                 </div>
                 <div class="row ml-auto">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#importform">
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#importform">
                         <i class="material-icons">add</i>Import</a>
                     </button>
-                    <a href="/admin/students/add" class="btn btn-info btn-md"><i class="material-icons">add</i>Add</a>
+                    <a href="/admin/students/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
-                    {{$students->links()}}
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="example">
                             <thead class=" text-primary">
                                 <th>
                                     ID
@@ -48,50 +47,7 @@ Admin | Manage Students
                                 <th>
                                     Email
                                 </th>
-                                <th>
-                                    Edit
-                                </th>
-                                <th>
-                                    Delete
-                                </th>
                             </thead>
-                            <tbody>
-                                @foreach($students as $student) <tr>
-                                    <td>
-                                        {{$student->id}}
-                                    </td>
-                                    <td>
-                                        {{$student->full_name}}
-                                    </td>
-                                    <td>
-                                        {{$student->father_name}}
-                                    </td>
-                                    <td>
-                                        {{$student->name}}
-                                    </td>
-                                    <td>
-                                        {{$student->year}}
-                                    </td>
-                                    <td>
-                                        {{$student->section}}
-                                    </td>
-                                    <td>
-                                        {{$student->mobile}}
-                                    </td>
-                                    <td>
-                                        {{$student->email}}
-                                    </td>
-                                    <td>
-                                        <a href="/admin/students/edit/{{$student->id}}"
-                                            class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
-                                    </td>
-                                    <td>
-                                        <a href="/admin/students/delete/{{$student->id}}"
-                                            class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -99,33 +55,41 @@ Admin | Manage Students
         </div>
     </div>
 </div>
-<div class="modal fade" id="importform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Import Students</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post" action="/admin/students/import/submit" enctype="multipart/form-data"
-                    autocomplete="off" class="form-horizontal" method="POST">
-                    {{csrf_field()}}
-                    {{method_field('POST')}}
-                    <div class="col-8">
-                        <div class="form-file-simple inputFileVisible">
-                            <input type="file" id="importfile" name="importfile">
-                        </div>
-                    </div>
-            </div>
-            <div class="modal-footer">
-                <button type="resets" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Import</button>
-            </div>
-            </form>
-        </div>
-    </div>
-</div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": "{{route('admin.students')}}",
+        "columns": [
+            {
+                data:"id"
+            },
+            {
+                data:"full_name"
+            },      
+            {
+                data:"father_name"
+            },
+            {
+                data:"name"
+            },
+            {
+                data:"year"
+            },
+            {
+                data:"section"
+            },
+            {
+                data:"mobile"
+            },       
+            {
+                data:"email"
+            },     
+        ]
+    } );
+} );
+</script>
 @endsection
