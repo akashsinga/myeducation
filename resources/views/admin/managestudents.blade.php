@@ -21,32 +21,32 @@ Admin | Manage Students
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table" id="example">
-                            <thead class=" text-primary">
-                                <th>
-                                    ID
-                                </th>
-                                <th>
-                                    Student Name
-                                </th>
-                                <th>
-                                    Father's Name
-                                </th>
-                                <th>
-                                    Department
-                                </th>
-                                <th>
-                                    Year
-                                </th>
-                                <th>
-                                    Section
-                                </th>
-                                <th>
-                                    Mobile
-                                </th>
-                                <th>
-                                    Email
-                                </th>
+                        <table class="table table-striped table-bordered" id="example">
+                            <thead class="text-primary">
+                                    <th>
+                                        Admno
+                                    </th>
+                                    <th>
+                                        Student Name
+                                    </th>
+                                    <th>
+                                        Father's Name
+                                    </th>
+                                    <th>
+                                        Department
+                                    </th>
+                                    <th>
+                                        Year
+                                    </th>
+                                    <th>
+                                        Section
+                                    </th>
+                                    <th>
+                                        Mobile
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
                             </thead>
                         </table>
                     </div>
@@ -58,38 +58,37 @@ Admin | Manage Students
 @endsection
 @section('scripts')
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#example').DataTable( {
-        "processing": true,
-        "serverSide": true,
-        "ajax": "{{route('admin.students')}}",
-        "columns": [
-            {
-                data:"id"
-            },
-            {
-                data:"full_name"
-            },      
-            {
-                data:"father_name"
-            },
-            {
-                data:"name"
-            },
-            {
-                data:"year"
-            },
-            {
-                data:"section"
-            },
-            {
-                data:"mobile"
-            },       
-            {
-                data:"email"
-            },     
-        ]
-    } );
-} );
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": "{{route('admin.students')}}",
+            "columns": [{
+                    data: "id"
+                },
+                {
+                    data: "full_name"
+                },
+                {
+                    data: "father_name"
+                },
+                {
+                    data: "name"
+                },
+                {
+                    data: "year"
+                },
+                {
+                    data: "section"
+                },
+                {
+                    data: "mobile"
+                },
+                {
+                    data: "email"
+                },
+            ]
+        });
+    });
 </script>
 @endsection

@@ -18,6 +18,7 @@
     <link href="{{URL::asset('assets/css/custom.css')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{URL::asset('assets/demo/demo.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"> -->
 </head>
 
 <body class="">
@@ -238,13 +239,12 @@
     </div>
 
     <!--   Core JS Files   -->
-    <script src="{{URL::asset('assets/js/core/jquery.min.js')}}"></script>
+    <!-- <script src="{{URL::asset('assets/js/core/jquery.min.js')}}"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="{{URL::asset('assets/js/core/popper.min.js')}}"></script>
-    <script src="{{URL::asset('assets/js/core/bootstrap-material-design.min.js')}}">
-    </script>
+    <script src="{{URL::asset('assets/js/core/bootstrap-material-design.min.js')}}"></script>
     <script src="{{URL::asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}">
     </script>
-    @yield('scripts')
     <!-- Plugin for the momentJs  -->
     <script src="{{URL::asset('assets/js/plugins/moment.min.js')}}"></script>
     <!--  Plugin for Sweet Alert -->
@@ -264,6 +264,7 @@
     <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
     <script src="{{URL::asset('assets/js/plugins/jquery.dataTables.min.js')}}">
     </script>
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
     <script src="{{URL::asset('assets/js/plugins/bootstrap-tagsinput.js')}}">
     </script>
@@ -286,6 +287,7 @@
     <script src="{{URL::asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{URL::asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
+    @yield('scripts')
 </body>
 
 </html>
