@@ -18,9 +18,9 @@ Admin | Manage Departments
                     <a href="/admin/departments/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
-                    {{$departments->links()}}
                     <div class="table-responsive">
-                        <table class="table">
+                    <table class="table table-striped table-bordered dataTable-content" style="width:100%"
+                            id="example">
                             <thead class=" text-primary">
                                 <th>
                                     ID
@@ -35,26 +35,6 @@ Admin | Manage Departments
                                     Actions
                                 </th>
                             </thead>
-                            <tbody>
-                                @foreach($departments as $department)<tr>
-                                    <td>
-                                        {{$department->id}}
-                                    </td>
-                                    <td>
-                                        {{$department->name}}
-                                    </td>
-                                    <td>
-                                        {{$department->hod}}
-                                    </td>
-                                    <td>
-                                        <a href="/admin/departments/edit/{{$department->id}}"
-                                            class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
-                                        <a href="/admin/departments/delete/{{$department->id}}"
-                                            class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -62,4 +42,52 @@ Admin | Manage Departments
         </div>
     </div>
 </div>
+<div class="modal fade" id="confirmbox" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Department</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this department?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-success">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "processing": true,
+            "language": {
+                "processing": "Loading..."
+            },
+            "serverSide": true,
+            "ajax": "{{route('admin.departments')}}",
+            "columns": [{
+                    data: "id"
+                },
+                {
+                    data: "name"
+                },
+                {
+                    data: "hod"
+                },
+                {
+                    data: "action",
+                    orderable: false
+                },
+            ]
+        });
+    });
+</script>
 @endsection

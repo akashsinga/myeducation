@@ -62,12 +62,6 @@
                             <p>Manage Faculty</p>
                         </a>
                     </li>
-                    <li class="{{(Request::is('admin/complaints') || Request::is('admin/departments/*'))?'active':''}}">
-                        <a class="nav-link" href="/admin/complaints">
-                            <i class="material-icons">report_problem</i>
-                            <p>Complaints</p>
-                        </a>
-                    </li>
                     <li class="{{(Request::is('admin/classrooms') || Request::is('admin/classrooms/*'))?'active':''}}">
                         <a class="nav-link" href="/admin/classrooms">
                             <i class="material-icons">airplay</i>
@@ -95,6 +89,12 @@
                                 </li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="{{(Request::is('admin/complaints') || Request::is('admin/departments/*'))?'active':''}}">
+                        <a class="nav-link" href="/admin/complaints">
+                            <i class="material-icons">report_problem</i>
+                            <p>Complaints</p>
+                        </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#reports" aria-expanded="true">

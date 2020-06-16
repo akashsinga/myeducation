@@ -24,8 +24,18 @@ class PagesController extends Controller
 
     public function viewDepartments()
     {
-        $departments=Department::paginate(15);
-        return view('admin.managedepartments')->with('departments', $departments);
+        if(request()->ajax())
+        {
+            $departments=Department::all();
+            return Datatables::of($departments)->addColumn('action', function ($query) {
+                return 
+                '<a href="' . route("admin.departments.edit", $query->id) . '" class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
+                <a type="button" data-toggle="modal" data-target="#confirmbox" class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
+                ';
+            })
+            ->make(true);
+        }
+        return view('admin.managedepartments');
     }
 
     public function viewStudents()
@@ -50,12 +60,22 @@ class PagesController extends Controller
 
     public function viewFaculty()
     {
-        $faculty=DB::table('users')
-        ->join('management', 'management.user_id', '=', 'users.id')
-        ->join('departments', 'departments.id', '=', 'users.department')
-        ->select('management.id', 'users.full_name', 'departments.name', 'management.designation', 'management.qualification', 'users.mobile', 'users.email')
-        ->paginate(15);
-        return view('admin.managefaculty')->with('faculty', $faculty);
+        if(request()->ajax())
+        {
+            $faculty=DB::table('users')
+            ->join('management', 'management.user_id', '=', 'users.id')
+            ->join('departments', 'departments.id', '=', 'users.department')
+            ->select('management.id', 'users.full_name', 'departments.name', 'management.designation', 'management.qualification', 'users.mobile', 'users.email')
+            ->get();
+            return Datatables::of($faculty)->addColumn('action', function ($query) {
+                return 
+                '<a href="' . route("admin.faculty.edit", $query->id) . '" class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
+                <a type="button" data-toggle="modal" data-target="#confirmbox" class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
+                ';
+            })
+            ->make(true);
+        }
+        return view('admin.managefaculty');
     }
 
     public function viewComplaints()

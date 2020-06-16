@@ -18,9 +18,9 @@ Admin | Manage Faculty
                     <a href="/admin/faculty/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
-                    {{$faculty->links()}}
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-striped table-bordered dataTable-content" style="width:100%"
+                            id="example">
                             <thead class=" text-primary">
                                 <th>
                                     ID
@@ -43,42 +43,10 @@ Admin | Manage Faculty
                                 <th>
                                     Email
                                 </th>
-                                <th class="text-right">
+                                <th>
                                     Actions
                                 </th>
                             </thead>
-                            <tbody>
-                                @foreach($faculty as $facult)<tr>
-                                    <td>
-                                        {{$facult->id}}
-                                    </td>
-                                    <td>
-                                        {{$facult->full_name}}
-                                    </td>
-                                    <td>
-                                        {{$facult->name}}
-                                    </td>
-                                    <td>
-                                        {{$facult->designation}}
-                                    </td>
-                                    <td>
-                                        {{$facult->qualification}}
-                                    </td>
-                                    <td>
-                                        {{$facult->mobile}}
-                                    </td>
-                                    <td>
-                                        {{$facult->email}}
-                                    </td>
-                                    <td class="text-right">
-                                        <a href="/admin/faculty/edit/{{$facult->id}}" class="btn btn-warning btn-sm"><i
-                                                class="material-icons">edit</i></a>
-                                        <a href="/admin/faculty/delete/{{$facult->id}}" class="btn btn-danger btn-sm"><i
-                                                class="material-icons">clear</i></a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -86,4 +54,64 @@ Admin | Manage Faculty
         </div>
     </div>
 </div>
+<div class="modal fade" id="confirmbox" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Faculty</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this faculty?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-success">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "processing": true,
+            "language": {
+                "processing": "Loading..."
+            },
+            "serverSide": true,
+            "ajax": "{{route('admin.faculty')}}",
+            "columns": [{
+                    data: "id"
+                },
+                {
+                    data: "full_name"
+                },
+                {
+                    data: "name"
+                },
+                {
+                    data: "designation"
+                },
+                {
+                    data: "qualification"
+                },
+                {
+                    data: "mobile"
+                },
+                {
+                    data: "email"
+                },
+                {
+                    data: "action",
+                    orderable: false
+                },
+            ]
+        });
+    });
+</script>
 @endsection
