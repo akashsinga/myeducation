@@ -72,13 +72,23 @@ class PagesController extends Controller
 
     public function viewClassrooms()
     {
-        $classrooms=DB::table('classrooms')
-        ->join('departments', 'departments.id', '=', 'classrooms.department')
-        ->join('management', 'classrooms.class_teacher', '=', 'management.id')
-        ->join('users', 'users.id', '=', 'management.user_id')
-        ->select('classrooms.id', 'departments.name', 'classrooms.year', 'classrooms.section', 'users.full_name')
-        ->paginate(15);
-        return view('admin.manageclassrooms')->with('classrooms', $classrooms);
+        if(request()->ajax())
+        {
+            $classrooms=DB::table('classrooms')
+            ->join('departments', 'departments.id', '=', 'classrooms.department')
+            ->join('management', 'classrooms.class_teacher', '=', 'management.id')
+            ->join('users', 'users.id', '=', 'management.user_id')
+            ->select('classrooms.id', 'departments.name', 'classrooms.year', 'classrooms.section', 'users.full_name')
+            ->get();
+            return Datatables::of($classrooms)->addColumn('action', function ($query) {
+                return 
+                '<a href="' . route("admin.classrooms.edit", $query->id) . '" class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
+                <a type="button" data-toggle="modal" data-target="#confirmbox" class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
+                ';
+            })
+            ->make(true);
+        }
+        return view('admin.manageclassrooms');
     }
 
     public function viewSubjects()

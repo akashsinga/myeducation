@@ -14,13 +14,13 @@ Admin | Manage Classrooms
                     </div>
                 </div>
                 <div class="row ml-auto">
-                    <a href="#" class="btn btn-success"><i class="material-icons">add</i>Import</a>
-                    <a href="/admin/classrooms/add" class="btn btn-info"><i class="material-icons">add</i>Add</a>
+                    <a href="#" class="btn btn-success btn-sm"><i class="material-icons">add</i>Import</a>
+                    <a href="/admin/classrooms/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
-                    {{$classrooms->links()}}
                     <div class="table-responsive">
-                        <table class="table">
+                    <table class="table table-striped table-bordered dataTable-content" style="width:100%"
+                            id="example">
                             <thead class=" text-primary">
                                 <th>
                                     ID
@@ -37,37 +37,10 @@ Admin | Manage Classrooms
                                 <th>
                                     Class Teacher
                                 </th>
-                                <th class="text-right">
+                                <th>
                                     Actions
                                 </th>
                             </thead>
-                            <tbody>
-                                @foreach($classrooms as $classroom)<tr>
-                                    <td>
-                                        {{$classroom->id}}
-                                    </td>
-                                    <td>
-                                        {{$classroom->name}}
-                                    </td>
-                                    <td>
-                                        {{$classroom->year}}
-                                    </td>
-                                    <td>
-                                        {{$classroom->section}}
-                                    </td>
-                                    <td>
-                                        {{$classroom->full_name}}
-                                    </td>
-                                    <td class="text-right">
-                                        <a href="#" class="btn btn-warning btn-sm"><i
-                                                class="material-icons">edit</i></a>
-
-                                        <a href="#" class="btn btn-danger btn-sm"><i
-                                                class="material-icons">clear</i></a>
-                                    </td>
-                                    </tr>
-                                    @endforeach
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -75,4 +48,38 @@ Admin | Manage Classrooms
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "processing": true,
+            "language": {
+                "processing": "Loading..."
+            },
+            "serverSide": true,
+            "ajax": "{{route('admin.classrooms')}}",
+            "columns": [{
+                    data: "id"
+                },
+                {
+                    data: "name"
+                },
+                {
+                    data: "year"
+                },
+                {
+                    data: "section"
+                },
+                {
+                    data: "full_name"
+                },
+                {
+                    data: "action",
+                    orderable: false
+                },
+            ]
+        });
+    });
+</script>
 @endsection
