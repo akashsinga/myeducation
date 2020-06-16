@@ -21,7 +21,8 @@ Admin | Manage Students
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered dataTable-content"  style="width:100%" id="example">
+                        <table class="table table-striped table-bordered dataTable-content" style="width:100%"
+                            id="example">
                             <thead class="text-primary">
                                 <th>
                                     Admno
@@ -58,12 +59,40 @@ Admin | Manage Students
         </div>
     </div>
 </div>
+<div class="modal fade" id="confirmbox" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this student?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-success">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+  <div class="spinner-border" role="status" id="spinner">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
 @endsection
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
         $('#example').DataTable({
             "processing": true,
+            "language": {
+                "processing": "Loading..."
+            },
             "serverSide": true,
             "ajax": "{{route('admin.students')}}",
             "columns": [{
@@ -91,7 +120,8 @@ Admin | Manage Students
                     data: "email"
                 },
                 {
-                    data: "action"
+                    data: "action",
+                    orderable: false
                 },
             ]
         });

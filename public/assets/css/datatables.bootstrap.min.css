@@ -216,3 +216,14 @@ div.table-responsive
     > div[class^="col-"]:last-child {
     padding-right: 0;
 }
+#loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: auto;
+    height: auto;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin-left:200px;
+    margin-top:30px;
+  }   

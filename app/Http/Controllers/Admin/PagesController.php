@@ -40,7 +40,7 @@ class PagesController extends Controller
             return Datatables::of($students)->addColumn('action', function ($query) {
                 return 
                 '<a href="' . route("admin.students.edit", $query->id) . '" class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
-                <a href="' . route('admin.students.delete', $query->id) . '" class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
+                <a type="button" data-toggle="modal" data-target="#confirmbox" class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
                 ';
             })
             ->make(true);
