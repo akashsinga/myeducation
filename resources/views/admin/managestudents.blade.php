@@ -20,6 +20,16 @@ Admin | Manage Students
                     <a href="/admin/students/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
+                    @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                    @if (session('failed'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('failed') }}
+                    </div>
+                    @endif
                     @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -121,8 +131,8 @@ Admin | Manage Students
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/admin/students/import" enctype="multipart/form-data"
-                    autocomplete="off" class="form-horizontal" method="POST">
+                <form method="post" action="/admin/students/import" enctype="multipart/form-data" autocomplete="off"
+                    class="form-horizontal" method="POST">
                     {{csrf_field()}}
                     {{method_field('POST')}}
                     <hr>

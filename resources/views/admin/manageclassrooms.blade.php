@@ -18,6 +18,25 @@ Admin | Manage Classrooms
                     <a href="/admin/classrooms/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
+                    @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                    @if (session('failed'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('failed') }}
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered dataTable-content" style="width:100%"
                             id="example">
@@ -41,6 +60,30 @@ Admin | Manage Classrooms
                                     Actions
                                 </th>
                             </thead>
+                            <tbody>
+                                @foreach($classrooms as $classroom)
+                                <tr>
+                                    <td>
+                                        {{$classroom->id}}
+                                    </td>
+                                    <td>
+                                        {{$classroom->name}}
+                                    </td>
+                                    <td>
+                                        {{$classroom->year}}
+                                    </td>
+                                    <td>
+                                        {{$classroom->section}}
+                                    </td>
+                                    <td>
+                                        {{$classroom->section}}
+                                    </td>
+                                    <td>
+                                        {{$classroom->full_name}}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -52,36 +95,7 @@ Admin | Manage Classrooms
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#example').on('processing.dt', function(e, settings, processing) {
-            $('#overlay').css('display', processing ? 'block' : 'none');
-        }).DataTable({
-            "processing": true,
-            "language": {
-                "processing": "Loading..."
-            },
-            "serverSide": true,
-            "ajax": "{{route('admin.classrooms')}}",
-            "columns": [{
-                    data: "id"
-                },
-                {
-                    data: "name"
-                },
-                {
-                    data: "year"
-                },
-                {
-                    data: "section"
-                },
-                {
-                    data: "full_name"
-                },
-                {
-                    data: "action",
-                    orderable: false
-                },
-            ]
-        });
+        $('#example').DataTable();
     });
 </script>
 @endsection

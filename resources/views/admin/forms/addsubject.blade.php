@@ -13,9 +13,23 @@ Admin | Add Subject
                 <p class="card-category">Subject information</p>
             </div>
             <div class="card-body">
-                @if (session('status'))
+                @if (session('success'))
                 <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
+                    {{ session('success') }}
+                </div>
+                @endif
+                @if (session('failed'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('failed') }}
+                </div>
+                @endif
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
                 @endif
                 <div class="col-8">

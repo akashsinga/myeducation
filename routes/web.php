@@ -55,8 +55,8 @@ Route::group(['middleware'=>['auth','admin']], function () {
 
     //add-form submits
 
-    Route::post('/admin/students/add/submit', 'Admin\AdminController@storeUser');
-    Route::post('/admin/faculty/add/submit', 'Admin\AdminController@storeUser');
+    Route::post('/admin/students/add/submit', 'Admin\AdminController@addStudent');
+    Route::post('/admin/faculty/add/submit', 'Admin\AdminController@addFaculty');
     Route::post('/admin/department/add/submit', 'Admin\AdminController@addDepartment');
     Route::post('/admin/subject/add/submit', 'Admin\AdminController@addSubject');
     Route::post('/admin/classroom/add/submit', 'Admin\AdminController@addClassroom');
