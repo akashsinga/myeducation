@@ -74,14 +74,18 @@ Route::group(['middleware'=>['auth','admin']], function () {
     //edit routes
 
     Route::post('/admin/students/edit/{id}', 'Admin\AdminController@updateStudent');
-    Route::post('/admin/subjects/edit/{id}', 'Admin\AdminController@editSubject');
-    Route::post('/admin/classrooms/edit/{id}', 'Admin\AdminController@editClassroom');
-    Route::post('/admin/faculty/edit/{id}', 'Admin\AdminController@editFaculty');
-    Route::post('/admin/departments/edit/{id}', 'Admin\AdminController@editDepartment');
+    Route::post('/admin/subjects/edit/{id}', 'Admin\AdminController@updateSubject');
+    Route::post('/admin/classrooms/edit/{id}', 'Admin\AdminController@updateClassroom');
+    Route::post('/admin/faculty/edit/{id}', 'Admin\AdminController@updateFaculty');
+    Route::post('/admin/departments/edit/{id}', 'Admin\AdminController@updateDepartment');
     
     //delete routes
 
-    Route::post('/admin/students/delete/{id}', 'AdminController@editStudent');
+    Route::post('/admin/students/delete/{id}', 'AdminController@deleteStudent');
+    Route::post('/admin/subjects/delete/{id}', 'Admin\AdminController@deleteSubject');
+    Route::post('/admin/classrooms/delete/{id}', 'Admin\AdminController@deleteClassroom');
+    Route::post('/admin/faculty/delete/{id}', 'Admin\AdminController@deleteFaculty');
+    Route::post('/admin/departments/delete/{id}', 'Admin\AdminController@deleteDepartment');
 });
 Route::group(['middleware'=>['auth','student']], function () {
     Route::get('/home', function () {

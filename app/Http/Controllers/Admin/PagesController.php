@@ -44,7 +44,7 @@ class PagesController extends Controller
         $faculty=DB::table('users')
             ->join('management', 'management.user_id', '=', 'users.id')
             ->join('departments', 'departments.id', '=', 'users.department')
-            ->select('management.id', 'users.full_name', 'departments.name', 'management.designation', 'management.qualification', 'users.mobile', 'users.email')
+            ->select('management.id', 'users.full_name', 'departments.name', 'management.designation', 'management.qualification', 'users.mobile', 'users.email','users.address')
             ->get();
         return view('admin.managefaculty')->with('faculty', $faculty);
     }

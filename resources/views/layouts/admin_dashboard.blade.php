@@ -290,6 +290,12 @@
     <script src="{{URL::asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{URL::asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
+    <script type="text/javascript">
+    window.onload = function() 
+        {
+            $('#overlay').fadeOut();
+        }
+    </script>
     @yield('scripts')
 </body>
 

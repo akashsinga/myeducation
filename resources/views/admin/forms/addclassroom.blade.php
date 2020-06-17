@@ -39,7 +39,7 @@ Admin | Add Classroom
                             <div class="form-group">
                                 <select class="custom-select" name="department">
                                     @foreach($departments as $department)
-                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                    <option value="{{$department->name}}">{{$department->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

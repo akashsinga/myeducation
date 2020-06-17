@@ -236,11 +236,15 @@ Admin | Manage Students
                 </button>
             </div>
             <div class="modal-body">
+                <form id="deleteform" method="post" action="/admin/students">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
+                </form>
                 <p>Are you sure you want to delete this student?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-success">Yes</button>
+                <button type="button" class="btn btn-success deleteconfirm" id="delete">Yes</button>
             </div>
         </div>
     </div>
@@ -249,6 +253,7 @@ Admin | Manage Students
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
+
         var table = $('#example').DataTable();
         table.on('click', '.edit', function() {
             $tr = $(this).closest('tr');
@@ -268,9 +273,25 @@ Admin | Manage Students
             $('#edit-form').attr('action', '/admin/students/edit/' + data[0]);
             $('#editstudent').modal('show');
         });
+
         $('.update').on('click', function() {
             $('#edit-form').submit();
         });
+
+        table.on('click', '.delete', function() {
+            $tr = $(this).closest('tr');
+            if ($($tr).hasClass('child')) {
+                $tr = $tr.prev('.parent');
+            }
+            var data = table.row($tr).data();
+            $('#deleteform').attr('action', '/admin/students/delete/' + data[0]);
+            $('#confirmbox').modal('show');
+        });
+
+        $('.deleteconfirm').on('click', function() {
+            $('#deleteform').submit();
+        });
+
     });
 </script>
 @endsection

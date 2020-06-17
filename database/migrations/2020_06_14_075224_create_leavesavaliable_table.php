@@ -15,10 +15,9 @@ class CreateLeavesavaliableTable extends Migration
     {
         Schema::create('leavesavailable', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
-            $table->bigInteger('Q_id')->unsigned();
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-            $table->bigInteger('avaliable')->unsigned();
+            $table->bigInteger('available')->unsigned();
             $table->timestamps();
         });
     }

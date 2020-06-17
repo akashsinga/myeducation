@@ -79,7 +79,7 @@ Admin | Manage Classrooms
                                         {{$classroom->full_name}}
                                     </td>
                                     <td>
-                                    <a href="#" class="btn btn-warning btn-sm edit"><i
+                                        <a href="#" class="btn btn-warning btn-sm edit"><i
                                                 class="material-icons">edit</i></a>
                                         <a href="#" class="btn btn-danger btn-sm delete"><i
                                                 class="material-icons">clear</i></a>

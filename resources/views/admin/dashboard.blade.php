@@ -121,32 +121,32 @@ Admin | Dashboard
             </div>
         </div>
         <div class="row">
-        <div class="card">
-            <div class="card-header card-header-warning">
-                <div class="card-title">
-                    <h4>Faculty Substitutions</h4>
+            <div class="card">
+                <div class="card-header card-header-warning">
+                    <div class="card-title">
+                        <h4>Faculty Substitutions</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                                <th>
+                                    Faculty ID
+                                </th>
+                                <th>
+                                    Faculty Name
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead class="text-primary">
-                            <th>
-                                Faculty ID
-                            </th>
-                            <th>
-                                Faculty Name
-                            </th>
-                            <th>
-                                Actions
-                            </th>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
         </div>
     </div>
 </div>

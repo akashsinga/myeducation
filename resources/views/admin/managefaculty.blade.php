@@ -63,6 +63,9 @@ Admin | Manage Faculty
                                     Email
                                 </th>
                                 <th>
+                                    Address
+                                </th>
+                                <th>
                                     Actions
                                 </th>
                             </thead>
@@ -89,6 +92,9 @@ Admin | Manage Faculty
                                     </td>
                                     <td>
                                         {{$facult->email}}
+                                    </td>
+                                    <td>
+                                        {{$facult->address}}
                                     </td>
                                     <td>
                                         <a href="#" class="btn btn-warning btn-sm edit"><i
@@ -157,11 +163,75 @@ Admin | Manage Faculty
                 </button>
             </div>
             <div class="modal-body">
+            <form id="deleteform" method="post" action="/admin/faculty">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
+                </form>
                 <p>Are you sure you want to delete this faculty?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-success">Yes</button>
+                <button type="button" class="btn btn-success deleteconfirm">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editfaculty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Faculty</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/admin/faculty" autocomplete="off" class="form-horizontal" method="POST"
+                    id="edit-form">
+                    {{csrf_field()}}
+                    {{method_field('POST')}}
+                    <input type="hidden" name="id" id="id">
+                    <label class="col-form-label text-dark">Faculty Name</label>
+                    <div class="form-group">
+                        <input class="form-control" name="full_name" id="full_name" type="text"
+                            placeholder="Student Name" required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Department</label>
+                    <div class="form-group">
+                        <input class="form-control" name="department" id="department" type="text"
+                            placeholder="Department" required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Qualification</label>
+                    <div class="form-group">
+                        <input class="form-control" name="qualification" id="qualification" type="text" placeholder="Year" required="true"
+                            aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Designation</label>
+                    <div class="form-group">
+                        <input class="form-control" name="designation" id="designation" type="text" placeholder="Section"
+                            required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Mobile</label>
+                    <div class="form-group">
+                        <input class="form-control" name="mobile" id="mobile" type="text" placeholder="Mobile"
+                            required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Email</label>
+                    <div class="form-group">
+                        <input class="form-control" name="email" id="email" type="text" placeholder="Email"
+                            required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Address</label>
+                    <div class="form-group">
+                        <input class="form-control" name="address" id="address" type="text" placeholder="Address"
+                            required="true" aria-required="true" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Clear</button>
+                <button type="button" class="btn btn-success update">Update</button>
             </div>
         </div>
     </div>
@@ -170,7 +240,44 @@ Admin | Manage Faculty
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#example').DataTable();
+
+        var table = $('#example').DataTable();
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+            if ($($tr).hasClass('child')) {
+                $tr = $tr.prev('.parent');
+            }
+            var data = table.row($tr).data();
+            $('#full_name').val(data[1]);
+            $('#department').val(data[2]);
+            $('#qualification').val(data[3]);
+            $('#designation').val(data[4]);
+            $('#mobile').val(data[5]);
+            $('#email').val(data[6]);
+            $('#address').val(data[7]);
+
+            $('#edit-form').attr('action', '/admin/faculty/edit/' + data[0]);
+            $('#editfaculty').modal('show');
+        });
+
+        $('.update').on('click', function() {
+            $('#edit-form').submit();
+        });
+
+        table.on('click', '.delete', function() {
+            $tr = $(this).closest('tr');
+            if ($($tr).hasClass('child')) {
+                $tr = $tr.prev('.parent');
+            }
+            var data = table.row($tr).data();
+            $('#deleteform').attr('action', '/admin/faculty/delete/' + data[0]);
+            $('#confirmbox').modal('show');
+        });
+
+        $('.deleteconfirm').on('click', function() {
+            $('#deleteform').submit();
+        });
+
     });
 </script>
 @endsection

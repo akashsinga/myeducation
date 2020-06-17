@@ -56,8 +56,9 @@ Admin | Add Subject
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <select class="custom-select" name="dept">
-                                    <option value="1">CSE</option>
-                                    <option value="2">IT</option>
+                                    @foreach($departments as $dept)
+                                        <option value="{{$dept->name}}">{{$dept->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
