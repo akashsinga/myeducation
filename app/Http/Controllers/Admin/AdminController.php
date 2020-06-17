@@ -4,28 +4,32 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Hash;
 use App\User;
 use App\Models\Classroom;
-use DB;
 use App\Models\Department;
 use App\Models\Subject;
 use App\Models\Student;
 use App\Models\Management;
 use App\Imports\StudentImport;
+use Hash;
+use DB;
 
 class AdminController extends Controller
 {
-    //FUNCTIONALITIES
     public function importStudents(Request $request)
     {
-        $this->validate($request,[
-            'importfile'=>'required | mimes:xls,xlsx',
+        $validator=Validator::make($request->all(), [
+          'importfile'=>'required|mimes:xls,xlsx'
         ]);
-        $path=$request->file('importfile')->getRealPath();
-        $import_status=Excel::import(new StudentImport, $path);
-        return redirect('/admin/students')->with('status', 'Imported Successfully');
+        if ($validator->passes()) {
+            $path=$request->file('importfile')->getRealPath();
+            $import_status=Excel::import(new StudentImport, $path);
+            return redirect('/admin/students')->with('status', 'Imported Successfully');
+        } else {
+            return redirect('/admin/students')->withErrors($validator)->withInput();
+        }
     }
 
     public function importFaculty(Request $request)
@@ -56,7 +60,7 @@ class AdminController extends Controller
 
     public function addUser(Request $request)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'full_name'=>'required',
             'father_name'=>'required',
             'department'=>'required',
@@ -89,11 +93,11 @@ class AdminController extends Controller
 
     public function addStudent(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'year'=>'required',
             'section'=>'required',
         ]);
-        $classroom_id=Classroom::where('department',$request->input('department'))->where('year', $request->input('year'))->where('section', $request->input('section'))->get();
+        $classroom_id=Classroom::where('department', $request->input('department'))->where('year', $request->input('year'))->where('section', $request->input('section'))->get();
         $c=0;
         foreach ($classroom_id as $class) {
             $c=$class->id;
@@ -108,7 +112,7 @@ class AdminController extends Controller
 
     public function addManagement(Request $request, $id)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'designation'=>'required',
             'qualification'=>'required',
             'salary'=>'required',

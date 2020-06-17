@@ -41,6 +41,27 @@ Admin | Manage Subjects
                                     Actions
                                 </th>
                             </thead>
+                            <tbody>
+                                @foreach($subjects as $subject)
+                                <tr>
+                                    <td>
+                                        {{$subject->id}}
+                                    </td>
+                                    <td>
+                                        {{$subject->code}}
+                                    </td>
+                                    <td>
+                                        {{$subject->name}}
+                                    </td>
+                                    <td>
+                                        {{$subject->name}}
+                                    </td>
+                                    <td>
+                                        {{$subject->Dept_name}}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -52,36 +73,7 @@ Admin | Manage Subjects
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#example').on('processing.dt', function(e, settings, processing) {
-            $('#overlay').css('display', processing ? 'block' : 'none');
-        }).DataTable({
-            "processing": true,
-            "language": {
-                "processing": "Loading..."
-            },
-            "serverSide": true,
-            "ajax": "{{route('admin.subjects')}}",
-            "columns": [{
-                    data: "id"
-                },
-                {
-                    data: "code"
-                },
-                {
-                    data: "name"
-                },
-                {
-                    data: "credits"
-                },
-                {
-                    data: "department"
-                },
-                {
-                    data: "action",
-                    orderable: false
-                },
-            ]
-        });
+        var table = $('#example').DataTable();
     });
 </script>
 @endsection

@@ -47,6 +47,39 @@ Admin | Manage Faculty
                                     Actions
                                 </th>
                             </thead>
+                            <tbody>
+                                @foreach($faculty as $facult)
+                                <tr>
+                                    <td>
+                                        {{$facult->id}}
+                                    </td>
+                                    <td>
+                                        {{$facult->full_name}}
+                                    </td>
+                                    <td>
+                                        {{$facult->name}}
+                                    </td>
+                                    <td>
+                                        {{$facult->designation}}
+                                    </td>
+                                    <td>
+                                        {{$facult->qualification}}
+                                    </td>
+                                    <td>
+                                        {{$facult->mobile}}
+                                    </td>
+                                    <td>
+                                        {{$facult->email}}
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning btn-sm edit"><i
+                                                class="material-icons">edit</i></a>
+                                        <a href="#" class="btn btn-danger btn-sm delete"><i
+                                                class="material-icons">clear</i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -118,44 +151,7 @@ Admin | Manage Faculty
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
-        var columns = [];
-        var response = null;
-        $('#example').on('processing.dt', function(e, settings, processing) {
-            $('#overlay').css('display', processing ? 'block' : 'none');
-        }).DataTable({
-            "processing": true,
-            "language": {
-                "processing": "Loading..."
-            },
-            "serverSide": true,
-            "ajax": "{{route('admin.faculty')}}",
-            "columns": [{
-                    data: "id"
-                },
-                {
-                    data: "full_name"
-                },
-                {
-                    data: "name"
-                },
-                {
-                    data: "designation"
-                },
-                {
-                    data: "qualification"
-                },
-                {
-                    data: "mobile"
-                },
-                {
-                    data: "email"
-                },
-                {
-                    data: "action",
-                    orderable: false
-                },
-            ]
-        });
+        $('#example').DataTable();
     });
 </script>
 @endsection

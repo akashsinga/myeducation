@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('father_name');
             $table->bigInteger('department')->unsigned();
             $table->foreign('department')->references('id')->on('departments');
-            $table->string('mobile');
+            $table->string('mobile')->unique();
             $table->string('email');
             $table->string('password');
             $table->longText('address')->nullable();

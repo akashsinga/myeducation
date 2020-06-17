@@ -36,6 +36,27 @@ Admin | Manage Departments
                                     Actions
                                 </th>
                             </thead>
+                            <tbody>
+                                @foreach($departments as $department)
+                                <tr>
+                                    <td>
+                                        {{$department->id}}
+                                    </td>
+                                    <td>
+                                        {{$department->name}}
+                                    </td>
+                                    <td>
+                                        {{$department->hod}}
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning btn-sm edit"><i
+                                                class="material-icons">edit</i></a>
+                                        <a href="#" class="btn btn-danger btn-sm delete"><i
+                                                class="material-icons">clear</i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -67,30 +88,7 @@ Admin | Manage Departments
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#example').on('processing.dt', function(e, settings, processing) {
-            $('#overlay').css('display', processing ? 'block' : 'none');
-        }).DataTable({
-            "processing": true,
-            "language": {
-                "processing": "Loading..."
-            },
-            "serverSide": true,
-            "ajax": "{{route('admin.departments')}}",
-            "columns": [{
-                    data: "id"
-                },
-                {
-                    data: "name"
-                },
-                {
-                    data: "hod"
-                },
-                {
-                    data: "action",
-                    orderable: false
-                },
-            ]
-        });
+        $('#example').DataTable();
     });
 </script>
 @endsection

@@ -59,7 +59,7 @@ trait GeneratesUsernames
      */
     public function generatorFieldName(): string
     {
-        return 'name';
+        return 'full_name';
     }
 
     /**

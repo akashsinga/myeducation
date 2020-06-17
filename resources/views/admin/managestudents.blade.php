@@ -20,6 +20,15 @@ Admin | Manage Students
                     <a href="/admin/students/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered dataTable-content" style="width:100%"
                             id="example">
@@ -112,7 +121,7 @@ Admin | Manage Students
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/admin/students/import/submit" enctype="multipart/form-data"
+                <form method="post" action="/admin/students/import" enctype="multipart/form-data"
                     autocomplete="off" class="form-horizontal" method="POST">
                     {{csrf_field()}}
                     {{method_field('POST')}}

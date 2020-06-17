@@ -32,18 +32,21 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/admin', function () {
         return redirect('admin/dashboard');
     });
+
     //view main pages
+
     Route::get('/admin/dashboard', 'Admin\PagesController@index');
-    Route::get('/admin/departments', 'Admin\PagesController@viewDepartments')->name('admin.departments');
-    Route::get('/admin/students', 'Admin\PagesController@viewStudents')->name('admin.students');
-    Route::get('/admin/faculty', 'Admin\PagesController@viewFaculty')->name('admin.faculty');
+    Route::get('/admin/departments', 'Admin\PagesController@viewDepartments');
+    Route::get('/admin/students', 'Admin\PagesController@viewStudents');
+    Route::get('/admin/faculty', 'Admin\PagesController@viewFaculty');
     Route::get('/admin/complaints', 'Admin\PagesController@viewComplaints');
-    Route::get('/admin/classrooms', 'Admin\PagesController@viewClassrooms')->name('admin.classrooms');
-    Route::get('/admin/subjects', 'Admin\PagesController@viewSubjects')->name('admin.subjects');
+    Route::get('/admin/classrooms', 'Admin\PagesController@viewClassrooms');
+    Route::get('/admin/subjects', 'Admin\PagesController@viewSubjects');
     Route::get('/admin/schedule', 'Admin\PagesController@viewSchedule');
     Route::get('/admin/leaves/applications', 'Admin\PagesController@viewLeaveApplications');
 
     //add view routes
+
     Route::get('/admin/students/add', 'Admin\PagesController@viewAddStudent');
     Route::get('/admin/faculty/add', 'Admin\PagesController@viewAddFaculty');
     Route::get('/admin/subjects/add', 'Admin\PagesController@viewAddSubject');
@@ -51,23 +54,33 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/admin/departments/add', 'Admin\PagesController@viewAddDepartment');
 
     //add-form submits
-    Route::post('/admin/students/add/submit', 'AdminController@storeUser');
-    Route::post('/admin/faculty/add/submit', 'AdminController@storeUser');
-    Route::post('/admin/department/add/submit', 'AdminController@addDepartment');
-    Route::post('/admin/subject/add/submit', 'AdminController@addSubject');
-    Route::post('/admin/classroom/add/submit', 'AdminController@addClassroom');
+
+    Route::post('/admin/students/add/submit', 'Admin\AdminController@storeUser');
+    Route::post('/admin/faculty/add/submit', 'Admin\AdminController@storeUser');
+    Route::post('/admin/department/add/submit', 'Admin\AdminController@addDepartment');
+    Route::post('/admin/subject/add/submit', 'Admin\AdminController@addSubject');
+    Route::post('/admin/classroom/add/submit', 'Admin\AdminController@addClassroom');
+
     //leave approvals
-    Route::post('/admin/leaves/applications/approve/{id}', 'AdminController@approveLeave');
-    Route::post('/admin/leaves/applications/reject/{id}', 'AdminController@rejectLeave');//check here
+
+    Route::post('/admin/leaves/applications/approve/{id}', 'Admin\AdminController@approveLeave');
+    Route::post('/admin/leaves/applications/reject/{id}', 'Admin\AdminController@rejectLeave');//check here
+    
     //import routes
-    Route::post('/admin/students/import/submit', 'AdminController@importStudents');
+
+    Route::post('/admin/students/import', 'Admin\AdminController@importStudents');
+    Route::post('/admin/faculty/import', 'Admin\AdminController@importStudents');
+    
     //edit routes
+
     Route::post('/admin/students/edit/{id}', 'Admin\AdminController@updateStudent')->name('admin.students.edit');
     Route::post('/admin/subjects/edit/{id}', 'Admin\AdminController@editSubject')->name('admin.subjects.edit');
     Route::post('/admin/classrooms/edit/{id}', 'Admin\AdminController@editClassroom')->name('admin.classrooms.edit');
     Route::post('/admin/faculty/edit/{id}', 'Admin\AdminController@editFaculty')->name('admin.faculty.edit');
     Route::post('/admin/departments/edit/{id}', 'Admin\AdminController@editDepartment')->name('admin.departments.edit');
+    
     //delete routes
+
     Route::post('/admin/students/delete/{id}', 'AdminController@editStudent')->name('admin.students.delete');
 });
 Route::group(['middleware'=>['auth','student']], function () {
