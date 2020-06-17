@@ -118,7 +118,11 @@ Admin | Manage Faculty
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#example').DataTable({
+        var columns = [];
+        var response = null;
+        $('#example').on('processing.dt', function(e, settings, processing) {
+            $('#overlay').css('display', processing ? 'block' : 'none');
+        }).DataTable({
             "processing": true,
             "language": {
                 "processing": "Loading..."

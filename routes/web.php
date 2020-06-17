@@ -39,7 +39,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/admin/faculty', 'Admin\PagesController@viewFaculty')->name('admin.faculty');
     Route::get('/admin/complaints', 'Admin\PagesController@viewComplaints');
     Route::get('/admin/classrooms', 'Admin\PagesController@viewClassrooms')->name('admin.classrooms');
-    Route::get('/admin/subjects', 'Admin\PagesController@viewSubjects');
+    Route::get('/admin/subjects', 'Admin\PagesController@viewSubjects')->name('admin.subjects');
     Route::get('/admin/schedule', 'Admin\PagesController@viewSchedule');
     Route::get('/admin/leaves/applications', 'Admin\PagesController@viewLeaveApplications');
 
@@ -62,10 +62,11 @@ Route::group(['middleware'=>['auth','admin']], function () {
     //import routes
     Route::post('/admin/students/import/submit', 'AdminController@importStudents');
     //edit routes
-    Route::post('/admin/students/edit/{id}', 'AdminController@editStudent')->name('admin.students.edit');
-    Route::post('/admin/classrooms/edit/{id}', 'AdminController@editClassroom')->name('admin.classrooms.edit');
-    Route::post('/admin/faculty/edit/{id}', 'AdminController@editFaculty')->name('admin.faculty.edit');
-    Route::post('/admin/departments/edit/{id}', 'AdminController@editDepartment')->name('admin.departments.edit');
+    Route::post('/admin/students/edit/{id}', 'Admin\AdminController@updateStudent')->name('admin.students.edit');
+    Route::post('/admin/subjects/edit/{id}', 'Admin\AdminController@editSubject')->name('admin.subjects.edit');
+    Route::post('/admin/classrooms/edit/{id}', 'Admin\AdminController@editClassroom')->name('admin.classrooms.edit');
+    Route::post('/admin/faculty/edit/{id}', 'Admin\AdminController@editFaculty')->name('admin.faculty.edit');
+    Route::post('/admin/departments/edit/{id}', 'Admin\AdminController@editDepartment')->name('admin.departments.edit');
     //delete routes
     Route::post('/admin/students/delete/{id}', 'AdminController@editStudent')->name('admin.students.delete');
 });

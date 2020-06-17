@@ -18,9 +18,9 @@ Admin | Manage Subjects
                     <a href="/admin/subjects/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
-                    {{$subjects->links()}}
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-striped table-bordered dataTable-content" style="width:100%"
+                            id="example">
                             <thead class=" text-primary">
                                 <th>
                                     ID
@@ -37,35 +37,10 @@ Admin | Manage Subjects
                                 <th>
                                     Credits
                                 </th>
-                                <th class="text-center">
+                                <th class="text-right">
                                     Actions
                                 </th>
                             </thead>
-                            <tbody>
-                                @foreach($subjects as $subject)<tr>
-                                    <td>
-                                        {{$subject->id}}
-                                    </td>
-                                    <td>
-                                        {{$subject->code}}
-                                    </td>
-                                    <td>
-                                        {{$subject->name}}
-                                    </td>
-                                    <td>
-                                        {{$subject->Dept_name}}
-                                    </td>
-                                    <td>
-                                        {{$subject->credits}}
-                                    </td>
-                                    <td class="text-right">
-                                        <a href="#" class="btn btn-warning btn-sm"><i
-                                                class="material-icons">edit</i></a>
-                                        <a href="#" class="btn btn-danger btn-sm"><i
-                                                class="material-icons">clear</i></a>
-                                    </td>
-                                    @endforeach
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -73,4 +48,40 @@ Admin | Manage Subjects
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').on('processing.dt', function(e, settings, processing) {
+            $('#overlay').css('display', processing ? 'block' : 'none');
+        }).DataTable({
+            "processing": true,
+            "language": {
+                "processing": "Loading..."
+            },
+            "serverSide": true,
+            "ajax": "{{route('admin.subjects')}}",
+            "columns": [{
+                    data: "id"
+                },
+                {
+                    data: "code"
+                },
+                {
+                    data: "name"
+                },
+                {
+                    data: "credits"
+                },
+                {
+                    data: "department"
+                },
+                {
+                    data: "action",
+                    orderable: false
+                },
+            ]
+        });
+    });
+</script>
 @endsection

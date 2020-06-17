@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
@@ -20,6 +20,9 @@ class AdminController extends Controller
     //FUNCTIONALITIES
     public function importStudents(Request $request)
     {
+        $this->validate($request,[
+            'importfile'=>'required | mimes:xls,xlsx',
+        ]);
         $path=$request->file('importfile')->getRealPath();
         $import_status=Excel::import(new StudentImport, $path);
         return redirect('/admin/students')->with('status', 'Imported Successfully');
@@ -53,6 +56,15 @@ class AdminController extends Controller
 
     public function addUser(Request $request)
     {
+        $this->validate($request,[
+            'full_name'=>'required',
+            'father_name'=>'required',
+            'department'=>'required',
+            'mobile'=>'required',
+            'email'=>'required',
+            'address'=>'required',
+            'type'=>'required'
+        ]);
         $user=new User();
         $user->full_name=$request->input('full_name');
         $user->father_name=$request->input('father_name');
@@ -77,8 +89,12 @@ class AdminController extends Controller
 
     public function addStudent(Request $request, $id)
     {
-        $classroom_id=Classroom::where('year', $request->input('year'))->where('section', $request->input('section'))->get();
-        $c=1;
+        $this->validate($request,[
+            'year'=>'required',
+            'section'=>'required',
+        ]);
+        $classroom_id=Classroom::where('department',$request->input('department'))->where('year', $request->input('year'))->where('section', $request->input('section'))->get();
+        $c=0;
         foreach ($classroom_id as $class) {
             $c=$class->id;
         }
@@ -92,6 +108,11 @@ class AdminController extends Controller
 
     public function addManagement(Request $request, $id)
     {
+        $this->validate($request,[
+            'designation'=>'required',
+            'qualification'=>'required',
+            'salary'=>'required',
+        ]);
         $management=new Management();
         $management->user_id=$id;
         $management->designation=$request->input('designation');

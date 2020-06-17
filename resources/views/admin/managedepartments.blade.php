@@ -15,11 +15,12 @@ Admin | Manage Departments
                 </div>
                 <div class="row ml-auto">
                     <a href="#" class="btn btn-success btn-sm"><i class="material-icons">add</i>Import</a>
-                    <a href="/admin/departments/add" class="btn btn-info btn-sm"><i class="material-icons">add</i>Add</a>
+                    <a href="/admin/departments/add" class="btn btn-info btn-sm"><i
+                            class="material-icons">add</i>Add</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                    <table class="table table-striped table-bordered dataTable-content" style="width:100%"
+                        <table class="table table-striped table-bordered dataTable-content" style="width:100%"
                             id="example">
                             <thead class=" text-primary">
                                 <th>
@@ -66,7 +67,9 @@ Admin | Manage Departments
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#example').DataTable({
+        $('#example').on('processing.dt', function(e, settings, processing) {
+            $('#overlay').css('display', processing ? 'block' : 'none');
+        }).DataTable({
             "processing": true,
             "language": {
                 "processing": "Loading..."

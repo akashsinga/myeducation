@@ -24,58 +24,29 @@ class PagesController extends Controller
 
     public function viewDepartments()
     {
-        if(request()->ajax())
-        {
-            $departments=Department::all();
-            return Datatables::of($departments)->addColumn('action', function ($query) {
-                return 
-                '<a href="' . route("admin.departments.edit", $query->id) . '" class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
-                <a type="button" data-toggle="modal" data-target="#confirmbox" class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
-                ';
-            })
-            ->make(true);
-        }
-        return view('admin.managedepartments');
+        $departments=Department::all();
+        return view('admin.managedepartments')->with('departments',$departments);
     }
 
     public function viewStudents()
     {
-        if (request()->ajax()) {
-            $students=DB::table('users')
+        $students=DB::table('users')
             ->join('students', 'students.student_id', '=', 'users.id')
             ->join('classrooms', 'classrooms.id', '=', 'students.classroom_id')
             ->join('departments', 'departments.id', '=', 'users.department')
-            ->select('students.id', 'users.full_name', 'users.father_name', 'departments.name', 'classrooms.year', 'classrooms.section', 'users.mobile', 'users.email')
+            ->select('students.id', 'users.full_name', 'users.father_name', 'departments.name', 'classrooms.year', 'classrooms.section', 'users.mobile', 'users.email','users.address')
             ->get();
-            return Datatables::of($students)->addColumn('action', function ($query) {
-                return 
-                '<a href="' . route("admin.students.edit", $query->id) . '" class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
-                <a type="button" data-toggle="modal" data-target="#confirmbox" class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
-                ';
-            })
-            ->make(true);
-        }
-        return view('admin.managestudents');
+        return view('admin.managestudents')->with('students', $students);
     }
 
     public function viewFaculty()
     {
-        if(request()->ajax())
-        {
-            $faculty=DB::table('users')
+        $faculty=DB::table('users')
             ->join('management', 'management.user_id', '=', 'users.id')
             ->join('departments', 'departments.id', '=', 'users.department')
             ->select('management.id', 'users.full_name', 'departments.name', 'management.designation', 'management.qualification', 'users.mobile', 'users.email')
             ->get();
-            return Datatables::of($faculty)->addColumn('action', function ($query) {
-                return 
-                '<a href="' . route("admin.faculty.edit", $query->id) . '" class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
-                <a type="button" data-toggle="modal" data-target="#confirmbox" class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
-                ';
-            })
-            ->make(true);
-        }
-        return view('admin.managefaculty');
+        return view('admin.managefaculty')->with('faculty', $faculty);
     }
 
     public function viewComplaints()
@@ -92,23 +63,13 @@ class PagesController extends Controller
 
     public function viewClassrooms()
     {
-        if(request()->ajax())
-        {
-            $classrooms=DB::table('classrooms')
+        $classrooms=DB::table('classrooms')
             ->join('departments', 'departments.id', '=', 'classrooms.department')
             ->join('management', 'classrooms.class_teacher', '=', 'management.id')
             ->join('users', 'users.id', '=', 'management.user_id')
             ->select('classrooms.id', 'departments.name', 'classrooms.year', 'classrooms.section', 'users.full_name')
             ->get();
-            return Datatables::of($classrooms)->addColumn('action', function ($query) {
-                return 
-                '<a href="' . route("admin.classrooms.edit", $query->id) . '" class="btn btn-warning btn-sm"><i class="material-icons">edit</i></a>
-                <a type="button" data-toggle="modal" data-target="#confirmbox" class="btn btn-danger btn-sm"><i class="material-icons">clear</i></a>
-                ';
-            })
-            ->make(true);
-        }
-        return view('admin.manageclassrooms');
+        return view('admin.manageclassrooms')->with('classrooms', $classrooms);
     }
 
     public function viewSubjects()
@@ -116,7 +77,7 @@ class PagesController extends Controller
         $subjects=DB::table('subjects')
         ->join('departments', 'departments.id', "=", 'subjects.department')
         ->select('subjects.id', 'subjects.name', 'subjects.credits', 'subjects.code', 'departments.name as Dept_name')
-        ->paginate(15);
+        ->get();
         return view('admin.managesubjects')->with('subjects', $subjects);
     }
 
@@ -154,7 +115,7 @@ class PagesController extends Controller
 
     public function viewAddFaculty()
     {
-        $departments=Department::select('id', 'name')->distinct()->get();
+        $departments=Department::select('id', 'name')->get();
         return view('admin.forms.addfaculty')->with('departments', $departments);
     }
 

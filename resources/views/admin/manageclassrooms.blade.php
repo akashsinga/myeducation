@@ -19,7 +19,7 @@ Admin | Manage Classrooms
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                    <table class="table table-striped table-bordered dataTable-content" style="width:100%"
+                        <table class="table table-striped table-bordered dataTable-content" style="width:100%"
                             id="example">
                             <thead class=" text-primary">
                                 <th>
@@ -52,7 +52,9 @@ Admin | Manage Classrooms
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#example').DataTable({
+        $('#example').on('processing.dt', function(e, settings, processing) {
+            $('#overlay').css('display', processing ? 'block' : 'none');
+        }).DataTable({
             "processing": true,
             "language": {
                 "processing": "Loading..."

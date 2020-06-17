@@ -49,9 +49,51 @@ Admin | Manage Students
                                     Email
                                 </th>
                                 <th>
+                                    Address
+                                </th>
+                                <th>
                                     Actions
                                 </th>
                             </thead>
+                            <tbody>
+                                @foreach($students as $student)
+                                <tr>
+                                    <td>
+                                        {{$student->id}}
+                                    </td>
+                                    <td>
+                                        {{$student->full_name}}
+                                    </td>
+                                    <td>
+                                        {{$student->father_name}}
+                                    </td>
+                                    <td>
+                                        {{$student->name}}
+                                    </td>
+                                    <td>
+                                        {{$student->year}}
+                                    </td>
+                                    <td>
+                                        {{$student->section}}
+                                    </td>
+                                    <td>
+                                        {{$student->mobile}}
+                                    </td>
+                                    <td>
+                                        {{$student->email}}
+                                    </td>
+                                    <td>
+                                        {{$student->address}}
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning btn-sm edit"><i
+                                                class="material-icons">edit</i></a>
+                                        <a href="#" class="btn btn-danger btn-sm delete"><i
+                                                class="material-icons">clear</i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -99,6 +141,71 @@ Admin | Manage Students
         </div>
     </div>
 </div>
+<div class="modal fade" id="editstudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/admin/students" autocomplete="off" class="form-horizontal" method="POST"
+                    id="edit-form">
+                    {{csrf_field()}}
+                    {{method_field('POST')}}
+                    <input type="hidden" name="id" id="id">
+                    <label class="col-form-label text-dark">Student Name</label>
+                    <div class="form-group">
+                        <input class="form-control" name="full_name" id="full_name" type="text"
+                            placeholder="Student Name" required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Father Name</label>
+                    <div class="form-group">
+                        <input class="form-control" name="father_name" id="father_name" type="text"
+                            placeholder="Father Name" required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Department</label>
+                    <div class="form-group">
+                        <input class="form-control" name="department" id="department" type="text"
+                            placeholder="Department" required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Year</label>
+                    <div class="form-group">
+                        <input class="form-control" name="year" id="year" type="text" placeholder="Year" required="true"
+                            aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Section</label>
+                    <div class="form-group">
+                        <input class="form-control" name="section" id="section" type="text" placeholder="Section"
+                            required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Mobile</label>
+                    <div class="form-group">
+                        <input class="form-control" name="mobile" id="mobile" type="text" placeholder="Mobile"
+                            required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Email</label>
+                    <div class="form-group">
+                        <input class="form-control" name="email" id="email" type="text" placeholder="Email"
+                            required="true" aria-required="true" />
+                    </div>
+                    <label class="col-form-label text-dark">Address</label>
+                    <div class="form-group">
+                        <input class="form-control" name="address" id="address" type="text" placeholder="Address"
+                            required="true" aria-required="true" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Clear</button>
+                <button type="button" class="btn btn-success update">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="confirmbox" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -119,51 +226,31 @@ Admin | Manage Students
         </div>
     </div>
 </div>
-<div class="text-center">
-  <div class="spinner-border" role="status" id="spinner">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div>
 @endsection
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#example').DataTable({
-            "processing": true,
-            "language": {
-                "processing": "Loading..."
-            },
-            "serverSide": true,
-            "ajax": "{{route('admin.students')}}",
-            "columns": [{
-                    data: "id"
-                },
-                {
-                    data: "full_name"
-                },
-                {
-                    data: "father_name"
-                },
-                {
-                    data: "name"
-                },
-                {
-                    data: "year"
-                },
-                {
-                    data: "section"
-                },
-                {
-                    data: "mobile"
-                },
-                {
-                    data: "email"
-                },
-                {
-                    data: "action",
-                    orderable: false
-                },
-            ]
+        var table = $('#example').DataTable();
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+            if ($($tr).hasClass('child')) {
+                $tr = $tr.prev('.parent');
+            }
+            var data = table.row($tr).data();
+            $('#full_name').val(data[1]);
+            $('#father_name').val(data[2]);
+            $('#department').val(data[3]);
+            $('#year').val(data[4]);
+            $('#section').val(data[5]);
+            $('#mobile').val(data[6]);
+            $('#email').val(data[7]);
+            $('#address').val(data[8]);
+
+            $('#edit-form').attr('action', '/admin/students/edit/' + data[0]);
+            $('#editstudent').modal('show');
+        });
+        $('.update').on('click', function() {
+            $('#edit-form').submit();
         });
     });
 </script>
