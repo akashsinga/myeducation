@@ -21,7 +21,7 @@ class StudentImport implements ToCollection
         foreach ($collection as $row) {
             DB::beginTransaction();
             try {
-                $department=Department::where('name', $row[2])->get();
+                $department=Department::where('name', $row[2])->first();
                 $user=User::create([
                     'full_name'=>$row[0],
                     'father_name'=>$row[1],
@@ -33,18 +33,14 @@ class StudentImport implements ToCollection
                     'type'=>"student"
                 ]);
                 $user_id=$user->id;
-                $classroom=Classroom::where('department', $department[0]->id)->where('year', $row[7])->where('section', $row[8])->get();
-                $classroom_id=10;
-                foreach ($classroom as $c) {
-                    $classroom_id=$c->id;
-                }
+                $classroom=Classroom::where('department', $department->id)->where('year', $row[7])->where('section', $row[8])->first();
                 $student=Student::create([
                     'student_id'=>$user_id,
                     'rollnumber'=>'',
-                    'classroom_id'=>$classroom_id,
+                    'classroom_id'=>$classroom->id,
                     'score'=>0
                 ]);
-                if ($user && $student) {
+                if($user && $student) {
                     DB::commit();
                 } else {
                     DB::rollback();

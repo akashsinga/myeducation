@@ -17,11 +17,11 @@ class FacultyImport implements ToCollection
             DB::beginTransaction();
             try 
             {
-                $department=Department::where('name', $row[2])->get();
+                $department=Department::where('name', $row[2])->first();
                 $user=User::create([
                     'full_name'=>$row[0],
                     'father_name'=>$row[1],
-                    'department'=>$department[0]->id,
+                    'department'=>$department->id,
                     'mobile'=>$row[3],
                     'email'=>$row[4],
                     'password'=>Hash::make('12345678'),
@@ -40,10 +40,10 @@ class FacultyImport implements ToCollection
                 if ($user && $management) {
                     DB::commit();
                 } else {
-                    DB::rollback();
+                    DB::rollBack();
                 }
             } catch (Exception $e) {
-                DB::rollback();
+                DB::rollBack();
             }
         }
     }

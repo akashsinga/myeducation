@@ -48,7 +48,7 @@ class AdminController extends Controller
     
     public function addStudent(Request $request)
     {
-        $validator=Validation::make($request->all(), [
+        $validator=Validator::make($request->all(), [
             'full_name'=>'required',
             'father_name'=>'required',
             'department'=>'required',
@@ -59,7 +59,9 @@ class AdminController extends Controller
             'section'=>'required',
         ]);
         if ($validator->passes()) {
-            DB::transaction(function () {
+            DB::beginTransaction();
+            try
+            {
                 $department=Department::where('name', $request->input('department'))->first();
                 $user_id=User::create([
                     'full_name'=>$request->input('full_name'),
@@ -81,12 +83,17 @@ class AdminController extends Controller
                     'classroom_id'=>$classroom->id,
                     'score'=>0
                 ]);
+                DB::commit();
                 return redirect('/admin/students/add')->with('success', 'Student Successfully Added');
-            });
+            }
+            catch(Exception $e)
+            {
+                DB::rollBack();
+                return redirect('/admin/students/add')->with('failed', 'Student Registration Failed');
+            }
         } else {
             return redirect('/admin/students/add')->withErrors($validator)->withInput();
         }
-        return redirect('/admin/students/add')->with('failed', 'Student Registration Failed');
     }
 
     public function addFaculty(Request $request)
@@ -102,33 +109,42 @@ class AdminController extends Controller
             'designation'=>'required',
             'salary'=>'required'
         ]);
-        if ($validator->passes()) {
-            DB::transaction(function () {
-                $department=Department::where('name', $request->input('department'))->first();
+        if ($validator->passes()) 
+        {
+            $data=$request->all();
+            DB::beginTransaction();
+            try
+            {
+                $department=Department::where('name', $data['department'])->first();
                 $user_id=User::create([
-                    'full_name'=>$request->input('full_name'),
-                    'father_name'=>$request->input('father_name'),
+                    'full_name'=>$data['full_name'],
+                    'father_name'=>$data['father_name'],
                     'department'=>$department->id,
-                    'mobile'=>$request->input('mobile'),
-                    'email'=>$request->input('email'),
+                    'mobile'=>$data['mobile'],
+                    'email'=>$data['email'],
                     'password'=>Hash::make('12345678'),
-                    'address'=>$request->input('address'),
+                    'address'=>$data['address'],
                     'type'=>'faculty'
                 ])->id;
                 Management::create([
                     'user_id'=>$user_id,
-                    'designation'=>$request->input('designation'),
-                    'qualification'=>$request->input('qualification'),
-                    'salary'=>$request->input('salary'),
+                    'designation'=>$data['designation'],
+                    'qualification'=>$data['qualification'],
+                    'salary'=>$data['salary'],
                     'lop'=>0,
                     'ccl'=>0
                 ]);
+                DB::commit();
                 return redirect('/admin/faculty/add')->with('success', 'Faculty Successfully Added');
-            });
+            }
+            catch(Exception $e)
+            {
+                DB::rollBack();
+                return redirect('/admin/faculty/add')->with('failed', 'Faculty Registration Failed');
+            }
         } else {
             return redirect('/admin/faculty/add')->withErrors($validator)->withInput();
         }
-        return redirect('/admin/faculty/add')->with('failed', 'Faculty Registration Failed');
     }
    
     public function addSubject(Request $request)
@@ -139,7 +155,8 @@ class AdminController extends Controller
             'credits'=>'required',
             'department'=>'required'
         ]);
-        if ($validator->passes()) {
+        if ($validator->passes())
+        {
             Subject::create([
                 'code'=>$request->input('subject_code'),
                 'name'=>$request->input('sname'),

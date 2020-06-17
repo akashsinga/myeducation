@@ -76,10 +76,13 @@ Admin | Manage Classrooms
                                         {{$classroom->section}}
                                     </td>
                                     <td>
-                                        {{$classroom->section}}
+                                        {{$classroom->full_name}}
                                     </td>
                                     <td>
-                                        {{$classroom->full_name}}
+                                    <a href="#" class="btn btn-warning btn-sm edit"><i
+                                                class="material-icons">edit</i></a>
+                                        <a href="#" class="btn btn-danger btn-sm delete"><i
+                                                class="material-icons">clear</i></a>
                                     </td>
                                 </tr>
                                 @endforeach
