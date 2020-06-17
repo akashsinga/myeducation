@@ -15,7 +15,8 @@ class FacultyImport implements ToCollection
         //
         foreach ($collection as $row) {
             DB::beginTransaction();
-            try {
+            try 
+            {
                 $department=Department::where('name', $row[2])->get();
                 $user=User::create([
                     'full_name'=>$row[0],

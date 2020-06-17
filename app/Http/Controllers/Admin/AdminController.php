@@ -133,13 +133,22 @@ class AdminController extends Controller
    
     public function addSubject(Request $request)
     {
-        Subject::create([
-            'code'=>$request->input('subject_code'),
-            'name'=>$request->input('sname'),
-            'credits'=>$request->input('credits'),
-            'department'=>$request->input('dept'),
+        $validator=Validator::make($request->all(), [
+            'code'=>'required|unique:subjects',
+            'name'=>'required',
+            'credits'=>'required',
+            'department'=>'required'
         ]);
-        return redirect('/admin/subjects/add')->with('status', 'Subject Added Successfully');
+        if ($validator->passes()) {
+            Subject::create([
+                'code'=>$request->input('subject_code'),
+                'name'=>$request->input('sname'),
+                'credits'=>$request->input('credits'),
+                'department'=>$request->input('dept'),
+            ]);
+            return redirect('/admin/subjects/add')->with('success', 'Subject Added Successfully');
+        }
+        return redirect('/admin/subjects/add')->withErrors($validator)->withInput();
     }
 
     public function addDepartment(Request $request)
@@ -159,6 +168,12 @@ class AdminController extends Controller
 
     public function addClassroom(Request $request)
     {
+        $validator=Validator::make($request->all(), [
+            'department'=>'required',
+            'year'=>'required',
+            'section'=>'required',
+            'class_teacher'=>'required|unique:classrooms'
+        ]);
         Classroom::create([
             'department'=>$request->input('department'),
             'year'=>$request->input('year'),
