@@ -18,6 +18,8 @@ class CreateTimetableTable extends Migration
             $table->bigInteger('classroom_id')->unsigned();
             $table->foreign('classroom_id')->references('id')->on('classrooms');
             $table->string('day');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->bigInteger('period')->unsigned();
             $table->bigInteger('subject_id')->unsigned();
             $table->foreign('subject_id')->references('id')->on('subjects');

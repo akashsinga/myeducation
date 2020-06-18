@@ -60,6 +60,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::post('/admin/department/add/submit', 'Admin\AdminController@addDepartment');
     Route::post('/admin/subject/add/submit', 'Admin\AdminController@addSubject');
     Route::post('/admin/classroom/add/submit', 'Admin\AdminController@addClassroom');
+    // Route::get('/admin/students/attendance', 'Admin\AdminController@attendance');
 
     //leave approvals
 

@@ -332,8 +332,7 @@ class AdminController extends Controller
             'class_teacher'=>'required|unique:classrooms'
         ]);
         
-        if($validator->passes())
-        {
+        if ($validator->passes()) {
             $classroom=Classroom::findOrFail($id);
             $classroom->department=$request->input('department');
             $classroom->year=$request->input('year');
@@ -346,4 +345,18 @@ class AdminController extends Controller
 
         return redirect('/admin/classrooms')->withErrors()->withInput();
     }
+    
+    // public function attendance(Request $request)
+    // {
+    //     $classroom=Classroom::where('department', $request->input('department'))
+    //     ->where('year', $request->input('year'))
+    //     ->where('section', $request->input('section'))->first();
+    //     $students=DB::table('students')
+    //     ->where('classroom_id', $classroom->id)
+    //     ->join('users', 'users.id', '=', 'students.student_id')
+    //     ->join('classrooms', 'classrooms.id', '=', 'students.classroom_id')
+    //     ->select('students.id', 'users.full_name', 'classrooms.year', 'classrooms.section')
+    //     ->get();
+    //     print_r($students);
+    // }
 }
