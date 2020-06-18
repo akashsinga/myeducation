@@ -68,6 +68,12 @@
                             <p>Manage Classrooms</p>
                         </a>
                     </li>
+                    <li class="{{(Request::is('admin/subjects') || Request::is('admin/subjects/*'))?'active':''}}">
+                        <a class="nav-link" href="/admin/subjects">
+                            <i class="material-icons">library_books</i>
+                            <p>Manage Subjects</p>
+                        </a>
+                    </li>
                     <li class="{{(Request::is('admin/leaves') || Request::is('admin/leaves/*'))?'active':''}}">
                         <a class="nav-link" data-toggle="collapse" href="#leaves" aria-expanded="true">
                             <i class="material-icons">pending</i>
@@ -129,12 +135,6 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
-                    <li class="{{(Request::is('admin/subjects') || Request::is('admin/subjects/*'))?'active':''}}">
-                        <a class="nav-link" href="/admin/subjects">
-                            <i class="material-icons">library_books</i>
-                            <p>Manage Subjects</p>
-                        </a>
                     </li>
                     <li class="{{(Request::is('admin/notifications'))?'active':''}}">
                         <a class="nav-link" href="#">
