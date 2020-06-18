@@ -176,8 +176,8 @@ class AdminController extends Controller
 
         if ($validator->passes()) {
             Department::create([
-                'name'=>$request->input('department_name'),
-                'hod'=>''
+                'name'=>$request->input('name'),
+                'hod'=>NULL
                 ]);
             return redirect('/admin/departments/add')->with('success', 'Department Added Successfully');
         }
@@ -287,14 +287,14 @@ class AdminController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'department_name'=>'required',
-            'hod'=>'required',
+            'hod_name'=>'required',
         ]);
 
         if ($validator->passes()) {
             $department=Department::findOrFail($id);
             $department->name=$request->input('department_name');
             $department->hod=$request->input('hod_name');
-            $deparment->update();
+            $department->update();
             return redirect('/admin/departments')->with('success', 'Department updated successfully');
         }
 

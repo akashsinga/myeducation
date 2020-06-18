@@ -79,7 +79,7 @@ Admin | Dashboard
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table">
+                <table class="table">
                         <thead class="text-primary">
                             <th>
                                 Event Name

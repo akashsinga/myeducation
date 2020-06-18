@@ -37,7 +37,7 @@
         
         body {
             margin: 0;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-family: "Nunito Sans", "Helvetica", "Arial", sans-serif;
             font-size: 1rem;
             font-weight: 400;
             line-height: 1.5;
@@ -442,7 +442,7 @@
         
         body {
             margin: 0;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-family: "Nunito Sans", "Helvetica", "Arial", sans-serif;
             font-size: 1rem;
             font-weight: 400;
             line-height: 1.5;
@@ -4149,6 +4149,16 @@
             justify-content: space-between;
             padding: 0.5rem 1rem;
         }
+
+        .navbar::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 15px;
+            height: 1px;
+            width: calc(100% - 30px);
+            background-color: rgba(180, 180, 180, 0.3);
+        }
         
         .navbar>.container,
         .navbar>.container-fluid {
@@ -5477,7 +5487,7 @@
         }
         
         .modal-open {
-            overflow: hidden;
+            overflow: auto;
         }
         
         .modal {
@@ -5500,6 +5510,7 @@
         .modal-dialog {
             position: relative;
             width: auto;
+            overflow-y: initial !important;
             margin: 0.5rem;
             pointer-events: none;
         }
@@ -5572,7 +5583,9 @@
         }
         
         .modal-body {
+            max-height: calc(100vh - 200px);
             position: relative;
+            overflow-y:auto;
             flex: 1 1 auto;
             padding: 1rem;
         }
@@ -5628,7 +5641,7 @@
             z-index: 1070;
             display: block;
             margin: 0;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-family: "Nunito Sans", "Helvetica", "Arial", sans-serif;
             font-style: normal;
             font-weight: 400;
             line-height: 1.5;
@@ -5753,7 +5766,7 @@
             z-index: 1060;
             display: block;
             max-width: 276px;
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-family: "Nunito Sans", "Helvetica", "Arial", sans-serif;
             font-style: normal;
             font-weight: 400;
             line-height: 1.5;
@@ -13659,7 +13672,7 @@
         .h2,
         .h3,
         .h4 {
-            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-family: "Nunito Sans", "Helvetica", "Arial", sans-serif;
             font-weight: 300;
             line-height: 1.5em;
         }
@@ -16286,7 +16299,7 @@
         }
         
         .serif-font {
-            font-family: "Roboto Slab", "Times New Roman", serif;
+            font-family: "Nunito Sans", "Times New Roman", serif;
         }
         
         * {

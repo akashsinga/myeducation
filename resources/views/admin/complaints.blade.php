@@ -14,9 +14,9 @@ Admin | Complaints
                     </div>
                 </div>
                 <div class="card-body">
-                {{$complaints->links()}}
                     <div class="table-responsive">
-                        <table class="table">
+                    <table class="table table-striped table-bordered dataTable-content" style="width:100%"
+                            id="example">
                             <thead class=" text-primary">
                                 <th>
                                     ID
@@ -69,4 +69,11 @@ Admin | Complaints
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
 @endsection
