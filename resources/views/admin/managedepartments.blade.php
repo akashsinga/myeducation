@@ -20,17 +20,17 @@ Admin | Manage Departments
                 </div>
                 <div class="card-body">
                     @if (session('success'))
-                    <div class="alert alert-success" role="alert">
+                    <div class="alert alert-success" role="alert" id="alert">
                         {{ session('success') }}
                     </div>
                     @endif
                     @if (session('failed'))
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-danger" role="alert" id="alert">
                         {{ session('failed') }}
                     </div>
                     @endif
                     @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger" id="alert">
                         <ul>
                             @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -65,7 +65,7 @@ Admin | Manage Departments
                                         {{$department->name}}
                                     </td>
                                     <td>
-                                        {{$department->hod}}
+                                        {{$department->full_name}}
                                     </td>
                                     <td>
                                         <a href="#" class="btn btn-warning btn-sm edit"><i
@@ -165,13 +165,13 @@ Admin | Manage Departments
                     <input type="hidden" name="id" id="id">
                     <label class="col-form-label text-dark">Department Name</label>
                     <div class="form-group">
-                        <input class="form-control" name="department_name" id="department_name" type="text"
-                            placeholder="Student Name" required="true" aria-required="true" />
+                        <input class="form-control" name="name" id="department_name" type="text"
+                            placeholder="Department Name" required="true" aria-required="true" />
                     </div>
                     <label class="col-form-label text-dark">Head of the Department</label>
                     <div class="form-group">
-                        <input class="form-control" name="hod_name" id="hod_name" type="text"
-                            placeholder="Department" required="true" aria-required="true" />
+                        <input class="form-control" name="hod" id="hod_name" type="text"
+                            placeholder="Head Of the Department" required="true" aria-required="true" />
                     </div>
                 </form>
             </div>

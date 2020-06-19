@@ -22,11 +22,11 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'full_name' => $faker->name,
         'father_name'=>$faker->name,
-        'department'=>$faker->numberBetween(1, 50),
-        'mobile'=>$faker->phoneNumber,
-        'email' => $faker->unique()->safeEmail,
+        'department'=>$faker->numberBetween(1,4),
+        'mobile'=>$faker->unique()->phoneNumber,
+        'email' => $faker->safeEmail,
         'password'=>Hash::make('12345678'),
         'address'=>$faker->sentence,
-        'type'=>$faker->randomElement(['faculty','student'])
+        'type'=>"student"
     ];
 });

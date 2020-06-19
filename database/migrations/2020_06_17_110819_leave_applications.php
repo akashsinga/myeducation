@@ -13,7 +13,7 @@ class LeaveApplications extends Migration
      */
     public function up()
     {
-        Schema::create('leaves',function(Blueprint $table){
+        Schema::create('leaveapplications',function(Blueprint $table){
             $table->bigIncrements('id')->unsigned();
             $table->bigInteger('q_id')->unsigned();
             $table->foreign('q_id')->references('id')->on('leavesavailable');

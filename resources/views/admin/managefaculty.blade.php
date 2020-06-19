@@ -163,7 +163,7 @@ Admin | Manage Faculty
                 </button>
             </div>
             <div class="modal-body">
-            <form id="deleteform" method="post" action="/admin/faculty">
+                <form id="deleteform" method="post" action="/admin/faculty">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                 </form>
@@ -199,18 +199,21 @@ Admin | Manage Faculty
                     </div>
                     <label class="col-form-label text-dark">Department</label>
                     <div class="form-group">
-                        <input class="form-control" name="department" id="department" type="text"
-                            placeholder="Department" required="true" aria-required="true" />
+                        <select class="custom-select" name="department" id="department">
+                            @foreach($departments as $department)
+                            <option value="{{$department->name}}">{{$department->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <label class="col-form-label text-dark">Qualification</label>
                     <div class="form-group">
-                        <input class="form-control" name="qualification" id="qualification" type="text" placeholder="Year" required="true"
-                            aria-required="true" />
+                        <input class="form-control" name="qualification" id="qualification" type="text"
+                            placeholder="Year" required="true" aria-required="true" />
                     </div>
                     <label class="col-form-label text-dark">Designation</label>
                     <div class="form-group">
-                        <input class="form-control" name="designation" id="designation" type="text" placeholder="Section"
-                            required="true" aria-required="true" />
+                        <input class="form-control" name="designation" id="designation" type="text"
+                            placeholder="Section" required="true" aria-required="true" />
                     </div>
                     <label class="col-form-label text-dark">Mobile</label>
                     <div class="form-group">

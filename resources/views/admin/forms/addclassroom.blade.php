@@ -68,7 +68,7 @@ Admin | Add Classroom
                         <div class="col-sm-7">
                             <div class="form-group">
                                 <input class="form-control" name="class_teacher" id="input-email" type="text"
-                                    placeholder="Faculty Name" required="true" aria-required="true" />
+                                    placeholder="Enter Faculty ID" required="true" aria-required="true" />
                             </div>
                         </div>
                     </div>

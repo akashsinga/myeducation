@@ -96,7 +96,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="{{(Request::is('admin/complaints') || Request::is('admin/departments/*'))?'active':''}}">
+                    <li class="{{(Request::is('admin/complaints') || Request::is('admin/complaints/*'))?'active':''}}">
                         <a class="nav-link" href="/admin/complaints">
                             <i class="material-icons">report_problem</i>
                             <p>Complaints</p>
@@ -291,10 +291,12 @@
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{URL::asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
-    window.onload = function() 
-        {
+        window.onload = function() {
             $('#overlay').fadeOut();
         }
+        $(document).ready(function() {
+            setTimeout(function() {$('.alert').hide();},3000);
+        });
     </script>
     @yield('scripts')
 </body>

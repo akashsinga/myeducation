@@ -165,7 +165,7 @@ Admin | Manage Students
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Student</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Student Details</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -188,18 +188,27 @@ Admin | Manage Students
                     </div>
                     <label class="col-form-label text-dark">Department</label>
                     <div class="form-group">
-                        <input class="form-control" name="department" id="department" type="text"
-                            placeholder="Department" required="true" aria-required="true" />
+                        <select class="custom-select" name="department" id="department">
+                            @foreach($departments as $department)
+                            <option value="{{$department->name}}">{{$department->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <label class="col-form-label text-dark">Year</label>
                     <div class="form-group">
-                        <input class="form-control" name="year" id="year" type="text" placeholder="Year" required="true"
-                            aria-required="true" />
+                        <select class="custom-select" name="year" id="year">
+                            @foreach($years as $year)
+                            <option value="{{$year->year}}">{{$year->year}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <label class="col-form-label text-dark">Section</label>
                     <div class="form-group">
-                        <input class="form-control" name="section" id="section" type="text" placeholder="Section"
-                            required="true" aria-required="true" />
+                        <select class="custom-select" name="section" id="section">
+                            @foreach($sections as $section)
+                            <option value="{{$section->section}}">{{$section->section}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <label class="col-form-label text-dark">Mobile</label>
                     <div class="form-group">

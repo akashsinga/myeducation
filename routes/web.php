@@ -87,6 +87,9 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::post('/admin/classrooms/delete/{id}', 'Admin\AdminController@deleteClassroom');
     Route::post('/admin/faculty/delete/{id}', 'Admin\AdminController@deleteFaculty');
     Route::post('/admin/departments/delete/{id}', 'Admin\AdminController@deleteDepartment');
+
+    //detail routes
+    Route::get('/admin/classrooms/{id}','Admin\PagesController@viewClassroomDetails');
 });
 Route::group(['middleware'=>['auth','student']], function () {
     Route::get('/home', function () {

@@ -14,27 +14,28 @@ Admin | Leave Applications
                     </div>
                 </div>
                 @if (session('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                    @endif
-                    @if (session('failed'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('failed') }}
-                    </div>
-                    @endif
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+                @endif
+                @if (session('failed'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('failed') }}
+                </div>
+                @endif
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-striped table-bordered dataTable-content" id="example"
+                            style="width:100%">
                             <thead class=" text-primary">
                                 <th>
                                     ID
@@ -68,7 +69,37 @@ Admin | Leave Applications
                                 </th>
                             </thead>
                             <tbody>
-
+                                @foreach($leaves as $leave)
+                                <tr>
+                                    <td>
+                                        {{$leave->id}}
+                                    </td>
+                                    <td>
+                                        {{$leave->full_name}}
+                                    </td>
+                                    <td>
+                                        {{$leave->name}}
+                                    </td>
+                                    <td>
+                                        {{$leave->start_date}}
+                                    </td>
+                                    <td>
+                                        {{$leave->end_date}}
+                                    </td>
+                                    <td>
+                                        {{$leave->leave_type}}
+                                    </td>
+                                    <td>
+                                        {{$leave->status}}
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning btn-sm edit"><i
+                                                class="material-icons">edit</i></a>
+                                        <a href="#" class="btn btn-danger btn-sm delete"><i
+                                                class="material-icons">clear</i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -77,4 +108,14 @@ Admin | Leave Applications
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#example').DataTable();
+
+        
+    });
+</script>
 @endsection

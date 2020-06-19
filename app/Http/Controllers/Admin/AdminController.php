@@ -191,11 +191,12 @@ class AdminController extends Controller
             'department'=>'required',
             'year'=>'required',
             'section'=>'required',
-            'class_teacher'=>'required|unique:classrooms'
+            'class_teacher'=>'required|unique:classrooms|integer'
         ]);
         if ($validator->passes()) {
+            $department=Department::where('name',$request->input('department'))->first();
             Classroom::create([
-                'department'=>$request->input('department'),
+                'department'=>$department->id,
                 'year'=>$request->input('year'),
                 'section'=>$request->input('section'),
                 'class_teacher'=>$request->input('class_teacher')
@@ -212,6 +213,7 @@ class AdminController extends Controller
             'full_name'=>'required',
             'father_name'=>'required',
             'department'=>'required',
+            'mobile'=>'required',
             'email'=>'required',
             'address'=>'required',
             'year'=>'required',
@@ -249,13 +251,12 @@ class AdminController extends Controller
     {
         $validator=Validator::make($request->all(), [
             'full_name'=>'required',
-            'father_name'=>'required',
             'department'=>'required',
+            'mobile'=>'required',
             'email'=>'required',
             'address'=>'required',
             'designation'=>'required',
             'qualification'=>'required',
-            'salary'=>'required',
         ]);
 
         if ($validator->passes()) {
@@ -265,35 +266,35 @@ class AdminController extends Controller
             $user_id=$faculty->user_id;
             $faculty->qualification=$request->input('qualification');
             $faculty->designation=$request->input('designation');
-            $faculty->salary=$request->input('salary');
             $faculty->update();
             
             $user=User::findOrFail($user_id);
             $user->full_name=$request->input('full_name');
-            $user->father_name=$request->input('father_name');
             $user->department=$department->id;
             $user->mobile=$request->input('mobile');
             $user->email=$request->input('email');
             $user->address=$request->input('address');
             $user->update();
             
-            return redirect('/admin/faculty/add')->with('success', 'Faculty Details Updated Successfully');
+            return redirect('/admin/faculty')->with('success', 'Faculty Details Updated Successfully');
         }
 
-        return redirect('/admin/faculty/add')->withErrors($validator)->withInput();
+        return redirect('/admin/faculty')->withErrors($validator)->withInput();
     }
 
     public function updateDepartment(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'department_name'=>'required',
-            'hod_name'=>'required',
+            'name'=>'required',
+            'hod'=>'required|unique:departments,hod',
         ]);
 
-        if ($validator->passes()) {
+        if ($validator->passes()) 
+        {
+            $hod=$this->getFacultyID($request->input('hod'));
             $department=Department::findOrFail($id);
-            $department->name=$request->input('department_name');
-            $department->hod=$request->input('hod_name');
+            $department->name=$request->input('name');
+            $department->hod=$hod;
             $department->update();
             return redirect('/admin/departments')->with('success', 'Department updated successfully');
         }
@@ -332,31 +333,32 @@ class AdminController extends Controller
             'class_teacher'=>'required|unique:classrooms'
         ]);
         
-        if ($validator->passes()) {
+        if ($validator->passes()) 
+        {
+            $department=Department::where('name', $request->input('department'))->first();
+            $classteacher=$this->getFacultyID($request->input('class_teacher'));
             $classroom=Classroom::findOrFail($id);
-            $classroom->department=$request->input('department');
+            $classroom->department=$department->id;
             $classroom->year=$request->input('year');
             $classroom->section=$request->input('section');
-            $classroom->class_teacher=$request->input('class_teacher');
+            $classroom->class_teacher=$classteacher;
             $classroom->update();
-
             return redirect('/admin/classrooms')->with('success', 'Classroom updated successfully');
         }
-
         return redirect('/admin/classrooms')->withErrors()->withInput();
     }
     
-    // public function attendance(Request $request)
-    // {
-    //     $classroom=Classroom::where('department', $request->input('department'))
-    //     ->where('year', $request->input('year'))
-    //     ->where('section', $request->input('section'))->first();
-    //     $students=DB::table('students')
-    //     ->where('classroom_id', $classroom->id)
-    //     ->join('users', 'users.id', '=', 'students.student_id')
-    //     ->join('classrooms', 'classrooms.id', '=', 'students.classroom_id')
-    //     ->select('students.id', 'users.full_name', 'classrooms.year', 'classrooms.section')
-    //     ->get();
-    //     print_r($students);
-    // }
+    public function getFacultyID($input)
+    {
+        if(is_numeric($input))
+        {
+            return $input;
+        }
+        else
+        {
+            $user_id=User::where('full_name',$input)->first();
+            $classteacher=Management::where('user_id',$user_id->id)->pluck('id')->first();
+            return $classteacher;
+        }
+    }
 }
