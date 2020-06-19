@@ -134,9 +134,9 @@ Admin | Manage Departments
                 </button>
             </div>
             <div class="modal-body">
-            <form id="deleteform" method="post" action="/admin/departments">
+                <form id="deleteform" method="post" action="/admin/departments">
                     {{csrf_field()}}
-                    {{method_field('DELETE')}}
+                    {{method_field('POST')}}
                 </form>
                 <p>Are you sure you want to delete this department?</p>
             </div>

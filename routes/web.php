@@ -82,14 +82,14 @@ Route::group(['middleware'=>['auth','admin']], function () {
     
     //delete routes
 
-    Route::post('/admin/students/delete/{id}', 'AdminController@deleteStudent');
+    Route::post('/admin/students/delete/{id}', 'Admin\AdminController@deleteStudent');
     Route::post('/admin/subjects/delete/{id}', 'Admin\AdminController@deleteSubject');
     Route::post('/admin/classrooms/delete/{id}', 'Admin\AdminController@deleteClassroom');
     Route::post('/admin/faculty/delete/{id}', 'Admin\AdminController@deleteFaculty');
     Route::post('/admin/departments/delete/{id}', 'Admin\AdminController@deleteDepartment');
 
     //detail routes
-    Route::get('/admin/classrooms/{id}','Admin\PagesController@viewClassroomDetails');
+    Route::get('/admin/classrooms/{id}', 'Admin\PagesController@viewClassroomDetails');
 });
 Route::group(['middleware'=>['auth','student']], function () {
     Route::get('/home', function () {

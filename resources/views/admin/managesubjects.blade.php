@@ -79,7 +79,7 @@ Admin | Manage Subjects
                                         {{$subject->Dept_name}}
                                     </td>
                                     <td>
-                                    <a href="#" class="btn btn-warning btn-sm edit"><i
+                                        <a href="#" class="btn btn-warning btn-sm edit"><i
                                                 class="material-icons">edit</i></a>
                                         <a href="#" class="btn btn-danger btn-sm delete"><i
                                                 class="material-icons">clear</i></a>
@@ -192,7 +192,7 @@ Admin | Manage Subjects
             <div class="modal-body">
                 <form id="deleteform" method="post" action="/admin/subjects">
                     {{csrf_field()}}
-                    {{method_field('DELETE')}}
+                    {{method_field('POST')}}
                 </form>
                 <p>Are you sure you want to delete this subject?</p>
             </div>

@@ -165,7 +165,7 @@ Admin | Manage Faculty
             <div class="modal-body">
                 <form id="deleteform" method="post" action="/admin/faculty">
                     {{csrf_field()}}
-                    {{method_field('DELETE')}}
+                    {{method_field('POST')}}
                 </form>
                 <p>Are you sure you want to delete this faculty?</p>
             </div>

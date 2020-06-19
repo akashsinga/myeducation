@@ -43,7 +43,7 @@ Admin | Dashboard
                     <i class="material-icons">info_outline</i>
                 </div>
                 <p class="card-category">Complaints</p>
-                <h3 class="card-title">75</h3>
+                <h3 class="card-title">{{$complaint_count}}</h3>
             </div>
             <div class="card-footer">
                 <div class="stats">
@@ -63,7 +63,7 @@ Admin | Dashboard
             </div>
             <div class="card-footer">
                 <div class="stats">
-                    <i class="material-icons">update</i> Just Updated
+                    <a href="/admin/classrooms">View Details</a>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@ Admin | Dashboard
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                <table class="table">
+                    <table class="table" id="example">
                         <thead class="text-primary">
                             <th>
                                 Event Name
@@ -98,7 +98,7 @@ Admin | Dashboard
             </div>
             <div class="card-footer">
                 <div class="stats">
-                    <a href="#pablo">View Details</a>
+                    <a href="/admin/schedule">View Details</a>
                 </div>
             </div>
         </div>
@@ -110,12 +110,12 @@ Admin | Dashboard
                     <div class="card-icon">
                         <i class="material-icons">pending</i>
                     </div>
-                    <p class="card-category">Latest Leave Applications</p>
-                    <h3 class="card-title">245</h3>
+                    <p class="card-category">Pending Leave Applications</p>
+                    <h3 class="card-title">{{$leave_count}}</h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <a href="#pablo">View Details</a>
+                        <a href="/admin/leaves/applications">View Details</a>
                     </div>
                 </div>
             </div>
@@ -141,9 +141,12 @@ Admin | Dashboard
                                     Actions
                                 </th>
                             </thead>
-                            <tbody>
-                            </tbody>
                         </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="stats">
+                        <a href="/admin/faculty/substitutions">View Details</a>
                     </div>
                 </div>
             </div>

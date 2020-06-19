@@ -247,7 +247,7 @@ Admin | Manage Students
             <div class="modal-body">
                 <form id="deleteform" method="post" action="/admin/students">
                     {{csrf_field()}}
-                    {{method_field('DELETE')}}
+                    {{method_field('POST')}}
                 </form>
                 <p>Are you sure you want to delete this student?</p>
             </div>

@@ -177,7 +177,7 @@ class AdminController extends Controller
         if ($validator->passes()) {
             Department::create([
                 'name'=>$request->input('name'),
-                'hod'=>NULL
+                'hod'=>null
                 ]);
             return redirect('/admin/departments/add')->with('success', 'Department Added Successfully');
         }
@@ -194,7 +194,7 @@ class AdminController extends Controller
             'class_teacher'=>'required|unique:classrooms|integer'
         ]);
         if ($validator->passes()) {
-            $department=Department::where('name',$request->input('department'))->first();
+            $department=Department::where('name', $request->input('department'))->first();
             Classroom::create([
                 'department'=>$department->id,
                 'year'=>$request->input('year'),
@@ -289,8 +289,7 @@ class AdminController extends Controller
             'hod'=>'required|unique:departments,hod',
         ]);
 
-        if ($validator->passes()) 
-        {
+        if ($validator->passes()) {
             $hod=$this->getFacultyID($request->input('hod'));
             $department=Department::findOrFail($id);
             $department->name=$request->input('name');
@@ -333,8 +332,7 @@ class AdminController extends Controller
             'class_teacher'=>'required|unique:classrooms'
         ]);
         
-        if ($validator->passes()) 
-        {
+        if ($validator->passes()) {
             $department=Department::where('name', $request->input('department'))->first();
             $classteacher=$this->getFacultyID($request->input('class_teacher'));
             $classroom=Classroom::findOrFail($id);
@@ -350,15 +348,48 @@ class AdminController extends Controller
     
     public function getFacultyID($input)
     {
-        if(is_numeric($input))
-        {
+        if (is_numeric($input)) {
             return $input;
-        }
-        else
-        {
-            $user_id=User::where('full_name',$input)->first();
-            $classteacher=Management::where('user_id',$user_id->id)->pluck('id')->first();
+        } else {
+            $user_id=User::where('full_name', $input)->first();
+            $classteacher=Management::where('user_id', $user_id->id)->pluck('id')->first();
             return $classteacher;
         }
+    }
+
+    public function deleteStudent($id)
+    {
+        $student=Student::findOrFail($id);
+        $user_id=$student->student_id;
+        User::findOrFail($user_id)->delete();
+        $student->delete();
+        return redirect('/admin/students')->with('success', 'Student Deleted Successfully');
+    }
+    
+    public function deleteFaculty($id)
+    {
+        $faculty=Management::findOrFail($id);
+        $user_id=$faculty->user_id;
+        User::findOrFail($user_id)->delete();
+        $faculty->delete();
+        return redirect('/admin/faculty')->with('success', 'Faculty Deleted Successfully');
+    }
+
+    public function deleteClassroom($id)
+    {
+        Classroom::findOrFail($id)->delete();
+        return redirect('/admin/classrooms')->with('success', 'Classroom Deleted Successfully');
+    }
+
+    public function deleteSubject($id)
+    {
+        Subject::findOrFail($id)->delete();
+        return redirect('/admin/subjects')->with('success', 'Subject Deleted Successfully');
+    }
+    
+    public function deleteDepartment($id)
+    {
+        Department::findOrFail($id)->delete();
+        return redirect('/admin/departments')->with('success', 'Department Deleted Successfully');
     }
 }

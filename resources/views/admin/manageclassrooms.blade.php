@@ -149,7 +149,7 @@ Admin | Manage Classrooms
             <div class="modal-body">
                 <form id="deleteform" method="post" action="/admin/classrooms">
                     {{csrf_field()}}
-                    {{method_field('DELETE')}}
+                    {{method_field('POST')}}
                 </form>
                 <p>Are you sure you want to delete this classroom?</p>
             </div>
