@@ -42,7 +42,8 @@ Admin | Classroom
                     </div>
                     @endif
                     <div class="table-responsive">
-                        <table class="table" style="width:100%" id="example">
+                        <table class="table table-bordered table-striped dataTable-content" style="width:100%"
+                            id="example">
                             <thead class=" text-primary">
                                 <th>
                                     AdmNo
@@ -85,8 +86,8 @@ Admin | Classroom
 @endsection
 @section('scripts')
 <script type="text/javascript">
-    $(document).ready(function(){
-        var table=$('#example').DataTable();
+    $(document).ready(function() {
+        var table = $('#example').DataTable();
     });
 </script>
 @endsection

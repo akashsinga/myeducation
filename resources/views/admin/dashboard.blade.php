@@ -129,7 +129,7 @@ Admin | Dashboard
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" id="substitution">
                             <thead class="text-primary">
                                 <th>
                                     Faculty ID
@@ -153,4 +153,12 @@ Admin | Dashboard
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#example').DataTable();
+        $('#substitution').DataTable();
+    });
+</script>
 @endsection

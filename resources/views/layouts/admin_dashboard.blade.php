@@ -18,6 +18,7 @@
     <link href="{{URL::asset('assets/css/custom.css')}}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{URL::asset('assets/css/datatables.bootstrap.min.css')}}" rel="stylesheet" />
+    <!-- <link href="{{URL::asset('assets/css/jquery.dataTables.min.css')}}" rel="stylesheet" /> -->
 </head>
 
 <body class="">
@@ -250,6 +251,7 @@
     <script src="{{URL::asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}">
     </script>
     <!-- Plugin for the momentJs  -->
+    @include('sweetalert::alert')
     <script src="{{URL::asset('assets/js/plugins/moment.min.js')}}"></script>
     <!--  Plugin for Sweet Alert -->
     <script src="{{URL::asset('assets/js/plugins/sweetalert2.js')}}"></script>
@@ -292,11 +294,8 @@
     <script src="{{URL::asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
         window.onload = function() {
-            $('#overlay').fadeOut();
+            $('#overlay').fadeOut(300);
         }
-        $(document).ready(function() {
-            setTimeout(function() {$('.alert').hide();},3000);
-        });
     </script>
     @yield('scripts')
 </body>

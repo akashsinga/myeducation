@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class AdminController extends Controller
         if ($validator->passes()) {
             $path=$request->file('importfile')->getRealPath();
             $import_status=Excel::import(new StudentImport, $path);
+            toast('Imported Successfully', 'success');
             return redirect('/admin/students')->with('status', 'Imported Successfully');
         }
 
@@ -240,8 +242,8 @@ class AdminController extends Controller
             $user->email=$request->input('email');
             $user->address=$request->input('address');
             $user->update();
-            
-            return redirect('/admin/students')->with('success', 'Student Details Updated Successfully');
+            toast('Student Details Updated Successfully','success')->position('bottom-end')->autoClose(2000);
+            return redirect('/admin/students');
         }
 
         return redirect('/admin/students')->withErrors($validator)->withInput();
@@ -275,8 +277,8 @@ class AdminController extends Controller
             $user->email=$request->input('email');
             $user->address=$request->input('address');
             $user->update();
-            
-            return redirect('/admin/faculty')->with('success', 'Faculty Details Updated Successfully');
+            toast('Faculty Details Updated Successfully','success')->position('bottom-end')->autoClose(2000);
+            return redirect('/admin/faculty');
         }
 
         return redirect('/admin/faculty')->withErrors($validator)->withInput();
@@ -295,7 +297,8 @@ class AdminController extends Controller
             $department->name=$request->input('name');
             $department->hod=$hod;
             $department->update();
-            return redirect('/admin/departments')->with('success', 'Department updated successfully');
+            toast('Department Details Updated Successfully','success')->position('bottom-end')->autoClose(2000);
+            return redirect('/admin/departments');
         }
 
         return redirect('/admin/departments')->withErrors($validator)->withInput();
@@ -317,8 +320,8 @@ class AdminController extends Controller
             $subject->department=$request->input('dept');
             $subject->credits=$request->input('credits');
             $subject->update();
-
-            return redirect('/admin/subjects')->with('success', 'Subject updated successfully');
+            toast('Subject Details Updated Successfully','success')->position('bottom-end')->autoClose(2000);
+            return redirect('/admin/subjects');
         }
         return redirect('/admin/subjects')->withErrors($validator)->withInput();
     }
@@ -341,7 +344,8 @@ class AdminController extends Controller
             $classroom->section=$request->input('section');
             $classroom->class_teacher=$classteacher;
             $classroom->update();
-            return redirect('/admin/classrooms')->with('success', 'Classroom updated successfully');
+            toast('Classroom Details Updated Successfully','success')->position('bottom-end')->autoClose(2000);
+            return redirect('/admin/classrooms');
         }
         return redirect('/admin/classrooms')->withErrors()->withInput();
     }
@@ -363,7 +367,8 @@ class AdminController extends Controller
         $user_id=$student->student_id;
         User::findOrFail($user_id)->delete();
         $student->delete();
-        return redirect('/admin/students')->with('success', 'Student Deleted Successfully');
+        toast('Student Deleted Successfully','error')->position('bottom-end')->autoClose(2000);
+        return redirect('/admin/students');
     }
     
     public function deleteFaculty($id)
@@ -372,24 +377,28 @@ class AdminController extends Controller
         $user_id=$faculty->user_id;
         User::findOrFail($user_id)->delete();
         $faculty->delete();
-        return redirect('/admin/faculty')->with('success', 'Faculty Deleted Successfully');
+        toast('Faculty Deleted Successfully','error')->position('bottom-end')->autoClose(2000);
+        return redirect('/admin/faculty');
     }
 
     public function deleteClassroom($id)
     {
         Classroom::findOrFail($id)->delete();
-        return redirect('/admin/classrooms')->with('success', 'Classroom Deleted Successfully');
+        toast('Classroom Deleted Successfully','error')->position('bottom-end')->autoClose(2000);
+        return redirect('/admin/classrooms');
     }
 
     public function deleteSubject($id)
     {
         Subject::findOrFail($id)->delete();
-        return redirect('/admin/subjects')->with('success', 'Subject Deleted Successfully');
+        toast('Subject Deleted Successfully','error')->position('bottom-end')->autoClose(2000);
+        return redirect('/admin/subjects');
     }
     
     public function deleteDepartment($id)
     {
         Department::findOrFail($id)->delete();
-        return redirect('/admin/departments')->with('success', 'Department Deleted Successfully');
+        toast('Department Deleted Successfully','error')->position('bottom-end')->autoClose(2000);
+        return redirect('/admin/departments');
     }
 }
