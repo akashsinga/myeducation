@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/1.10.21/integration/font-awesome/dataTables.fontAwesome.css">
     <!-- CSS Files -->
     <link href="{{URL::asset('assets/css/material-dashboard.css')}}" rel="stylesheet" />
     <link href="{{URL::asset('assets/css/custom.css')}}" rel="stylesheet" />
