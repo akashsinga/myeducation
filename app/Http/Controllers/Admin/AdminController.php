@@ -28,8 +28,8 @@ class AdminController extends Controller
         if ($validator->passes()) {
             $path=$request->file('importfile')->getRealPath();
             $import_status=Excel::import(new StudentImport, $path);
-            toast('Imported Successfully', 'success');
-            return redirect('/admin/students')->with('status', 'Imported Successfully');
+            toast('Imported Successfully', 'success')->position('bottom-end')->autoClose(2000);
+            return redirect('/admin/students');
         }
 
         return redirect('/admin/students')->withErrors($validator)->withInput();
@@ -44,7 +44,8 @@ class AdminController extends Controller
         if ($validator->passes()) {
             $path=$request->file('importfile')->getRealPath();
             $import_status=Excel::import(new FacultyImport, $path);
-            return redirect('/admin/faculty')->with('status', 'Imported Successfully');
+            toast('Imported Successfully', 'success')->position('bottom-end')->autoClose(2000);
+            return redirect('/admin/faculty');
         }
 
         return redirect('/admin/faculty')->withErrors($validator)->withInput();
@@ -89,10 +90,12 @@ class AdminController extends Controller
                     'score'=>0
                 ]);
                 DB::commit();
-                return redirect('/admin/students/add')->with('success', 'Student Successfully Added');
+                toast('Student Added Successfully', 'success')->position('bottom-end')->autoClose(2000);
+                return redirect('/admin/students/add');
             } catch (Exception $e) {
                 DB::rollBack();
-                return redirect('/admin/students/add')->with('failed', 'Student Registration Failed');
+                toast('Student Registration Failed', 'error');
+                return redirect('/admin/students/add')->position('bottom-end')->autoClose(2000);
             }
         }
 
@@ -138,10 +141,12 @@ class AdminController extends Controller
                     'ccl'=>0
                 ]);
                 DB::commit();
-                return redirect('/admin/faculty/add')->with('success', 'Faculty Successfully Added');
+                toast('Faculty Added Successfully', 'success')->position('bottom-end')->autoClose(2000);
+                return redirect('/admin/faculty/add');
             } catch (Exception $e) {
                 DB::rollBack();
-                return redirect('/admin/faculty/add')->with('failed', 'Faculty Registration Failed');
+                toast('Faculty Registration Failed', 'error')->position('bottom-end')->autoClose(2000);
+                return redirect('/admin/faculty/add');
             }
         }
 
@@ -164,7 +169,8 @@ class AdminController extends Controller
                 'credits'=>$request->input('credits'),
                 'department'=>$request->input('dept'),
             ]);
-            return redirect('/admin/subjects/add')->with('success', 'Subject Added Successfully');
+            toast('Subject Added Successfully', 'success')->position('bottom-end')->autoClose(2000);
+            return redirect('/admin/subjects/add');
         }
 
         return redirect('/admin/subjects/add')->withErrors($validator)->withInput();
@@ -181,7 +187,8 @@ class AdminController extends Controller
                 'name'=>$request->input('name'),
                 'hod'=>null
                 ]);
-            return redirect('/admin/departments/add')->with('success', 'Department Added Successfully');
+                toast('Department Added Successfully', 'success')->position('bottom-end')->autoClose(2000);
+            return redirect('/admin/departments/add');
         }
 
         return redirect('/admin/departments/add')->withErrors($validator)->withInput();
@@ -203,8 +210,8 @@ class AdminController extends Controller
                 'section'=>$request->input('section'),
                 'class_teacher'=>$request->input('class_teacher')
             ]);
-
-            return redirect('/admin/classrooms/add')->with('success', 'Classroom added succesfully');
+            toast('Classroom Added Successfully', 'success')->position('bottom-end')->autoClose(2000);
+            return redirect('/admin/classrooms/add');
         }
         return redirect('/admin/classrooms/add')->withErrors($validator)->withInput();
     }

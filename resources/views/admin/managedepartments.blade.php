@@ -204,7 +204,6 @@ Admin | Manage Departments
         $('.update').on('click', function() {
             $('#edit-form').submit();
         });
-
         table.on('click', '.delete', function() {
             $tr = $(this).closest('tr');
             if ($($tr).hasClass('child')) {

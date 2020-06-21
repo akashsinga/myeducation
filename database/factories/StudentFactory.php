@@ -7,9 +7,9 @@ use App\Model;
 use App\Models\Student;
 $factory->define(Student::class, function (Faker $faker) {
     return [
-        'student_id'=>$faker->unique()->numberBetween(11,210),
+        'student_id'=>$faker->unique()->numberBetween(185,225),
         'rollnumber'=>'',
-        'classroom_id'=>$faker->numberBetween(1,4),
+        'classroom_id'=>7,
         'score'=>0,
     ];
 });
