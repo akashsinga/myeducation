@@ -166,10 +166,11 @@ class PagesController extends Controller
     {
         $classroom=Classroom::findOrFail($id);
         $department=Department::where('id', $classroom->department)->pluck('name')[0];
-        $classteacher=DB::table('classrooms')
-        ->join('management', 'management.id', '=', 'classrooms.class_teacher')
-        ->join('users', 'users.id', '=', 'management.user_id')
-        ->pluck('users.full_name')[0];
+        $classteacher=DB::table('classrooms')->where('classrooms.id',$id)
+        ->leftJoin('management','management.id','=','classrooms.class_teacher')
+        ->leftJoin('users','users.id','=','management.user_id')
+        ->select(DB::raw('IFNULL( users.full_name,"Not Assigned") as full_name'))
+        ->get()[0]->full_name;
         $students=DB::table('students')
         ->where('classroom_id', $id)
         ->join('classrooms', 'classrooms.id', '=', 'students.classroom_id')

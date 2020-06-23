@@ -157,8 +157,6 @@ Admin | Dashboard
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#example').DataTable();
-        $('#substitution').DataTable();
     });
 </script>
 @endsection
