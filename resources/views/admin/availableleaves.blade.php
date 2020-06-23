@@ -1,6 +1,6 @@
 @extends('layouts.admin_dashboard')
 @section('title')
-Admin | Leave Applications
+Admin | Leaves Available
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -9,8 +9,8 @@ Admin | Leave Applications
             <div class="card">
                 <div class="card-header card-header-primary">
                     <div class="card-title">
-                        <h4>Leave Applications</h4>
-                        <p class="card-category">Application information</p>
+                        <h4>Leaves Available</h4>
+                        <p class="card-category">Leaves information</p>
                     </div>
                 </div>
                 @if (session('success'))
@@ -38,13 +38,7 @@ Admin | Leave Applications
                             style="width:100%">
                             <thead class=" text-primary">
                                 <th>
-                                    ID
-                                </th>
-                                <th>
-                                    Faculty Name
-                                </th>
-                                <th>
-                                    Department
+                                    Id
                                 </th>
                                 <th>
                                     Start Date
@@ -53,32 +47,17 @@ Admin | Leave Applications
                                     End Date
                                 </th>
                                 <th>
-                                    Reason
-                                </th>
-                                <th>
-                                    No Of Days
-                                </th>
-                                <th>
-                                    Leave Type
-                                </th>
-                                <th>
-                                    Status
+                                    Available
                                 </th>
                                 <th>
                                     Actions
                                 </th>
                             </thead>
                             <tbody>
-                                @foreach($leaves as $leave)
+                                @foreach($leavesavailable as $leave)
                                 <tr>
                                     <td>
                                         {{$leave->id}}
-                                    </td>
-                                    <td>
-                                        {{$leave->full_name}}
-                                    </td>
-                                    <td>
-                                        {{$leave->name}}
                                     </td>
                                     <td>
                                         {{$leave->start_date}}
@@ -87,16 +66,13 @@ Admin | Leave Applications
                                         {{$leave->end_date}}
                                     </td>
                                     <td>
-                                        {{$leave->leave_type}}
+                                        {{$leave->available}}
                                     </td>
                                     <td>
-                                        {{$leave->status}}
-                                    </td>
-                                    <td>
-                                        <a href="#" class="btn btn-warning btn-sm approve"><i
-                                                class="material-icons">done</i>Approve</a>
-                                        <a href="#" class="btn btn-danger btn-sm reject"><i
-                                                class="material-icons">clear</i>Reject</a>
+                                        <a href="#" class="btn btn-warning btn-sm edit"><i
+                                                class="material-icons">edit</i></a>
+                                        <a href="#" class="btn btn-danger btn-sm delete"><i
+                                                class="material-icons">clear</i></a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -112,10 +88,7 @@ Admin | Leave Applications
 @section('scripts')
 <script type="text/javascript">
     $(document).ready(function() {
-
         $('#example').DataTable();
-
-
     });
 </script>
 @endsection

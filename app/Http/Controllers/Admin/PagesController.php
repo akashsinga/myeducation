@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Classroom;
-use DataTables;
 use App\Models\Department;
+use App\Models\LeavesAvailable;
+use DataTables;
+use DB;
 
 class PagesController extends Controller
 {
@@ -23,7 +24,7 @@ class PagesController extends Controller
         ->with('faculty_count', $faculty_count)
         ->with('classroom_count', $classroom_count)
         ->with('complaint_count', $complaint_count)
-        ->with('leave_count',$leave_count);
+        ->with('leave_count', $leave_count);
     }
 
     public function viewDepartments()
@@ -80,10 +81,10 @@ class PagesController extends Controller
         $years=Classroom::select('year')->distinct()->get();
         $sections=Classroom::select('section')->distinct()->get();
         $classrooms=DB::table('classrooms')
-            ->join('departments', 'departments.id', '=', 'classrooms.department')
-            ->join('management', 'classrooms.class_teacher', '=', 'management.id')
-            ->join('users', 'users.id', '=', 'management.user_id')
-            ->select('classrooms.id', 'departments.name', 'classrooms.year', 'classrooms.section', 'users.full_name')
+            ->leftJoin('departments', 'departments.id', '=', 'classrooms.department')
+            ->leftJoin('management', 'classrooms.class_teacher', '=', 'management.id')
+            ->leftJoin('users', 'users.id', '=', 'management.user_id')
+            ->select('classrooms.id', 'departments.name', 'classrooms.year', 'classrooms.section', DB::raw('IFNULL( users.full_name,"Not Assigned") as full_name'))
             ->get();
         return view('admin.manageclassrooms')
         ->with('classrooms', $classrooms)
@@ -106,7 +107,7 @@ class PagesController extends Controller
     {
         return view('admin.academicschedule');
     }
-    
+
     public function viewLeaveApplications()
     {
         $leaveapplications=DB::table('leaveapplications')
@@ -119,6 +120,11 @@ class PagesController extends Controller
         ->with('leaves', $leaveapplications);
     }
 
+    public function viewLeavesAvailable()
+    {
+        $leavesavailable=LeavesAvailable::all();
+        return view('admin.availableleaves')->with('leavesavailable', $leavesavailable);
+    }
     public function viewAddClassroom()
     {
         $departments=Department::all();

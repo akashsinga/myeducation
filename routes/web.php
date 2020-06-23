@@ -44,6 +44,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/admin/subjects', 'Admin\PagesController@viewSubjects');
     Route::get('/admin/schedule', 'Admin\PagesController@viewSchedule');
     Route::get('/admin/leaves/applications', 'Admin\PagesController@viewLeaveApplications');
+    Route::get('/admin/leaves/available', 'Admin\PagesController@viewLeavesAvailable');
 
     //add view routes
 
@@ -66,12 +67,12 @@ Route::group(['middleware'=>['auth','admin']], function () {
 
     Route::post('/admin/leaves/applications/approve/{id}', 'Admin\AdminController@approveLeave');
     Route::post('/admin/leaves/applications/reject/{id}', 'Admin\AdminController@rejectLeave');//check here
-    
+
     //import routes
 
     Route::post('/admin/students/import', 'Admin\AdminController@importStudents');
     Route::post('/admin/faculty/import', 'Admin\AdminController@importStudents');
-    
+
     //edit routes
 
     Route::post('/admin/students/edit/{id}', 'Admin\AdminController@updateStudent');
@@ -79,7 +80,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::post('/admin/classrooms/edit/{id}', 'Admin\AdminController@updateClassroom');
     Route::post('/admin/faculty/edit/{id}', 'Admin\AdminController@updateFaculty');
     Route::post('/admin/departments/edit/{id}', 'Admin\AdminController@updateDepartment');
-    
+
     //delete routes
 
     Route::post('/admin/students/delete/{id}', 'Admin\AdminController@deleteStudent');

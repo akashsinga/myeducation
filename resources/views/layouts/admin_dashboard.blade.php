@@ -84,7 +84,7 @@
                         <div class="collapse" id="leaves">
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="/admin/leaves/available">
                                         <i class="material-icons">keyboard_arrow_right</i>
                                         <span class="sidebar-normal">Available Leaves</span>
                                     </a>

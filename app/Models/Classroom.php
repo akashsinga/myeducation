@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Classroom extends Model
 {
     protected $fillable = [
-        'department','year','section','class_teacher'
+        'department','year','section',
     ];
 }

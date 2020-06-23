@@ -19,7 +19,7 @@ class CreateClassroomsTable extends Migration
             $table->foreign('department')->references('id')->on('departments');
             $table->integer('year');
             $table->string('section');
-            $table->bigInteger('class_teacher')->unsigned();
+            $table->bigInteger('class_teacher')->unsigned()->nullable();
             $table->foreign('class_teacher')->references('id')->on('users');
             $table->timestamps();
         });
