@@ -127,3 +127,5 @@ Admin | Add Student
     </form>
 </div>
 @endsection
+@section('scripts')
+@endsection

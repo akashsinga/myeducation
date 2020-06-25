@@ -9,22 +9,18 @@
     <title>@yield('title')</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
-    <!--     Fonts and icons     -->
+    <!--     CSS,Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/plug-ins/1.10.21/integration/font-awesome/dataTables.fontAwesome.css">
-    <!-- CSS Files -->
     <link href="{{URL::asset('assets/css/material-dashboard.css')}}" rel="stylesheet" />
-    <link href="{{URL::asset('assets/css/custom.css')}}" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{{URL::asset('assets/css/dataTables.fontAwesome.min.css')}}" rel="stylesheet" />
     <link href="{{URL::asset('assets/css/datatables.bootstrap.min.css')}}" rel="stylesheet" />
-    <!-- <link href="{{URL::asset('assets/css/jquery.dataTables.min.css')}}" rel="stylesheet" /> -->
+    <link href="{{URL::asset('assets/css/custom.css')}}" rel="stylesheet" />
 </head>
 
 <body class="">
-    <form id="logout-form" action="#" method="POST" style="display: none;">
-        <input type="hidden" name="_token" value="EDzjkS4GBXADwTQJ5fdABDXpDEm8tjd8gaJhN0Tp"> </form>
     <div class="wrapper ">
         <div class="sidebar" data-color="orange" data-background-color="green">
             <!--
@@ -295,7 +291,7 @@
     <script src="{{URL::asset('assets/js/material-dashboard.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
         window.onload = function() {
-            $('#overlay').fadeOut(300);
+            $('#overlay').fadeOut(500);
         }
     </script>
     @yield('scripts')
